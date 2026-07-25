@@ -1,0 +1,524 @@
+{
+  "dataset_name": "dr_network_proximity_retriever_eval_bank_en",
+  "version": "1.0",
+  "description": "English evaluation bank for the retriever on the dr_network_proximity table and metrics closest_distance, proximity, dc_mean, dc_std.",
+  "notes": [
+    "Questions reference network proximity concepts explicitly.",
+    "Gold evaluates semantic retrieval accuracy."
+  ],
+  "cases": [
+    {
+      "id": "np_en_001",
+      "question": "Which drug has the shortest closest distance to abdominal Pain?",
+      "gold": {
+        "intent": "network_proximity",
+        "metric": "closest_distance",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "min",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_network_proximity",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Abdominal Pain",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "np_en_002",
+      "question": "What medication is closest to asthma according to network proximity?",
+      "gold": {
+        "intent": "network_proximity",
+        "metric": "closest_distance",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "min",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_network_proximity",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Asthma",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "np_en_003",
+      "question": "For cetirizine, which disease has the smallest closest distance?",
+      "gold": {
+        "intent": "network_proximity",
+        "metric": "closest_distance",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": "min",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_network_proximity",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "CETIRIZINE"
+        }
+      }
+    },
+    {
+      "id": "np_en_004",
+      "question": "What is the proximity score between simvastatin and diabetes Mellitus?",
+      "gold": {
+        "intent": "network_proximity",
+        "metric": "proximity",
+        "task_type": "pair_lookup",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_network_proximity",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Diabetes Mellitus",
+          "drug": "SIMVASTATIN"
+        }
+      }
+    },
+    {
+      "id": "np_en_005",
+      "question": "Rank drugs by closest distance for epilepsy from nearest to farthest",
+      "gold": {
+        "intent": "network_proximity",
+        "metric": "closest_distance",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "sort",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_network_proximity",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Epilepsy",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "np_en_006",
+      "question": "What is the mean distance (dc_mean) between metformin and obesity?",
+      "gold": {
+        "intent": "network_proximity",
+        "metric": "dc_mean",
+        "task_type": "pair_lookup",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_network_proximity",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Obesity",
+          "drug": "METFORMIN"
+        }
+      }
+    },
+    {
+      "id": "np_en_007",
+      "question": "Which disease has the lowest closest distance for cetirizine: alcoholic Intoxication, Chronic or rheumatoid Arthritis?",
+      "gold": {
+        "intent": "network_proximity",
+        "metric": "closest_distance",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "min",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_network_proximity",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Alcoholic Intoxication, Chronic / Rheumatoid Arthritis",
+          "drug": "CETIRIZINE"
+        }
+      }
+    },
+    {
+      "id": "np_en_008",
+      "question": "Compare proximity of aspirin and ibuprofen for abdominal Pain",
+      "gold": {
+        "intent": "network_proximity",
+        "metric": "proximity",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "sort",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_network_proximity",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Abdominal Pain",
+          "drug": "ASPIRIN / IBUPROFEN"
+        }
+      }
+    },
+    {
+      "id": "np_en_009",
+      "question": "Among asthma, epilepsy, and psoriasis, which is closest to simvastatin?",
+      "gold": {
+        "intent": "network_proximity",
+        "metric": "closest_distance",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "min",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_network_proximity",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Asthma / Epilepsy / Psoriasis",
+          "drug": "SIMVASTATIN"
+        }
+      }
+    },
+    {
+      "id": "np_en_010",
+      "question": "For kidney Failure, Chronic, which drug has higher proximity: omeprazole, diazepam, or morphine?",
+      "gold": {
+        "intent": "network_proximity",
+        "metric": "proximity",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_network_proximity",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Kidney Failure, Chronic",
+          "drug": "OMEPRAZOLE / DIAZEPAM / MORPHINE"
+        }
+      }
+    },
+    {
+      "id": "np_en_011",
+      "question": "Does metformin or atorvastatin have lower dc_mean for obesity?",
+      "gold": {
+        "intent": "network_proximity",
+        "metric": "dc_mean",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "min",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_network_proximity",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Obesity",
+          "drug": "METFORMIN / ATORVASTATIN"
+        }
+      }
+    },
+    {
+      "id": "np_en_012",
+      "question": "Which has lower dc_std for cisplatin: multiple Sclerosis or anemia, Sickle Cell?",
+      "gold": {
+        "intent": "network_proximity",
+        "metric": "dc_std",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "min",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_network_proximity",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Multiple Sclerosis / Anemia, Sickle Cell",
+          "drug": "CISPLATIN"
+        }
+      }
+    },
+    {
+      "id": "np_en_013",
+      "question": "List the top 5 drugs by proximity for psoriasis",
+      "gold": {
+        "intent": "network_proximity",
+        "metric": "proximity",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "sort",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_network_proximity",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Psoriasis",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "np_en_014",
+      "question": "What is the standard deviation of distance (dc_std) between fluoxetine and schizophrenia?",
+      "gold": {
+        "intent": "network_proximity",
+        "metric": "dc_std",
+        "task_type": "pair_lookup",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_network_proximity",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Schizophrenia",
+          "drug": "FLUOXETINE"
+        }
+      }
+    },
+    {
+      "id": "np_en_015",
+      "question": "Which drugs are nearest to glaucoma based on network proximity closest distance?",
+      "gold": {
+        "intent": "network_proximity",
+        "metric": "closest_distance",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "min",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_network_proximity",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Glaucoma",
+          "drug": null
+        }
+      }
+    }
+  ]
+}

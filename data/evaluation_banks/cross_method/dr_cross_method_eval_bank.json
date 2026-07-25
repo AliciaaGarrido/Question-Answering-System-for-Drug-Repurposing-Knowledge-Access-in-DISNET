@@ -1,0 +1,1602 @@
+{
+  "dataset_name": "dr_cross_method_retriever_eval_bank",
+  "version": "1.0",
+  "description": "Banco de preguntas multi-tabla que requieren 2 o más tablas dr_* para responder. Las preguntas cubren comparaciones entre metodologías, intersecciones, agregaciones cross-method y consenso multi-método.",
+  "notes": [
+    "Cada pregunta requiere al menos 2 tablas dr_* distintas.",
+    "El intent principal es cross_method_aggregation.",
+    "forbidden_tables se omite porque múltiples tablas son legítimamente necesarias.",
+    "El gold evalúa retrieval semántico, no SQL."
+  ],
+  "cases": [
+    {
+      "id": "cm_001",
+      "question": "¿Qué fármacos aparecen tanto en GNNs como en network proximity para abdominal Pain?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Abdominal Pain",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_002",
+      "question": "¿Qué enfermedades tienen hipótesis de reposicionamiento en todos los métodos de drive?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": null,
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_003",
+      "question": "¿Qué fármacos son predichos por al menos 3 modelos distintos para alzheimer Disease?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Alzheimer Disease",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_004",
+      "question": "Compara el score de aspirin para diabetes Mellitus en GNNs vs threshold values.",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": "score",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_threshold_values",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Diabetes Mellitus",
+          "drug": "ASPIRIN"
+        }
+      }
+    },
+    {
+      "id": "cm_005",
+      "question": "¿Qué pares disease-drug coinciden entre GNNs y network proximity?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": null,
+        "operator": null,
+        "result_types_requested": [
+          "diseases",
+          "drugs"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_006",
+      "question": "¿En cuántos métodos aparece metformin como fármaco candidato para alguna enfermedad?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "count",
+        "input_type": "drug",
+        "operator": "count",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": null,
+          "drug": "METFORMIN"
+        }
+      }
+    },
+    {
+      "id": "cm_007",
+      "question": "¿Qué fármacos obtienen mejor score en GNNs redirection y a la vez tienen baja closest distance en network proximity para breast Neoplasms?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Breast Neoplasms",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_008",
+      "question": "¿Qué enfermedades aparecen en GNNs, network proximity y threshold values pero no en information paths?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "difference",
+        "input_type": null,
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "disease"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_009",
+      "question": "¿Cuántos fármacos distintos están en al menos 2 métodos para lung Neoplasms?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "count",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Lung Neoplasms",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_010",
+      "question": "¿Qué fármacos tienen tanto caminos de información como scores de GNNs para melanoma?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Melanoma",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_011",
+      "question": "¿Qué enfermedades tienen hipótesis en GNNs y además pathways con score alto?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": "score",
+        "task_type": "intersection",
+        "input_type": null,
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_gnns",
+          "dr_pathways",
+          "disease"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_012",
+      "question": "Compara el ranking de fármacos para hypertension según GNNs vs network proximity.",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "disease",
+        "operator": "sort",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Hypertension",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_013",
+      "question": "¿Qué fármacos están en threshold values y tienen pathways para leukemia?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_threshold_values",
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Leukemia",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_014",
+      "question": "¿Cuántos métodos distintos respaldan la relación entre parkinson Disease y levodopa?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "count",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Parkinson Disease",
+          "drug": "LEVODOPA"
+        }
+      }
+    },
+    {
+      "id": "cm_015",
+      "question": "¿Qué fármacos aparecen en network proximity y en disease pathways para schizophrenia?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_network_proximity",
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Schizophrenia",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_016",
+      "question": "¿Qué enfermedades comparten fármacos en GNNs y en threshold values?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": null,
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_gnns",
+          "dr_threshold_values",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_017",
+      "question": "¿Qué fármacos tienen el mejor score combinado entre GNNs y pathways para epilepsy?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": "score",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Epilepsy",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_018",
+      "question": "¿Qué pares disease-drug aparecen en threshold values y tienen caminos de información?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": null,
+        "operator": null,
+        "result_types_requested": [
+          "diseases",
+          "drugs"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_threshold_values",
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_019",
+      "question": "Compara la proximidad de red y el score de threshold values de doxorubicin para colorectal Neoplasms.",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Colorectal Neoplasms",
+          "drug": "DOXORUBICIN"
+        }
+      }
+    },
+    {
+      "id": "cm_020",
+      "question": "¿Qué fármacos están respaldados por GNNs, network proximity y threshold values simultáneamente para rheumatoid Arthritis?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Rheumatoid Arthritis",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_021",
+      "question": "¿Cuántos fármacos comparten asthma entre GNNs e information paths?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "count",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Asthma",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_022",
+      "question": "¿Qué enfermedades tienen la mayor cantidad de métodos que respaldan algún fármaco?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "ranking",
+        "input_type": null,
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_023",
+      "question": "¿Qué genes están implicados tanto en threshold values como en pathways para obesity?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "genes"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_threshold_values",
+          "dr_pathways",
+          "disease",
+          "gene"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Obesity",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_024",
+      "question": "¿tamoxifen aparece como candidato para breast Neoplasms en GNNs, network proximity y threshold values?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "existence",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Breast Neoplasms",
+          "drug": "TAMOXIFEN"
+        }
+      }
+    },
+    {
+      "id": "cm_025",
+      "question": "¿Qué fármacos solo aparecen en GNNs pero no en network proximity para multiple Sclerosis?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "difference",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Multiple Sclerosis",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_026",
+      "question": "Compara los scores de GNNs y threshold values para los top 5 fármacos de myocardial Infarction.",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": "score",
+        "task_type": "comparison",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_threshold_values",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Myocardial Infarction",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_027",
+      "question": "¿Qué fármacos tienen pathways y además conteo de pathways para depression?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Depression",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_028",
+      "question": "¿Cuántos pares disease-drug son comunes entre network proximity y information paths?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "count",
+        "input_type": null,
+        "operator": "count",
+        "result_types_requested": [
+          "diseases",
+          "drugs"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_029",
+      "question": "¿Qué enfermedades están en GNNs y disease pathways pero no en threshold values?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "difference",
+        "input_type": null,
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_gnns",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "disease"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_030",
+      "question": "¿Qué fármacos predichos por GNNs para hepatocellular Carcinoma también tienen closest distance baja en network proximity?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Hepatocellular Carcinoma",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_031",
+      "question": "¿En cuántos métodos aparece cisplatin como candidato para ovarian Neoplasms?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "count",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Ovarian Neoplasms",
+          "drug": "CISPLATIN"
+        }
+      }
+    },
+    {
+      "id": "cm_032",
+      "question": "¿Qué fármacos tienen scores en pathways y en threshold values para glioblastoma y cuáles son mayores?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": "score",
+        "task_type": "comparison",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "dr_threshold_values",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Glioblastoma",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_033",
+      "question": "¿Qué genes son compartidos entre threshold values y pathways para chronic Kidney Disease?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "genes"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_threshold_values",
+          "dr_pathways",
+          "disease",
+          "gene"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Chronic Kidney Disease",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_034",
+      "question": "¿Qué pares enfermedad-fármaco están presentes en todos los métodos de drive?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": null,
+        "operator": null,
+        "result_types_requested": [
+          "diseases",
+          "drugs"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_035",
+      "question": "¿Cuáles son los fármacos mejor posicionados en GNNs que también tienen caminos de información para psoriasis?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Psoriasis",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_036",
+      "question": "¿Para qué enfermedades coincide ibuprofen entre network proximity y pathways?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": "drug",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_network_proximity",
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": null,
+          "drug": "IBUPROFEN"
+        }
+      }
+    },
+    {
+      "id": "cm_037",
+      "question": "¿Qué fármacos con score alto en GNNs redirection también tienen buena proximidad de red para adenocarcinoma?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Adenocarcinoma",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_038",
+      "question": "¿Cuántos fármacos están en GNNs y threshold values para hepatitis B?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "count",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_threshold_values",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Hepatitis B",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_039",
+      "question": "¿Qué enfermedades comparten pathways en dr_pathways y dr_diseasepathways?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": null,
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_pathways",
+          "dr_diseasepathways",
+          "disease",
+          "pathway"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_040",
+      "question": "¿Qué fármacos solo aparecen en threshold values y no en ningún otro método para liver Cirrhosis?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "difference",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_threshold_values",
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_pathways",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Liver Cirrhosis",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_041",
+      "question": "Compara los resultados de network proximity y GNNs para los 10 mejores fármacos de pancreatic Neoplasms.",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Pancreatic Neoplasms",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_042",
+      "question": "¿Qué fármacos tienen información en GNNs, network proximity, pathways y conteo de pathways para prostate Cancer?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Prostate Cancer",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_043",
+      "question": "¿Entre methotrexate y rheumatoid Arthritis, qué métodos soportan la hipótesis?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Rheumatoid Arthritis",
+          "drug": "METHOTREXATE"
+        }
+      }
+    },
+    {
+      "id": "cm_044",
+      "question": "¿Cuáles son las enfermedades con fármacos en GNNs que también tienen genes en threshold values?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": null,
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_gnns",
+          "dr_threshold_values",
+          "disease",
+          "drug",
+          "gene"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_045",
+      "question": "¿Qué fármacos resultan candidatos según GNNs y tienen conteo de pathways alto para gastric Cancer?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Gastric Cancer",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_046",
+      "question": "¿Qué fármacos están presentes en al menos 4 métodos para fibromyalgia?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Fibromyalgia",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_047",
+      "question": "¿Cuántos métodos soportan la conexión entre chronic Obstructive Pulmonary Disease y algún fármaco?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "count",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Chronic Obstructive Pulmonary Disease",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_048",
+      "question": "¿Qué fármacos de GNNs para acne Vulgaris están también soportados por threshold values?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_threshold_values",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Acne Vulgaris",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_049",
+      "question": "¿Qué fármacos tienen scores en dr_pathways y también proximidad en dr_network_proximity para addison Disease?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "dr_network_proximity",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Addison Disease",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_050",
+      "question": "¿Cuáles son los 5 fármacos con mayor consenso entre métodos para acidosis?",
+      "gold": {
+        "intent": "cross_method_aggregation",
+        "metric": null,
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Acidosis",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_comp_001",
+      "question": "¿En cuántos métodos aparece aspirin para asthma versus aspirin para rheumatoid Arthritis?",
+      "gold": {
+        "intent": "cross_method",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Asthma / Rheumatoid Arthritis",
+          "drug": "ASPIRIN"
+        }
+      }
+    },
+    {
+      "id": "cm_comp_002",
+      "question": "Entre metformin y simvastatin, ¿cuál aparece en más métodos para diabetes Mellitus?",
+      "gold": {
+        "intent": "cross_method",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Diabetes Mellitus",
+          "drug": "METFORMIN / SIMVASTATIN"
+        }
+      }
+    },
+    {
+      "id": "cm_comp_003",
+      "question": "¿Para kidney Failure, Chronic, coinciden omeprazole y cetirizine en los mismos métodos de reposicionamiento?",
+      "gold": {
+        "intent": "cross_method",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Kidney Failure, Chronic",
+          "drug": "OMEPRAZOLE / CETIRIZINE"
+        }
+      }
+    },
+    {
+      "id": "cm_comp_004",
+      "question": "Compara en cuántas técnicas de reposicionamiento aparece fluoxetine para anemia, Sickle Cell versus epilepsy",
+      "gold": {
+        "intent": "cross_method",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Anemia, Sickle Cell / Epilepsy",
+          "drug": "FLUOXETINE"
+        }
+      }
+    },
+    {
+      "id": "cm_comp_005",
+      "question": "¿En cuántos modelos aparecen warfarin o tamoxifen  para alcoholic Intoxication, Chronic?",
+      "gold": {
+        "intent": "cross_method",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Alcoholic Intoxication, Chronic",
+          "drug": "WARFARIN / TAMOXIFEN"
+        }
+      }
+    }
+  ]
+}

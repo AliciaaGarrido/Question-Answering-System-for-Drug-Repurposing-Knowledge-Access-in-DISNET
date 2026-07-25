@@ -1,0 +1,6574 @@
+{
+  "dataset": "data/evaluation_banks/pathways/dr_pathways_eval_bank_en.json",
+  "retriever_module": "drive_qa.retriever",
+  "config": {
+    "top_k": 4,
+    "min_score": 2,
+    "expand_relations": true
+  },
+  "summary": {
+    "n_cases": 12,
+    "top1_accuracy": 0.9166666666666666,
+    "required_tables_accuracy": 1.0,
+    "contamination_free_rate": 0.25,
+    "intent_accuracy": 1.0,
+    "metric_accuracy": 1.0,
+    "operator_accuracy": 0.5,
+    "result_types_accuracy": 0.5,
+    "predicted_entity_types_accuracy": 0.8333333333333334,
+    "semantic_exact_accuracy": 0.3333333333333333,
+    "exact_retrieval_accuracy": 0.0,
+    "avg_precision": 0.5583333333333333,
+    "avg_recall": 1.0,
+    "avg_f1": 0.7129629629629629,
+    "avg_mrr": 0.9333333333333333,
+    "avg_missing_required_tables": 0,
+    "avg_forbidden_tables_selected": 0.75,
+    "per_metric": {
+      "association_type": {
+        "n": 1,
+        "top1_accuracy": 0.0,
+        "required_tables_accuracy": 1.0,
+        "intent_accuracy": 1.0,
+        "metric_accuracy": 1.0,
+        "operator_accuracy": 1.0,
+        "result_types_accuracy": 1.0,
+        "predicted_entity_types_accuracy": 1.0,
+        "semantic_exact_accuracy": 1.0,
+        "exact_retrieval_accuracy": 0.0,
+        "avg_precision": 0.5,
+        "avg_recall": 1.0,
+        "avg_f1": 0.6666666666666666,
+        "avg_mrr": 0.2
+      },
+      "score": {
+        "n": 11,
+        "top1_accuracy": 1.0,
+        "required_tables_accuracy": 1.0,
+        "intent_accuracy": 1.0,
+        "metric_accuracy": 1.0,
+        "operator_accuracy": 0.45454545454545453,
+        "result_types_accuracy": 0.45454545454545453,
+        "predicted_entity_types_accuracy": 0.8181818181818182,
+        "semantic_exact_accuracy": 0.2727272727272727,
+        "exact_retrieval_accuracy": 0.0,
+        "avg_precision": 0.5636363636363636,
+        "avg_recall": 1.0,
+        "avg_f1": 0.7171717171717171,
+        "avg_mrr": 1.0
+      }
+    },
+    "per_intent": {
+      "pathways_method": {
+        "n": 12,
+        "top1_accuracy": 0.9166666666666666,
+        "required_tables_accuracy": 1.0,
+        "intent_accuracy": 1.0,
+        "metric_accuracy": 1.0,
+        "operator_accuracy": 0.5,
+        "result_types_accuracy": 0.5,
+        "predicted_entity_types_accuracy": 0.8333333333333334,
+        "semantic_exact_accuracy": 0.3333333333333333,
+        "exact_retrieval_accuracy": 0.0,
+        "avg_precision": 0.5583333333333333,
+        "avg_recall": 1.0,
+        "avg_f1": 0.7129629629629629,
+        "avg_mrr": 0.9333333333333333
+      }
+    },
+    "per_primary_table": {
+      "dr_pathways": {
+        "n": 12,
+        "top1_accuracy": 0.9166666666666666,
+        "required_tables_accuracy": 1.0,
+        "intent_accuracy": 1.0,
+        "metric_accuracy": 1.0,
+        "operator_accuracy": 0.5,
+        "result_types_accuracy": 0.5,
+        "predicted_entity_types_accuracy": 0.8333333333333334,
+        "semantic_exact_accuracy": 0.3333333333333333,
+        "exact_retrieval_accuracy": 0.0,
+        "avg_precision": 0.5583333333333333,
+        "avg_recall": 1.0,
+        "avg_f1": 0.7129629629629629,
+        "avg_mrr": 0.9333333333333333
+      }
+    },
+    "per_n_required_tables": {
+      "3_tables": {
+        "n": 11,
+        "top1_accuracy": 0.9090909090909091,
+        "required_tables_accuracy": 1.0,
+        "intent_accuracy": 1.0,
+        "metric_accuracy": 1.0,
+        "operator_accuracy": 0.45454545454545453,
+        "result_types_accuracy": 0.5454545454545454,
+        "predicted_entity_types_accuracy": 0.8181818181818182,
+        "semantic_exact_accuracy": 0.36363636363636365,
+        "exact_retrieval_accuracy": 0.0,
+        "avg_precision": 0.5363636363636364,
+        "avg_recall": 1.0,
+        "avg_f1": 0.6969696969696969,
+        "avg_mrr": 0.9272727272727272
+      },
+      "4+_tables": {
+        "n": 1,
+        "top1_accuracy": 1.0,
+        "required_tables_accuracy": 1.0,
+        "intent_accuracy": 1.0,
+        "metric_accuracy": 1.0,
+        "operator_accuracy": 1.0,
+        "result_types_accuracy": 0.0,
+        "predicted_entity_types_accuracy": 1.0,
+        "semantic_exact_accuracy": 0.0,
+        "exact_retrieval_accuracy": 0.0,
+        "avg_precision": 0.8,
+        "avg_recall": 1.0,
+        "avg_f1": 0.888888888888889,
+        "avg_mrr": 1.0
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "pw_en_001",
+      "question": "Which drug has the highest pathway score for rheumatoid Arthritis?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Rheumatoid Arthritis",
+          "drug": null
+        }
+      },
+      "eval": {
+        "top1_table": "dr_pathways",
+        "expected_primary_table": "dr_pathways",
+        "selected_tables": [
+          "disease",
+          "dr_pathways",
+          "dr_threshold_values",
+          "drug",
+          "gene",
+          "pathway"
+        ],
+        "contains_required_tables": true,
+        "missing_required_tables": [],
+        "forbidden_tables_present": [
+          "dr_threshold_values"
+        ],
+        "intent_ok": true,
+        "metric_ok": true,
+        "operator_ok": true,
+        "result_types_ok": true,
+        "predicted_entity_types_ok": false,
+        "top1_ok": true,
+        "contamination_ok": false,
+        "exact_semantic_ok": false,
+        "exact_retrieval_ok": false,
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.6666666666666666,
+        "mrr": 1.0,
+        "n_required_tables": 3,
+        "predicted_semantic": {
+          "intents": {
+            "pathways_method": 4,
+            "ranking": 2
+          },
+          "metric": "score",
+          "operator": "max",
+          "result_types_requested": [
+            "drugs"
+          ],
+          "predicted_entity_types": [
+            "diseases",
+            "genes"
+          ]
+        }
+      },
+      "predicted_selected_tables": [
+        "dr_threshold_values",
+        "drug",
+        "dr_pathways",
+        "disease",
+        "gene",
+        "pathway"
+      ],
+      "predicted_ranking": [
+        [
+          "dr_pathways",
+          31
+        ],
+        [
+          "drug",
+          26
+        ],
+        [
+          "pathway",
+          18
+        ],
+        [
+          "disease",
+          17
+        ],
+        [
+          "dr_threshold_values",
+          6
+        ],
+        [
+          "gene",
+          3
+        ],
+        [
+          "dr_pathways_count",
+          3
+        ],
+        [
+          "encodes",
+          0
+        ],
+        [
+          "dr_gnns",
+          -2
+        ],
+        [
+          "dr_network_proximity",
+          -7
+        ],
+        [
+          "dr_information_paths",
+          -8
+        ],
+        [
+          "dr_diseasepathways",
+          -9
+        ]
+      ],
+      "predicted_semantic_parse": {
+        "intents": {
+          "pathways_method": 4,
+          "ranking": 2
+        },
+        "metric": "score",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases",
+          "genes"
+        ],
+        "query_template": "method_ranking_by_disease",
+        "candidate_spans": [
+          "rheumatoid arthritis",
+          "rheumatoid",
+          "arthritis"
+        ],
+        "pattern_targets": {
+          "diseases": false,
+          "drugs": false,
+          "genes": false,
+          "pathways": false
+        },
+        "gnn_subtype": null,
+        "is_cross_method": false
+      },
+      "detected_entities": {
+        "diseases": [
+          {
+            "id": "C0003873",
+            "name": "Rheumatoid Arthritis",
+            "matched_span": "rheumatoid arthritis",
+            "entity_type": "diseases",
+            "match_score": 100
+          }
+        ],
+        "drugs": [],
+        "genes": [
+          {
+            "id": 474225,
+            "name": "Rheumatoid arthritis QTL 01",
+            "matched_span": "rheumatoid arthritis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 474230,
+            "name": "Rheumatoid arthritis QTL 10",
+            "matched_span": "rheumatoid arthritis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 474237,
+            "name": "Rheumatoid arthritis QTL 17",
+            "matched_span": "rheumatoid arthritis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 474240,
+            "name": "Rheumatoid arthritis QTL 19",
+            "matched_span": "rheumatoid arthritis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 474248,
+            "name": "Rheumatoid arthritis QTL 27",
+            "matched_span": "rheumatoid arthritis",
+            "entity_type": "genes",
+            "match_score": 90
+          }
+        ],
+        "pathways": []
+      },
+      "entity_strategies": {
+        "diseases": {
+          "strategy": "exact_match",
+          "selected": {
+            "id": "C0003873",
+            "name": "Rheumatoid Arthritis",
+            "matched_span": "rheumatoid arthritis",
+            "entity_type": "diseases",
+            "match_score": 100
+          },
+          "candidates": [
+            {
+              "id": "C0003873",
+              "name": "Rheumatoid Arthritis",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "diseases",
+              "match_score": 100
+            }
+          ]
+        },
+        "drugs": {
+          "strategy": "no_entity",
+          "selected": null,
+          "candidates": []
+        },
+        "genes": {
+          "strategy": "multiple_exact",
+          "selected": [
+            {
+              "id": 474225,
+              "name": "Rheumatoid arthritis QTL 01",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 474230,
+              "name": "Rheumatoid arthritis QTL 10",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 474237,
+              "name": "Rheumatoid arthritis QTL 17",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 474240,
+              "name": "Rheumatoid arthritis QTL 19",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 474248,
+              "name": "Rheumatoid arthritis QTL 27",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            }
+          ],
+          "candidates": [
+            {
+              "id": 474225,
+              "name": "Rheumatoid arthritis QTL 01",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 474230,
+              "name": "Rheumatoid arthritis QTL 10",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 474237,
+              "name": "Rheumatoid arthritis QTL 17",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 474240,
+              "name": "Rheumatoid arthritis QTL 19",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 474248,
+              "name": "Rheumatoid arthritis QTL 27",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            }
+          ]
+        },
+        "pathways": {
+          "strategy": "no_entity",
+          "selected": null,
+          "candidates": []
+        }
+      }
+    },
+    {
+      "id": "pw_en_002",
+      "question": "What is the pathway-based score between metformin and diabetes Mellitus?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "pair_lookup",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Diabetes Mellitus",
+          "drug": "METFORMIN"
+        }
+      },
+      "eval": {
+        "top1_table": "dr_pathways",
+        "expected_primary_table": "dr_pathways",
+        "selected_tables": [
+          "disease",
+          "dr_pathways",
+          "dr_threshold_values",
+          "drug",
+          "gene",
+          "pathway"
+        ],
+        "contains_required_tables": true,
+        "missing_required_tables": [],
+        "forbidden_tables_present": [
+          "dr_threshold_values"
+        ],
+        "intent_ok": true,
+        "metric_ok": true,
+        "operator_ok": true,
+        "result_types_ok": true,
+        "predicted_entity_types_ok": true,
+        "top1_ok": true,
+        "contamination_ok": false,
+        "exact_semantic_ok": true,
+        "exact_retrieval_ok": false,
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.6666666666666666,
+        "mrr": 1.0,
+        "n_required_tables": 3,
+        "predicted_semantic": {
+          "intents": {
+            "pathways_method": 4
+          },
+          "metric": "score",
+          "operator": null,
+          "result_types_requested": [],
+          "predicted_entity_types": [
+            "diseases",
+            "drugs"
+          ]
+        }
+      },
+      "predicted_selected_tables": [
+        "dr_threshold_values",
+        "drug",
+        "dr_pathways",
+        "disease",
+        "gene",
+        "pathway"
+      ],
+      "predicted_ranking": [
+        [
+          "dr_pathways",
+          14
+        ],
+        [
+          "pathway",
+          10
+        ],
+        [
+          "disease",
+          6
+        ],
+        [
+          "drug",
+          6
+        ],
+        [
+          "dr_threshold_values",
+          4
+        ],
+        [
+          "gene",
+          3
+        ],
+        [
+          "encodes",
+          1
+        ],
+        [
+          "dr_pathways_count",
+          0
+        ],
+        [
+          "dr_gnns",
+          -5
+        ],
+        [
+          "dr_network_proximity",
+          -9
+        ],
+        [
+          "dr_information_paths",
+          -10
+        ],
+        [
+          "dr_diseasepathways",
+          -12
+        ]
+      ],
+      "predicted_semantic_parse": {
+        "intents": {
+          "pathways_method": 4
+        },
+        "metric": "score",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "query_template": "association_lookup",
+        "candidate_spans": [
+          "pathway-based between metformin diabetes mellitus",
+          "pathway-based between metformin diabetes",
+          "between metformin diabetes mellitus",
+          "pathway-based between metformin",
+          "between metformin diabetes",
+          "metformin diabetes mellitus",
+          "pathway-based between",
+          "between metformin",
+          "metformin diabetes",
+          "diabetes mellitus",
+          "pathway-based",
+          "between",
+          "metformin",
+          "diabetes",
+          "mellitus"
+        ],
+        "pattern_targets": {
+          "diseases": false,
+          "drugs": false,
+          "genes": false,
+          "pathways": false
+        },
+        "gnn_subtype": null,
+        "is_cross_method": false
+      },
+      "detected_entities": {
+        "diseases": [
+          {
+            "id": "C0011849",
+            "name": "Diabetes Mellitus",
+            "matched_span": "diabetes mellitus",
+            "entity_type": "diseases",
+            "match_score": 100
+          },
+          {
+            "id": "C0011847",
+            "name": "Diabetes",
+            "matched_span": "diabetes",
+            "entity_type": "diseases",
+            "match_score": 100
+          },
+          {
+            "id": "C0743140",
+            "name": "diabetes mellitus risk",
+            "matched_span": "diabetes mellitus",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C4554117",
+            "name": "Diabetes mellitus type 1",
+            "matched_span": "diabetes mellitus",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C0011853",
+            "name": "Diabetes Mellitus, Experimental",
+            "matched_span": "diabetes mellitus",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C3837958",
+            "name": "Diabetes Mellitus, Ketosis-Prone",
+            "matched_span": "diabetes mellitus",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C0011854",
+            "name": "Diabetes Mellitus, Insulin-Dependent",
+            "matched_span": "diabetes mellitus",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C1833104",
+            "name": "DIABETES MELLITUS, PERMANENT NEONATAL",
+            "matched_span": "diabetes mellitus",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C1838259",
+            "name": "DIABETES MELLITUS, INSULIN-DEPENDENT, 7",
+            "matched_span": "diabetes mellitus",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C1833218",
+            "name": "DIABETES MELLITUS, INSULIN-DEPENDENT, 8",
+            "matched_span": "diabetes mellitus",
+            "entity_type": "diseases",
+            "match_score": 90
+          }
+        ],
+        "drugs": [
+          {
+            "id": "CHEMBL1431",
+            "name": "METFORMIN",
+            "matched_span": "metformin",
+            "entity_type": "drugs",
+            "match_score": 100
+          },
+          {
+            "id": "CHEMBL1703",
+            "name": "METFORMIN HYDROCHLORIDE",
+            "matched_span": "metformin",
+            "entity_type": "drugs",
+            "match_score": 90
+          }
+        ],
+        "genes": [
+          {
+            "id": 7952,
+            "name": "diabetes mellitus, transient neonatal",
+            "matched_span": "diabetes mellitus",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 3402,
+            "name": "insulin dependent diabetes mellitus 3",
+            "matched_span": "diabetes mellitus",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 3403,
+            "name": "insulin dependent diabetes mellitus 4",
+            "matched_span": "diabetes mellitus",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 3405,
+            "name": "insulin dependent diabetes mellitus 6",
+            "matched_span": "diabetes mellitus",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 3406,
+            "name": "insulin dependent diabetes mellitus 7",
+            "matched_span": "diabetes mellitus",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 3407,
+            "name": "insulin dependent diabetes mellitus 8",
+            "matched_span": "diabetes mellitus",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 3410,
+            "name": "insulin dependent diabetes mellitus 11",
+            "matched_span": "diabetes mellitus",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 3412,
+            "name": "insulin dependent diabetes mellitus 13",
+            "matched_span": "diabetes mellitus",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 3414,
+            "name": "insulin dependent diabetes mellitus 15",
+            "matched_span": "diabetes mellitus",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 3415,
+            "name": "insulin dependent diabetes mellitus 16",
+            "matched_span": "diabetes mellitus",
+            "entity_type": "genes",
+            "match_score": 90
+          }
+        ],
+        "pathways": [
+          {
+            "id": "WP1584",
+            "name": "Type II diabetes mellitus",
+            "matched_span": "diabetes mellitus",
+            "entity_type": "pathways",
+            "match_score": 90
+          },
+          {
+            "id": "WP4483",
+            "name": "Relationship between inflammation, COX-2 and EGFR",
+            "matched_span": "between",
+            "entity_type": "pathways",
+            "match_score": 90
+          },
+          {
+            "id": "WP3670",
+            "name": "Simplified Interaction Map Between LOXL4 and Oxidative Stress Pathway",
+            "matched_span": "between",
+            "entity_type": "pathways",
+            "match_score": 90
+          },
+          {
+            "id": "WP1829",
+            "name": "Immunoregulatory interactions between a Lymphoid and a non-Lymphoid cell",
+            "matched_span": "between",
+            "entity_type": "pathways",
+            "match_score": 90
+          },
+          {
+            "id": "WP4559",
+            "name": "Interactions between immune cells and microRNAs in tumor microenvironment",
+            "matched_span": "between",
+            "entity_type": "pathways",
+            "match_score": 90
+          },
+          {
+            "id": "WP3680",
+            "name": "Association Between Physico-Chemical Features and Toxicity Associated Pathways",
+            "matched_span": "between",
+            "entity_type": "pathways",
+            "match_score": 90
+          }
+        ]
+      },
+      "entity_strategies": {
+        "diseases": {
+          "strategy": "multiple_exact",
+          "selected": [
+            {
+              "id": "C0011849",
+              "name": "Diabetes Mellitus",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C0011847",
+              "name": "Diabetes",
+              "matched_span": "diabetes",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C0743140",
+              "name": "diabetes mellitus risk",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C4554117",
+              "name": "Diabetes mellitus type 1",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0011853",
+              "name": "Diabetes Mellitus, Experimental",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C3837958",
+              "name": "Diabetes Mellitus, Ketosis-Prone",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0011854",
+              "name": "Diabetes Mellitus, Insulin-Dependent",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C1833104",
+              "name": "DIABETES MELLITUS, PERMANENT NEONATAL",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C1838259",
+              "name": "DIABETES MELLITUS, INSULIN-DEPENDENT, 7",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C1833218",
+              "name": "DIABETES MELLITUS, INSULIN-DEPENDENT, 8",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "diseases",
+              "match_score": 90
+            }
+          ],
+          "candidates": [
+            {
+              "id": "C0011849",
+              "name": "Diabetes Mellitus",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C0011847",
+              "name": "Diabetes",
+              "matched_span": "diabetes",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C0743140",
+              "name": "diabetes mellitus risk",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C4554117",
+              "name": "Diabetes mellitus type 1",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0011853",
+              "name": "Diabetes Mellitus, Experimental",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C3837958",
+              "name": "Diabetes Mellitus, Ketosis-Prone",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0011854",
+              "name": "Diabetes Mellitus, Insulin-Dependent",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C1833104",
+              "name": "DIABETES MELLITUS, PERMANENT NEONATAL",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C1838259",
+              "name": "DIABETES MELLITUS, INSULIN-DEPENDENT, 7",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C1833218",
+              "name": "DIABETES MELLITUS, INSULIN-DEPENDENT, 8",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "diseases",
+              "match_score": 90
+            }
+          ]
+        },
+        "drugs": {
+          "strategy": "multiple_exact",
+          "selected": [
+            {
+              "id": "CHEMBL1431",
+              "name": "METFORMIN",
+              "matched_span": "metformin",
+              "entity_type": "drugs",
+              "match_score": 100
+            },
+            {
+              "id": "CHEMBL1703",
+              "name": "METFORMIN HYDROCHLORIDE",
+              "matched_span": "metformin",
+              "entity_type": "drugs",
+              "match_score": 90
+            }
+          ],
+          "candidates": [
+            {
+              "id": "CHEMBL1431",
+              "name": "METFORMIN",
+              "matched_span": "metformin",
+              "entity_type": "drugs",
+              "match_score": 100
+            },
+            {
+              "id": "CHEMBL1703",
+              "name": "METFORMIN HYDROCHLORIDE",
+              "matched_span": "metformin",
+              "entity_type": "drugs",
+              "match_score": 90
+            }
+          ]
+        },
+        "genes": {
+          "strategy": "multiple_exact",
+          "selected": [
+            {
+              "id": 7952,
+              "name": "diabetes mellitus, transient neonatal",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 3402,
+              "name": "insulin dependent diabetes mellitus 3",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 3403,
+              "name": "insulin dependent diabetes mellitus 4",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 3405,
+              "name": "insulin dependent diabetes mellitus 6",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 3406,
+              "name": "insulin dependent diabetes mellitus 7",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 3407,
+              "name": "insulin dependent diabetes mellitus 8",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 3410,
+              "name": "insulin dependent diabetes mellitus 11",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 3412,
+              "name": "insulin dependent diabetes mellitus 13",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 3414,
+              "name": "insulin dependent diabetes mellitus 15",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 3415,
+              "name": "insulin dependent diabetes mellitus 16",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "genes",
+              "match_score": 90
+            }
+          ],
+          "candidates": [
+            {
+              "id": 7952,
+              "name": "diabetes mellitus, transient neonatal",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 3402,
+              "name": "insulin dependent diabetes mellitus 3",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 3403,
+              "name": "insulin dependent diabetes mellitus 4",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 3405,
+              "name": "insulin dependent diabetes mellitus 6",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 3406,
+              "name": "insulin dependent diabetes mellitus 7",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 3407,
+              "name": "insulin dependent diabetes mellitus 8",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 3410,
+              "name": "insulin dependent diabetes mellitus 11",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 3412,
+              "name": "insulin dependent diabetes mellitus 13",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 3414,
+              "name": "insulin dependent diabetes mellitus 15",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 3415,
+              "name": "insulin dependent diabetes mellitus 16",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "genes",
+              "match_score": 90
+            }
+          ]
+        },
+        "pathways": {
+          "strategy": "multiple_exact",
+          "selected": [
+            {
+              "id": "WP1584",
+              "name": "Type II diabetes mellitus",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP4483",
+              "name": "Relationship between inflammation, COX-2 and EGFR",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP3670",
+              "name": "Simplified Interaction Map Between LOXL4 and Oxidative Stress Pathway",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP1829",
+              "name": "Immunoregulatory interactions between a Lymphoid and a non-Lymphoid cell",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP4559",
+              "name": "Interactions between immune cells and microRNAs in tumor microenvironment",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP3680",
+              "name": "Association Between Physico-Chemical Features and Toxicity Associated Pathways",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            }
+          ],
+          "candidates": [
+            {
+              "id": "WP1584",
+              "name": "Type II diabetes mellitus",
+              "matched_span": "diabetes mellitus",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP4483",
+              "name": "Relationship between inflammation, COX-2 and EGFR",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP3670",
+              "name": "Simplified Interaction Map Between LOXL4 and Oxidative Stress Pathway",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP1829",
+              "name": "Immunoregulatory interactions between a Lymphoid and a non-Lymphoid cell",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP4559",
+              "name": "Interactions between immune cells and microRNAs in tumor microenvironment",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP3680",
+              "name": "Association Between Physico-Chemical Features and Toxicity Associated Pathways",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "pw_en_003",
+      "question": "Rank drugs by pathway score for asthma",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "sort",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Asthma",
+          "drug": null
+        }
+      },
+      "eval": {
+        "top1_table": "dr_pathways",
+        "expected_primary_table": "dr_pathways",
+        "selected_tables": [
+          "disease",
+          "dr_pathways",
+          "dr_threshold_values",
+          "drug",
+          "pathway"
+        ],
+        "contains_required_tables": true,
+        "missing_required_tables": [],
+        "forbidden_tables_present": [
+          "dr_threshold_values"
+        ],
+        "intent_ok": true,
+        "metric_ok": true,
+        "operator_ok": true,
+        "result_types_ok": true,
+        "predicted_entity_types_ok": true,
+        "top1_ok": true,
+        "contamination_ok": false,
+        "exact_semantic_ok": true,
+        "exact_retrieval_ok": false,
+        "precision": 0.6,
+        "recall": 1.0,
+        "f1": 0.7499999999999999,
+        "mrr": 1.0,
+        "n_required_tables": 3,
+        "predicted_semantic": {
+          "intents": {
+            "pathways_method": 6
+          },
+          "metric": "score",
+          "operator": "sort",
+          "result_types_requested": [
+            "drugs"
+          ],
+          "predicted_entity_types": [
+            "diseases"
+          ]
+        }
+      },
+      "predicted_selected_tables": [
+        "dr_threshold_values",
+        "drug",
+        "dr_pathways",
+        "disease",
+        "pathway"
+      ],
+      "predicted_ranking": [
+        [
+          "dr_pathways",
+          27
+        ],
+        [
+          "drug",
+          22
+        ],
+        [
+          "pathway",
+          19
+        ],
+        [
+          "disease",
+          15
+        ],
+        [
+          "gene",
+          4
+        ],
+        [
+          "dr_threshold_values",
+          4
+        ],
+        [
+          "dr_pathways_count",
+          1
+        ],
+        [
+          "encodes",
+          0
+        ],
+        [
+          "dr_gnns",
+          -5
+        ],
+        [
+          "dr_network_proximity",
+          -10
+        ],
+        [
+          "dr_information_paths",
+          -10
+        ],
+        [
+          "dr_diseasepathways",
+          -10
+        ]
+      ],
+      "predicted_semantic_parse": {
+        "intents": {
+          "pathways_method": 6
+        },
+        "metric": "score",
+        "operator": "sort",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "query_template": "method_ranking_by_disease",
+        "candidate_spans": [
+          "asthma",
+          "rank asthma"
+        ],
+        "pattern_targets": {
+          "diseases": false,
+          "drugs": false,
+          "genes": false,
+          "pathways": false
+        },
+        "gnn_subtype": null,
+        "is_cross_method": false
+      },
+      "detected_entities": {
+        "diseases": [
+          {
+            "id": "C0004096",
+            "name": "Asthma",
+            "matched_span": "asthma",
+            "entity_type": "diseases",
+            "match_score": 100
+          }
+        ],
+        "drugs": [],
+        "genes": [],
+        "pathways": []
+      },
+      "entity_strategies": {
+        "diseases": {
+          "strategy": "exact_match",
+          "selected": {
+            "id": "C0004096",
+            "name": "Asthma",
+            "matched_span": "asthma",
+            "entity_type": "diseases",
+            "match_score": 100
+          },
+          "candidates": [
+            {
+              "id": "C0004096",
+              "name": "Asthma",
+              "matched_span": "asthma",
+              "entity_type": "diseases",
+              "match_score": 100
+            }
+          ]
+        },
+        "drugs": {
+          "strategy": "no_entity",
+          "selected": null,
+          "candidates": []
+        },
+        "genes": {
+          "strategy": "no_entity",
+          "selected": null,
+          "candidates": []
+        },
+        "pathways": {
+          "strategy": "no_entity",
+          "selected": null,
+          "candidates": []
+        }
+      }
+    },
+    {
+      "id": "pw_en_004",
+      "question": "For which disease does ibuprofen have the highest pathway score?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "IBUPROFEN"
+        }
+      },
+      "eval": {
+        "top1_table": "dr_pathways",
+        "expected_primary_table": "dr_pathways",
+        "selected_tables": [
+          "disease",
+          "dr_pathways",
+          "dr_threshold_values",
+          "drug",
+          "pathway"
+        ],
+        "contains_required_tables": true,
+        "missing_required_tables": [],
+        "forbidden_tables_present": [
+          "dr_threshold_values"
+        ],
+        "intent_ok": true,
+        "metric_ok": true,
+        "operator_ok": true,
+        "result_types_ok": true,
+        "predicted_entity_types_ok": true,
+        "top1_ok": true,
+        "contamination_ok": false,
+        "exact_semantic_ok": true,
+        "exact_retrieval_ok": false,
+        "precision": 0.6,
+        "recall": 1.0,
+        "f1": 0.7499999999999999,
+        "mrr": 1.0,
+        "n_required_tables": 3,
+        "predicted_semantic": {
+          "intents": {
+            "pathways_method": 4,
+            "ranking": 2
+          },
+          "metric": "score",
+          "operator": "max",
+          "result_types_requested": [
+            "diseases"
+          ],
+          "predicted_entity_types": [
+            "drugs"
+          ]
+        }
+      },
+      "predicted_selected_tables": [
+        "dr_threshold_values",
+        "drug",
+        "dr_pathways",
+        "disease",
+        "pathway"
+      ],
+      "predicted_ranking": [
+        [
+          "dr_pathways",
+          28
+        ],
+        [
+          "disease",
+          23
+        ],
+        [
+          "pathway",
+          18
+        ],
+        [
+          "drug",
+          14
+        ],
+        [
+          "dr_threshold_values",
+          6
+        ],
+        [
+          "gene",
+          3
+        ],
+        [
+          "dr_pathways_count",
+          3
+        ],
+        [
+          "encodes",
+          0
+        ],
+        [
+          "dr_gnns",
+          -3
+        ],
+        [
+          "dr_diseasepathways",
+          -6
+        ],
+        [
+          "dr_network_proximity",
+          -7
+        ],
+        [
+          "dr_information_paths",
+          -8
+        ]
+      ],
+      "predicted_semantic_parse": {
+        "intents": {
+          "pathways_method": 4,
+          "ranking": 2
+        },
+        "metric": "score",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "query_template": "entity_pattern_search",
+        "candidate_spans": [
+          "which disease does ibuprofen have the highest pathway",
+          "does ibuprofen",
+          "ibuprofen"
+        ],
+        "pattern_targets": {
+          "diseases": false,
+          "drugs": false,
+          "genes": false,
+          "pathways": false
+        },
+        "gnn_subtype": null,
+        "is_cross_method": false
+      },
+      "detected_entities": {
+        "diseases": [],
+        "drugs": [
+          {
+            "id": "CHEMBL521",
+            "name": "IBUPROFEN",
+            "matched_span": "ibuprofen",
+            "entity_type": "drugs",
+            "match_score": 100
+          }
+        ],
+        "genes": [],
+        "pathways": []
+      },
+      "entity_strategies": {
+        "diseases": {
+          "strategy": "no_entity",
+          "selected": null,
+          "candidates": []
+        },
+        "drugs": {
+          "strategy": "exact_match",
+          "selected": {
+            "id": "CHEMBL521",
+            "name": "IBUPROFEN",
+            "matched_span": "ibuprofen",
+            "entity_type": "drugs",
+            "match_score": 100
+          },
+          "candidates": [
+            {
+              "id": "CHEMBL521",
+              "name": "IBUPROFEN",
+              "matched_span": "ibuprofen",
+              "entity_type": "drugs",
+              "match_score": 100
+            }
+          ]
+        },
+        "genes": {
+          "strategy": "no_entity",
+          "selected": null,
+          "candidates": []
+        },
+        "pathways": {
+          "strategy": "no_entity",
+          "selected": null,
+          "candidates": []
+        }
+      }
+    },
+    {
+      "id": "pw_en_005",
+      "question": "What genes participate in the pathway hypothesis between aspirin and psoriasis?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "listing",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [
+          "genes"
+        ],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug",
+          "gene"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Psoriasis",
+          "drug": "ASPIRIN"
+        }
+      },
+      "eval": {
+        "top1_table": "dr_pathways",
+        "expected_primary_table": "dr_pathways",
+        "selected_tables": [
+          "disease",
+          "dr_pathways",
+          "drug",
+          "gene",
+          "pathway"
+        ],
+        "contains_required_tables": true,
+        "missing_required_tables": [],
+        "forbidden_tables_present": [],
+        "intent_ok": true,
+        "metric_ok": true,
+        "operator_ok": true,
+        "result_types_ok": false,
+        "predicted_entity_types_ok": true,
+        "top1_ok": true,
+        "contamination_ok": true,
+        "exact_semantic_ok": false,
+        "exact_retrieval_ok": false,
+        "precision": 0.8,
+        "recall": 1.0,
+        "f1": 0.888888888888889,
+        "mrr": 1.0,
+        "n_required_tables": 4,
+        "predicted_semantic": {
+          "intents": {
+            "pathways_method": 4
+          },
+          "metric": "score",
+          "operator": null,
+          "result_types_requested": [],
+          "predicted_entity_types": [
+            "diseases",
+            "drugs"
+          ]
+        }
+      },
+      "predicted_selected_tables": [
+        "drug",
+        "dr_pathways",
+        "disease",
+        "gene",
+        "pathway"
+      ],
+      "predicted_ranking": [
+        [
+          "dr_pathways",
+          23
+        ],
+        [
+          "gene",
+          19
+        ],
+        [
+          "pathway",
+          18
+        ],
+        [
+          "drug",
+          14
+        ],
+        [
+          "disease",
+          6
+        ],
+        [
+          "encodes",
+          2
+        ],
+        [
+          "dr_threshold_values",
+          2
+        ],
+        [
+          "dr_pathways_count",
+          1
+        ],
+        [
+          "dr_network_proximity",
+          -9
+        ],
+        [
+          "dr_gnns",
+          -10
+        ],
+        [
+          "dr_information_paths",
+          -10
+        ],
+        [
+          "dr_diseasepathways",
+          -10
+        ]
+      ],
+      "predicted_semantic_parse": {
+        "intents": {
+          "pathways_method": 4
+        },
+        "metric": "score",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "query_template": "association_lookup",
+        "candidate_spans": [
+          "participate hypothesis between aspirin psoriasis",
+          "participate hypothesis between aspirin",
+          "hypothesis between aspirin psoriasis",
+          "participate hypothesis between",
+          "hypothesis between aspirin",
+          "between aspirin psoriasis",
+          "participate hypothesis",
+          "hypothesis between",
+          "between aspirin",
+          "aspirin psoriasis",
+          "participate",
+          "hypothesis",
+          "between",
+          "aspirin",
+          "psoriasis"
+        ],
+        "pattern_targets": {
+          "diseases": false,
+          "drugs": false,
+          "genes": false,
+          "pathways": false
+        },
+        "gnn_subtype": null,
+        "is_cross_method": false
+      },
+      "detected_entities": {
+        "diseases": [
+          {
+            "id": "C0033860",
+            "name": "Psoriasis",
+            "matched_span": "psoriasis",
+            "entity_type": "diseases",
+            "match_score": 100
+          },
+          {
+            "id": "C1867449",
+            "name": "Psoriasis",
+            "matched_span": "psoriasis",
+            "entity_type": "diseases",
+            "match_score": 100
+          },
+          {
+            "id": "C1864497",
+            "name": "PSORIASIS 2",
+            "matched_span": "psoriasis",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C0406322",
+            "name": "Psoriasis of nail",
+            "matched_span": "psoriasis",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C0263361",
+            "name": "Psoriasis vulgaris",
+            "matched_span": "psoriasis",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C4017074",
+            "name": "PSORIASIS 2, PUSTULAR",
+            "matched_span": "psoriasis",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C3279754",
+            "name": "PSORIASIS 13, SUSCEPTIBILITY TO",
+            "matched_span": "psoriasis",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C4015235",
+            "name": "PSORIASIS 15, PUSTULAR, SUSCEPTIBILITY TO",
+            "matched_span": "psoriasis",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C0030491",
+            "name": "Parapsoriasis",
+            "matched_span": "psoriasis",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C0343052",
+            "name": "Guttate psoriasis",
+            "matched_span": "psoriasis",
+            "entity_type": "diseases",
+            "match_score": 90
+          }
+        ],
+        "drugs": [
+          {
+            "id": "CHEMBL25",
+            "name": "ASPIRIN",
+            "matched_span": "aspirin",
+            "entity_type": "drugs",
+            "match_score": 100
+          }
+        ],
+        "genes": [
+          {
+            "id": 7889,
+            "name": "psoriasis susceptibility 3",
+            "matched_span": "psoriasis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 10547,
+            "name": "psoriasis susceptibility 4",
+            "matched_span": "psoriasis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 63869,
+            "name": "psoriasis susceptibility 6",
+            "matched_span": "psoriasis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 63870,
+            "name": "psoriasis susceptibility 5",
+            "matched_span": "psoriasis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 65245,
+            "name": "psoriasis susceptibility 7",
+            "matched_span": "psoriasis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 140454,
+            "name": "psoriasis susceptibility 8",
+            "matched_span": "psoriasis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 359825,
+            "name": "psoriasis susceptibility 9",
+            "matched_span": "psoriasis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 170679,
+            "name": "psoriasis susceptibility 1 candidate 1",
+            "matched_span": "psoriasis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 170680,
+            "name": "psoriasis susceptibility 1 candidate 2",
+            "matched_span": "psoriasis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 100130889,
+            "name": "psoriasis susceptibility 1 candidate 3",
+            "matched_span": "psoriasis",
+            "entity_type": "genes",
+            "match_score": 90
+          }
+        ],
+        "pathways": [
+          {
+            "id": "WP4483",
+            "name": "Relationship between inflammation, COX-2 and EGFR",
+            "matched_span": "between",
+            "entity_type": "pathways",
+            "match_score": 90
+          },
+          {
+            "id": "WP3670",
+            "name": "Simplified Interaction Map Between LOXL4 and Oxidative Stress Pathway",
+            "matched_span": "between",
+            "entity_type": "pathways",
+            "match_score": 90
+          },
+          {
+            "id": "WP1829",
+            "name": "Immunoregulatory interactions between a Lymphoid and a non-Lymphoid cell",
+            "matched_span": "between",
+            "entity_type": "pathways",
+            "match_score": 90
+          },
+          {
+            "id": "WP4559",
+            "name": "Interactions between immune cells and microRNAs in tumor microenvironment",
+            "matched_span": "between",
+            "entity_type": "pathways",
+            "match_score": 90
+          },
+          {
+            "id": "WP3680",
+            "name": "Association Between Physico-Chemical Features and Toxicity Associated Pathways",
+            "matched_span": "between",
+            "entity_type": "pathways",
+            "match_score": 90
+          }
+        ]
+      },
+      "entity_strategies": {
+        "diseases": {
+          "strategy": "multiple_exact",
+          "selected": [
+            {
+              "id": "C0033860",
+              "name": "Psoriasis",
+              "matched_span": "psoriasis",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C1867449",
+              "name": "Psoriasis",
+              "matched_span": "psoriasis",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C1864497",
+              "name": "PSORIASIS 2",
+              "matched_span": "psoriasis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0406322",
+              "name": "Psoriasis of nail",
+              "matched_span": "psoriasis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0263361",
+              "name": "Psoriasis vulgaris",
+              "matched_span": "psoriasis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C4017074",
+              "name": "PSORIASIS 2, PUSTULAR",
+              "matched_span": "psoriasis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C3279754",
+              "name": "PSORIASIS 13, SUSCEPTIBILITY TO",
+              "matched_span": "psoriasis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C4015235",
+              "name": "PSORIASIS 15, PUSTULAR, SUSCEPTIBILITY TO",
+              "matched_span": "psoriasis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0030491",
+              "name": "Parapsoriasis",
+              "matched_span": "psoriasis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0343052",
+              "name": "Guttate psoriasis",
+              "matched_span": "psoriasis",
+              "entity_type": "diseases",
+              "match_score": 90
+            }
+          ],
+          "candidates": [
+            {
+              "id": "C0033860",
+              "name": "Psoriasis",
+              "matched_span": "psoriasis",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C1867449",
+              "name": "Psoriasis",
+              "matched_span": "psoriasis",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C1864497",
+              "name": "PSORIASIS 2",
+              "matched_span": "psoriasis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0406322",
+              "name": "Psoriasis of nail",
+              "matched_span": "psoriasis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0263361",
+              "name": "Psoriasis vulgaris",
+              "matched_span": "psoriasis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C4017074",
+              "name": "PSORIASIS 2, PUSTULAR",
+              "matched_span": "psoriasis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C3279754",
+              "name": "PSORIASIS 13, SUSCEPTIBILITY TO",
+              "matched_span": "psoriasis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C4015235",
+              "name": "PSORIASIS 15, PUSTULAR, SUSCEPTIBILITY TO",
+              "matched_span": "psoriasis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0030491",
+              "name": "Parapsoriasis",
+              "matched_span": "psoriasis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0343052",
+              "name": "Guttate psoriasis",
+              "matched_span": "psoriasis",
+              "entity_type": "diseases",
+              "match_score": 90
+            }
+          ]
+        },
+        "drugs": {
+          "strategy": "exact_match",
+          "selected": {
+            "id": "CHEMBL25",
+            "name": "ASPIRIN",
+            "matched_span": "aspirin",
+            "entity_type": "drugs",
+            "match_score": 100
+          },
+          "candidates": [
+            {
+              "id": "CHEMBL25",
+              "name": "ASPIRIN",
+              "matched_span": "aspirin",
+              "entity_type": "drugs",
+              "match_score": 100
+            }
+          ]
+        },
+        "genes": {
+          "strategy": "multiple_exact",
+          "selected": [
+            {
+              "id": 7889,
+              "name": "psoriasis susceptibility 3",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 10547,
+              "name": "psoriasis susceptibility 4",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 63869,
+              "name": "psoriasis susceptibility 6",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 63870,
+              "name": "psoriasis susceptibility 5",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 65245,
+              "name": "psoriasis susceptibility 7",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 140454,
+              "name": "psoriasis susceptibility 8",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 359825,
+              "name": "psoriasis susceptibility 9",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 170679,
+              "name": "psoriasis susceptibility 1 candidate 1",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 170680,
+              "name": "psoriasis susceptibility 1 candidate 2",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 100130889,
+              "name": "psoriasis susceptibility 1 candidate 3",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            }
+          ],
+          "candidates": [
+            {
+              "id": 7889,
+              "name": "psoriasis susceptibility 3",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 10547,
+              "name": "psoriasis susceptibility 4",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 63869,
+              "name": "psoriasis susceptibility 6",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 63870,
+              "name": "psoriasis susceptibility 5",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 65245,
+              "name": "psoriasis susceptibility 7",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 140454,
+              "name": "psoriasis susceptibility 8",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 359825,
+              "name": "psoriasis susceptibility 9",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 170679,
+              "name": "psoriasis susceptibility 1 candidate 1",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 170680,
+              "name": "psoriasis susceptibility 1 candidate 2",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 100130889,
+              "name": "psoriasis susceptibility 1 candidate 3",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            }
+          ]
+        },
+        "pathways": {
+          "strategy": "multiple_exact",
+          "selected": [
+            {
+              "id": "WP4483",
+              "name": "Relationship between inflammation, COX-2 and EGFR",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP3670",
+              "name": "Simplified Interaction Map Between LOXL4 and Oxidative Stress Pathway",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP1829",
+              "name": "Immunoregulatory interactions between a Lymphoid and a non-Lymphoid cell",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP4559",
+              "name": "Interactions between immune cells and microRNAs in tumor microenvironment",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP3680",
+              "name": "Association Between Physico-Chemical Features and Toxicity Associated Pathways",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            }
+          ],
+          "candidates": [
+            {
+              "id": "WP4483",
+              "name": "Relationship between inflammation, COX-2 and EGFR",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP3670",
+              "name": "Simplified Interaction Map Between LOXL4 and Oxidative Stress Pathway",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP1829",
+              "name": "Immunoregulatory interactions between a Lymphoid and a non-Lymphoid cell",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP4559",
+              "name": "Interactions between immune cells and microRNAs in tumor microenvironment",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP3680",
+              "name": "Association Between Physico-Chemical Features and Toxicity Associated Pathways",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "pw_en_006",
+      "question": "Does aspirin or ibuprofen have a higher pathway score for rheumatoid Arthritis?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Rheumatoid Arthritis",
+          "drug": "ASPIRIN / IBUPROFEN"
+        }
+      },
+      "eval": {
+        "top1_table": "dr_pathways",
+        "expected_primary_table": "dr_pathways",
+        "selected_tables": [
+          "disease",
+          "dr_pathways",
+          "dr_threshold_values",
+          "drug",
+          "gene",
+          "pathway"
+        ],
+        "contains_required_tables": true,
+        "missing_required_tables": [],
+        "forbidden_tables_present": [
+          "dr_threshold_values"
+        ],
+        "intent_ok": true,
+        "metric_ok": true,
+        "operator_ok": false,
+        "result_types_ok": false,
+        "predicted_entity_types_ok": true,
+        "top1_ok": true,
+        "contamination_ok": false,
+        "exact_semantic_ok": false,
+        "exact_retrieval_ok": false,
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.6666666666666666,
+        "mrr": 1.0,
+        "n_required_tables": 3,
+        "predicted_semantic": {
+          "intents": {
+            "pathways_method": 4
+          },
+          "metric": "score",
+          "operator": null,
+          "result_types_requested": [],
+          "predicted_entity_types": [
+            "diseases",
+            "drugs"
+          ]
+        }
+      },
+      "predicted_selected_tables": [
+        "dr_threshold_values",
+        "drug",
+        "dr_pathways",
+        "disease",
+        "gene",
+        "pathway"
+      ],
+      "predicted_ranking": [
+        [
+          "dr_pathways",
+          22
+        ],
+        [
+          "pathway",
+          18
+        ],
+        [
+          "disease",
+          6
+        ],
+        [
+          "drug",
+          6
+        ],
+        [
+          "dr_threshold_values",
+          4
+        ],
+        [
+          "gene",
+          3
+        ],
+        [
+          "dr_pathways_count",
+          1
+        ],
+        [
+          "encodes",
+          0
+        ],
+        [
+          "dr_gnns",
+          -5
+        ],
+        [
+          "dr_network_proximity",
+          -10
+        ],
+        [
+          "dr_information_paths",
+          -10
+        ],
+        [
+          "dr_diseasepathways",
+          -11
+        ]
+      ],
+      "predicted_semantic_parse": {
+        "intents": {
+          "pathways_method": 4
+        },
+        "metric": "score",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "query_template": "association_lookup",
+        "candidate_spans": [
+          "rheumatoid arthritis",
+          "does aspirin ibuprofen higher rheumatoid",
+          "aspirin ibuprofen higher rheumatoid arthritis",
+          "does aspirin ibuprofen higher",
+          "aspirin ibuprofen higher rheumatoid",
+          "ibuprofen higher rheumatoid arthritis",
+          "does aspirin ibuprofen",
+          "aspirin ibuprofen higher",
+          "ibuprofen higher rheumatoid",
+          "higher rheumatoid arthritis",
+          "does aspirin",
+          "aspirin ibuprofen",
+          "ibuprofen higher",
+          "higher rheumatoid",
+          "aspirin",
+          "ibuprofen",
+          "higher",
+          "rheumatoid",
+          "arthritis"
+        ],
+        "pattern_targets": {
+          "diseases": false,
+          "drugs": false,
+          "genes": false,
+          "pathways": false
+        },
+        "gnn_subtype": null,
+        "is_cross_method": false
+      },
+      "detected_entities": {
+        "diseases": [
+          {
+            "id": "C0003873",
+            "name": "Rheumatoid Arthritis",
+            "matched_span": "rheumatoid arthritis",
+            "entity_type": "diseases",
+            "match_score": 100
+          },
+          {
+            "id": "C0003864",
+            "name": "Arthritis",
+            "matched_span": "arthritis",
+            "entity_type": "diseases",
+            "match_score": 100
+          },
+          {
+            "id": "C1833448",
+            "name": "RHEUMATOID ARTHRITIS, SUSCEPTIBILITY TO",
+            "matched_span": "rheumatoid arthritis",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C1858558",
+            "name": "Rheumatoid Arthritis, Systemic Juvenile",
+            "matched_span": "rheumatoid arthritis",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C3899278",
+            "name": "Early Rheumatoid Arthritis",
+            "matched_span": "rheumatoid arthritis",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C3714757",
+            "name": "Juvenile rheumatoid arthritis",
+            "matched_span": "rheumatoid arthritis",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C0409651",
+            "name": "Seropositive rheumatoid arthritis",
+            "matched_span": "rheumatoid arthritis",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C0409652",
+            "name": "Seronegative rheumatoid arthritis",
+            "matched_span": "rheumatoid arthritis",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C1736175",
+            "name": "Progression of rheumatoid arthritis",
+            "matched_span": "rheumatoid arthritis",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C0157917",
+            "name": "Pauciarticular juvenile rheumatoid arthritis",
+            "matched_span": "rheumatoid arthritis",
+            "entity_type": "diseases",
+            "match_score": 90
+          }
+        ],
+        "drugs": [
+          {
+            "id": "CHEMBL521",
+            "name": "IBUPROFEN",
+            "matched_span": "ibuprofen",
+            "entity_type": "drugs",
+            "match_score": 100
+          },
+          {
+            "id": "CHEMBL25",
+            "name": "ASPIRIN",
+            "matched_span": "aspirin",
+            "entity_type": "drugs",
+            "match_score": 100
+          },
+          {
+            "id": "CHEMBL1201141",
+            "name": "IBUPROFEN LYSINE",
+            "matched_span": "ibuprofen",
+            "entity_type": "drugs",
+            "match_score": 90
+          },
+          {
+            "id": "CHEMBL3989408",
+            "name": "IBUPROFEN SODIUM",
+            "matched_span": "ibuprofen",
+            "entity_type": "drugs",
+            "match_score": 90
+          },
+          {
+            "id": "CHEMBL175",
+            "name": "DEXIBUPROFEN",
+            "matched_span": "ibuprofen",
+            "entity_type": "drugs",
+            "match_score": 90
+          }
+        ],
+        "genes": [
+          {
+            "id": 474225,
+            "name": "Rheumatoid arthritis QTL 01",
+            "matched_span": "rheumatoid arthritis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 474230,
+            "name": "Rheumatoid arthritis QTL 10",
+            "matched_span": "rheumatoid arthritis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 474237,
+            "name": "Rheumatoid arthritis QTL 17",
+            "matched_span": "rheumatoid arthritis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 474240,
+            "name": "Rheumatoid arthritis QTL 19",
+            "matched_span": "rheumatoid arthritis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 474248,
+            "name": "Rheumatoid arthritis QTL 27",
+            "matched_span": "rheumatoid arthritis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 474285,
+            "name": "Osteoarthritis QTL 1",
+            "matched_span": "arthritis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 474286,
+            "name": "Osteoarthritis QTL 2",
+            "matched_span": "arthritis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 474196,
+            "name": "Osteoarthritis QTL 25",
+            "matched_span": "arthritis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 100188821,
+            "name": "Osteoarthritis, generalized, without dysplasia, susceptibility to",
+            "matched_span": "arthritis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 882,
+            "name": "chondrocalcinosis 1 (calcium pyrophosphate-deposition disease, early onset osteoarthritis)",
+            "matched_span": "arthritis",
+            "entity_type": "genes",
+            "match_score": 90
+          }
+        ],
+        "pathways": []
+      },
+      "entity_strategies": {
+        "diseases": {
+          "strategy": "multiple_exact",
+          "selected": [
+            {
+              "id": "C0003873",
+              "name": "Rheumatoid Arthritis",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C0003864",
+              "name": "Arthritis",
+              "matched_span": "arthritis",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C1833448",
+              "name": "RHEUMATOID ARTHRITIS, SUSCEPTIBILITY TO",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C1858558",
+              "name": "Rheumatoid Arthritis, Systemic Juvenile",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C3899278",
+              "name": "Early Rheumatoid Arthritis",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C3714757",
+              "name": "Juvenile rheumatoid arthritis",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0409651",
+              "name": "Seropositive rheumatoid arthritis",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0409652",
+              "name": "Seronegative rheumatoid arthritis",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C1736175",
+              "name": "Progression of rheumatoid arthritis",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0157917",
+              "name": "Pauciarticular juvenile rheumatoid arthritis",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "diseases",
+              "match_score": 90
+            }
+          ],
+          "candidates": [
+            {
+              "id": "C0003873",
+              "name": "Rheumatoid Arthritis",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C0003864",
+              "name": "Arthritis",
+              "matched_span": "arthritis",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C1833448",
+              "name": "RHEUMATOID ARTHRITIS, SUSCEPTIBILITY TO",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C1858558",
+              "name": "Rheumatoid Arthritis, Systemic Juvenile",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C3899278",
+              "name": "Early Rheumatoid Arthritis",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C3714757",
+              "name": "Juvenile rheumatoid arthritis",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0409651",
+              "name": "Seropositive rheumatoid arthritis",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0409652",
+              "name": "Seronegative rheumatoid arthritis",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C1736175",
+              "name": "Progression of rheumatoid arthritis",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0157917",
+              "name": "Pauciarticular juvenile rheumatoid arthritis",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "diseases",
+              "match_score": 90
+            }
+          ]
+        },
+        "drugs": {
+          "strategy": "multiple_exact",
+          "selected": [
+            {
+              "id": "CHEMBL521",
+              "name": "IBUPROFEN",
+              "matched_span": "ibuprofen",
+              "entity_type": "drugs",
+              "match_score": 100
+            },
+            {
+              "id": "CHEMBL25",
+              "name": "ASPIRIN",
+              "matched_span": "aspirin",
+              "entity_type": "drugs",
+              "match_score": 100
+            },
+            {
+              "id": "CHEMBL1201141",
+              "name": "IBUPROFEN LYSINE",
+              "matched_span": "ibuprofen",
+              "entity_type": "drugs",
+              "match_score": 90
+            },
+            {
+              "id": "CHEMBL3989408",
+              "name": "IBUPROFEN SODIUM",
+              "matched_span": "ibuprofen",
+              "entity_type": "drugs",
+              "match_score": 90
+            },
+            {
+              "id": "CHEMBL175",
+              "name": "DEXIBUPROFEN",
+              "matched_span": "ibuprofen",
+              "entity_type": "drugs",
+              "match_score": 90
+            }
+          ],
+          "candidates": [
+            {
+              "id": "CHEMBL521",
+              "name": "IBUPROFEN",
+              "matched_span": "ibuprofen",
+              "entity_type": "drugs",
+              "match_score": 100
+            },
+            {
+              "id": "CHEMBL25",
+              "name": "ASPIRIN",
+              "matched_span": "aspirin",
+              "entity_type": "drugs",
+              "match_score": 100
+            },
+            {
+              "id": "CHEMBL1201141",
+              "name": "IBUPROFEN LYSINE",
+              "matched_span": "ibuprofen",
+              "entity_type": "drugs",
+              "match_score": 90
+            },
+            {
+              "id": "CHEMBL3989408",
+              "name": "IBUPROFEN SODIUM",
+              "matched_span": "ibuprofen",
+              "entity_type": "drugs",
+              "match_score": 90
+            },
+            {
+              "id": "CHEMBL175",
+              "name": "DEXIBUPROFEN",
+              "matched_span": "ibuprofen",
+              "entity_type": "drugs",
+              "match_score": 90
+            }
+          ]
+        },
+        "genes": {
+          "strategy": "multiple_exact",
+          "selected": [
+            {
+              "id": 474225,
+              "name": "Rheumatoid arthritis QTL 01",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 474230,
+              "name": "Rheumatoid arthritis QTL 10",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 474237,
+              "name": "Rheumatoid arthritis QTL 17",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 474240,
+              "name": "Rheumatoid arthritis QTL 19",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 474248,
+              "name": "Rheumatoid arthritis QTL 27",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 474285,
+              "name": "Osteoarthritis QTL 1",
+              "matched_span": "arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 474286,
+              "name": "Osteoarthritis QTL 2",
+              "matched_span": "arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 474196,
+              "name": "Osteoarthritis QTL 25",
+              "matched_span": "arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 100188821,
+              "name": "Osteoarthritis, generalized, without dysplasia, susceptibility to",
+              "matched_span": "arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 882,
+              "name": "chondrocalcinosis 1 (calcium pyrophosphate-deposition disease, early onset osteoarthritis)",
+              "matched_span": "arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            }
+          ],
+          "candidates": [
+            {
+              "id": 474225,
+              "name": "Rheumatoid arthritis QTL 01",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 474230,
+              "name": "Rheumatoid arthritis QTL 10",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 474237,
+              "name": "Rheumatoid arthritis QTL 17",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 474240,
+              "name": "Rheumatoid arthritis QTL 19",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 474248,
+              "name": "Rheumatoid arthritis QTL 27",
+              "matched_span": "rheumatoid arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 474285,
+              "name": "Osteoarthritis QTL 1",
+              "matched_span": "arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 474286,
+              "name": "Osteoarthritis QTL 2",
+              "matched_span": "arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 474196,
+              "name": "Osteoarthritis QTL 25",
+              "matched_span": "arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 100188821,
+              "name": "Osteoarthritis, generalized, without dysplasia, susceptibility to",
+              "matched_span": "arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 882,
+              "name": "chondrocalcinosis 1 (calcium pyrophosphate-deposition disease, early onset osteoarthritis)",
+              "matched_span": "arthritis",
+              "entity_type": "genes",
+              "match_score": 90
+            }
+          ]
+        },
+        "pathways": {
+          "strategy": "no_entity",
+          "selected": null,
+          "candidates": []
+        }
+      }
+    },
+    {
+      "id": "pw_en_007",
+      "question": "Between asthma and kidney Failure, Chronic, for which does metformin have a better pathway score?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Asthma / Kidney Failure, Chronic",
+          "drug": "METFORMIN"
+        }
+      },
+      "eval": {
+        "top1_table": "dr_pathways",
+        "expected_primary_table": "dr_pathways",
+        "selected_tables": [
+          "disease",
+          "dr_pathways",
+          "dr_threshold_values",
+          "drug",
+          "gene",
+          "pathway"
+        ],
+        "contains_required_tables": true,
+        "missing_required_tables": [],
+        "forbidden_tables_present": [
+          "dr_threshold_values"
+        ],
+        "intent_ok": true,
+        "metric_ok": true,
+        "operator_ok": false,
+        "result_types_ok": false,
+        "predicted_entity_types_ok": true,
+        "top1_ok": true,
+        "contamination_ok": false,
+        "exact_semantic_ok": false,
+        "exact_retrieval_ok": false,
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.6666666666666666,
+        "mrr": 1.0,
+        "n_required_tables": 3,
+        "predicted_semantic": {
+          "intents": {
+            "pathways_method": 4
+          },
+          "metric": "score",
+          "operator": null,
+          "result_types_requested": [],
+          "predicted_entity_types": [
+            "diseases",
+            "drugs"
+          ]
+        }
+      },
+      "predicted_selected_tables": [
+        "dr_threshold_values",
+        "drug",
+        "dr_pathways",
+        "disease",
+        "gene",
+        "pathway"
+      ],
+      "predicted_ranking": [
+        [
+          "dr_pathways",
+          22
+        ],
+        [
+          "pathway",
+          18
+        ],
+        [
+          "disease",
+          6
+        ],
+        [
+          "drug",
+          6
+        ],
+        [
+          "dr_threshold_values",
+          4
+        ],
+        [
+          "gene",
+          3
+        ],
+        [
+          "encodes",
+          1
+        ],
+        [
+          "dr_pathways_count",
+          1
+        ],
+        [
+          "dr_gnns",
+          -5
+        ],
+        [
+          "dr_network_proximity",
+          -9
+        ],
+        [
+          "dr_information_paths",
+          -10
+        ],
+        [
+          "dr_diseasepathways",
+          -10
+        ]
+      ],
+      "predicted_semantic_parse": {
+        "intents": {
+          "pathways_method": 4
+        },
+        "metric": "score",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "query_template": "association_lookup",
+        "candidate_spans": [
+          "which does metformin have a better pathway",
+          "between asthma kidney failure chronic",
+          "asthma kidney failure chronic does",
+          "kidney failure chronic does metformin",
+          "failure chronic does metformin better",
+          "between asthma kidney failure",
+          "asthma kidney failure chronic",
+          "kidney failure chronic does",
+          "failure chronic does metformin",
+          "chronic does metformin better",
+          "between asthma kidney",
+          "asthma kidney failure",
+          "kidney failure chronic",
+          "failure chronic does",
+          "chronic does metformin",
+          "does metformin better",
+          "between asthma",
+          "asthma kidney",
+          "kidney failure",
+          "failure chronic",
+          "chronic does",
+          "does metformin",
+          "metformin better",
+          "between",
+          "asthma",
+          "kidney",
+          "failure",
+          "chronic",
+          "metformin",
+          "better"
+        ],
+        "pattern_targets": {
+          "diseases": false,
+          "drugs": false,
+          "genes": false,
+          "pathways": false
+        },
+        "gnn_subtype": null,
+        "is_cross_method": false
+      },
+      "detected_entities": {
+        "diseases": [
+          {
+            "id": "C0022661",
+            "name": "Kidney Failure, Chronic",
+            "matched_span": "kidney failure chronic",
+            "entity_type": "diseases",
+            "match_score": 100
+          },
+          {
+            "id": "C0035078",
+            "name": "Kidney Failure",
+            "matched_span": "kidney failure",
+            "entity_type": "diseases",
+            "match_score": 100
+          },
+          {
+            "id": "C0004096",
+            "name": "Asthma",
+            "matched_span": "asthma",
+            "entity_type": "diseases",
+            "match_score": 100
+          },
+          {
+            "id": "C0022660",
+            "name": "Kidney Failure, Acute",
+            "matched_span": "kidney failure",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C3547187",
+            "name": "response to metformin",
+            "matched_span": "metformin",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C4280252",
+            "name": "Diastema between maxillary central incisors",
+            "matched_span": "between",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C4280419",
+            "name": "Unequal size of opening between the eyelids",
+            "matched_span": "between",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C1867132",
+            "name": "Plantar crease between first and second toes",
+            "matched_span": "between",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C1333878",
+            "name": "B-cell lymphoma unclassifiable with features intermediate between classical Hodgkin lymphoma and diffuse large B-cell lymphoma",
+            "matched_span": "between",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C0015544",
+            "name": "Failure to Thrive",
+            "matched_span": "failure",
+            "entity_type": "diseases",
+            "match_score": 90
+          }
+        ],
+        "drugs": [
+          {
+            "id": "CHEMBL1431",
+            "name": "METFORMIN",
+            "matched_span": "metformin",
+            "entity_type": "drugs",
+            "match_score": 100
+          },
+          {
+            "id": "CHEMBL1703",
+            "name": "METFORMIN HYDROCHLORIDE",
+            "matched_span": "metformin",
+            "entity_type": "drugs",
+            "match_score": 90
+          }
+        ],
+        "genes": [
+          {
+            "id": 100653377,
+            "name": "Spermatogenic failure",
+            "matched_span": "failure",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 574028,
+            "name": "chronic lymphocytic leukemia up-regulated 1",
+            "matched_span": "chronic",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 544316,
+            "name": "Chronic obstructive pulmonary disease QTL 23",
+            "matched_span": "chronic",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 544417,
+            "name": "Chronic obstructive pulmonary disease QTL 13",
+            "matched_span": "chronic",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 260431,
+            "name": "Pulmonary disease, chronic obstructive, severe early-onset",
+            "matched_span": "chronic",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 353219,
+            "name": "kidney associated antigen 1",
+            "matched_span": "kidney",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 249,
+            "name": "alkaline phosphatase, liver/bone/kidney",
+            "matched_span": "kidney",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 5312,
+            "name": "polycystic kidney disease 3 (autosomal dominant)",
+            "matched_span": "kidney",
+            "entity_type": "genes",
+            "match_score": 90
+          }
+        ],
+        "pathways": [
+          {
+            "id": "WP4483",
+            "name": "Relationship between inflammation, COX-2 and EGFR",
+            "matched_span": "between",
+            "entity_type": "pathways",
+            "match_score": 90
+          },
+          {
+            "id": "WP3670",
+            "name": "Simplified Interaction Map Between LOXL4 and Oxidative Stress Pathway",
+            "matched_span": "between",
+            "entity_type": "pathways",
+            "match_score": 90
+          },
+          {
+            "id": "WP1829",
+            "name": "Immunoregulatory interactions between a Lymphoid and a non-Lymphoid cell",
+            "matched_span": "between",
+            "entity_type": "pathways",
+            "match_score": 90
+          },
+          {
+            "id": "WP4559",
+            "name": "Interactions between immune cells and microRNAs in tumor microenvironment",
+            "matched_span": "between",
+            "entity_type": "pathways",
+            "match_score": 90
+          },
+          {
+            "id": "WP3680",
+            "name": "Association Between Physico-Chemical Features and Toxicity Associated Pathways",
+            "matched_span": "between",
+            "entity_type": "pathways",
+            "match_score": 90
+          },
+          {
+            "id": "WP4873",
+            "name": "Peroxiredoxin 2 induced ovarian failure",
+            "matched_span": "failure",
+            "entity_type": "pathways",
+            "match_score": 90
+          },
+          {
+            "id": "WP3640",
+            "name": "Imatinib and Chronic Myeloid Leukemia",
+            "matched_span": "chronic",
+            "entity_type": "pathways",
+            "match_score": 90
+          },
+          {
+            "id": "WP4566",
+            "name": "Translation inhibitors in chronically activated PDGFRA cells",
+            "matched_span": "chronic",
+            "entity_type": "pathways",
+            "match_score": 90
+          },
+          {
+            "id": "WP4399",
+            "name": "MicroRNA network associated with chronic lymphocytic leukemia",
+            "matched_span": "chronic",
+            "entity_type": "pathways",
+            "match_score": 90
+          },
+          {
+            "id": "WP4751",
+            "name": "HIPK2 in kidney fibrosis",
+            "matched_span": "kidney",
+            "entity_type": "pathways",
+            "match_score": 90
+          }
+        ]
+      },
+      "entity_strategies": {
+        "diseases": {
+          "strategy": "multiple_exact",
+          "selected": [
+            {
+              "id": "C0022661",
+              "name": "Kidney Failure, Chronic",
+              "matched_span": "kidney failure chronic",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C0035078",
+              "name": "Kidney Failure",
+              "matched_span": "kidney failure",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C0004096",
+              "name": "Asthma",
+              "matched_span": "asthma",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C0022660",
+              "name": "Kidney Failure, Acute",
+              "matched_span": "kidney failure",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C3547187",
+              "name": "response to metformin",
+              "matched_span": "metformin",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C4280252",
+              "name": "Diastema between maxillary central incisors",
+              "matched_span": "between",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C4280419",
+              "name": "Unequal size of opening between the eyelids",
+              "matched_span": "between",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C1867132",
+              "name": "Plantar crease between first and second toes",
+              "matched_span": "between",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C1333878",
+              "name": "B-cell lymphoma unclassifiable with features intermediate between classical Hodgkin lymphoma and diffuse large B-cell lymphoma",
+              "matched_span": "between",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0015544",
+              "name": "Failure to Thrive",
+              "matched_span": "failure",
+              "entity_type": "diseases",
+              "match_score": 90
+            }
+          ],
+          "candidates": [
+            {
+              "id": "C0022661",
+              "name": "Kidney Failure, Chronic",
+              "matched_span": "kidney failure chronic",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C0035078",
+              "name": "Kidney Failure",
+              "matched_span": "kidney failure",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C0004096",
+              "name": "Asthma",
+              "matched_span": "asthma",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C0022660",
+              "name": "Kidney Failure, Acute",
+              "matched_span": "kidney failure",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C3547187",
+              "name": "response to metformin",
+              "matched_span": "metformin",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C4280252",
+              "name": "Diastema between maxillary central incisors",
+              "matched_span": "between",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C4280419",
+              "name": "Unequal size of opening between the eyelids",
+              "matched_span": "between",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C1867132",
+              "name": "Plantar crease between first and second toes",
+              "matched_span": "between",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C1333878",
+              "name": "B-cell lymphoma unclassifiable with features intermediate between classical Hodgkin lymphoma and diffuse large B-cell lymphoma",
+              "matched_span": "between",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0015544",
+              "name": "Failure to Thrive",
+              "matched_span": "failure",
+              "entity_type": "diseases",
+              "match_score": 90
+            }
+          ]
+        },
+        "drugs": {
+          "strategy": "multiple_exact",
+          "selected": [
+            {
+              "id": "CHEMBL1431",
+              "name": "METFORMIN",
+              "matched_span": "metformin",
+              "entity_type": "drugs",
+              "match_score": 100
+            },
+            {
+              "id": "CHEMBL1703",
+              "name": "METFORMIN HYDROCHLORIDE",
+              "matched_span": "metformin",
+              "entity_type": "drugs",
+              "match_score": 90
+            }
+          ],
+          "candidates": [
+            {
+              "id": "CHEMBL1431",
+              "name": "METFORMIN",
+              "matched_span": "metformin",
+              "entity_type": "drugs",
+              "match_score": 100
+            },
+            {
+              "id": "CHEMBL1703",
+              "name": "METFORMIN HYDROCHLORIDE",
+              "matched_span": "metformin",
+              "entity_type": "drugs",
+              "match_score": 90
+            }
+          ]
+        },
+        "genes": {
+          "strategy": "multiple_exact",
+          "selected": [
+            {
+              "id": 100653377,
+              "name": "Spermatogenic failure",
+              "matched_span": "failure",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 574028,
+              "name": "chronic lymphocytic leukemia up-regulated 1",
+              "matched_span": "chronic",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 544316,
+              "name": "Chronic obstructive pulmonary disease QTL 23",
+              "matched_span": "chronic",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 544417,
+              "name": "Chronic obstructive pulmonary disease QTL 13",
+              "matched_span": "chronic",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 260431,
+              "name": "Pulmonary disease, chronic obstructive, severe early-onset",
+              "matched_span": "chronic",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 353219,
+              "name": "kidney associated antigen 1",
+              "matched_span": "kidney",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 249,
+              "name": "alkaline phosphatase, liver/bone/kidney",
+              "matched_span": "kidney",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 5312,
+              "name": "polycystic kidney disease 3 (autosomal dominant)",
+              "matched_span": "kidney",
+              "entity_type": "genes",
+              "match_score": 90
+            }
+          ],
+          "candidates": [
+            {
+              "id": 100653377,
+              "name": "Spermatogenic failure",
+              "matched_span": "failure",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 574028,
+              "name": "chronic lymphocytic leukemia up-regulated 1",
+              "matched_span": "chronic",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 544316,
+              "name": "Chronic obstructive pulmonary disease QTL 23",
+              "matched_span": "chronic",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 544417,
+              "name": "Chronic obstructive pulmonary disease QTL 13",
+              "matched_span": "chronic",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 260431,
+              "name": "Pulmonary disease, chronic obstructive, severe early-onset",
+              "matched_span": "chronic",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 353219,
+              "name": "kidney associated antigen 1",
+              "matched_span": "kidney",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 249,
+              "name": "alkaline phosphatase, liver/bone/kidney",
+              "matched_span": "kidney",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 5312,
+              "name": "polycystic kidney disease 3 (autosomal dominant)",
+              "matched_span": "kidney",
+              "entity_type": "genes",
+              "match_score": 90
+            }
+          ]
+        },
+        "pathways": {
+          "strategy": "multiple_exact",
+          "selected": [
+            {
+              "id": "WP4483",
+              "name": "Relationship between inflammation, COX-2 and EGFR",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP3670",
+              "name": "Simplified Interaction Map Between LOXL4 and Oxidative Stress Pathway",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP1829",
+              "name": "Immunoregulatory interactions between a Lymphoid and a non-Lymphoid cell",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP4559",
+              "name": "Interactions between immune cells and microRNAs in tumor microenvironment",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP3680",
+              "name": "Association Between Physico-Chemical Features and Toxicity Associated Pathways",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP4873",
+              "name": "Peroxiredoxin 2 induced ovarian failure",
+              "matched_span": "failure",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP3640",
+              "name": "Imatinib and Chronic Myeloid Leukemia",
+              "matched_span": "chronic",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP4566",
+              "name": "Translation inhibitors in chronically activated PDGFRA cells",
+              "matched_span": "chronic",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP4399",
+              "name": "MicroRNA network associated with chronic lymphocytic leukemia",
+              "matched_span": "chronic",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP4751",
+              "name": "HIPK2 in kidney fibrosis",
+              "matched_span": "kidney",
+              "entity_type": "pathways",
+              "match_score": 90
+            }
+          ],
+          "candidates": [
+            {
+              "id": "WP4483",
+              "name": "Relationship between inflammation, COX-2 and EGFR",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP3670",
+              "name": "Simplified Interaction Map Between LOXL4 and Oxidative Stress Pathway",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP1829",
+              "name": "Immunoregulatory interactions between a Lymphoid and a non-Lymphoid cell",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP4559",
+              "name": "Interactions between immune cells and microRNAs in tumor microenvironment",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP3680",
+              "name": "Association Between Physico-Chemical Features and Toxicity Associated Pathways",
+              "matched_span": "between",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP4873",
+              "name": "Peroxiredoxin 2 induced ovarian failure",
+              "matched_span": "failure",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP3640",
+              "name": "Imatinib and Chronic Myeloid Leukemia",
+              "matched_span": "chronic",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP4566",
+              "name": "Translation inhibitors in chronically activated PDGFRA cells",
+              "matched_span": "chronic",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP4399",
+              "name": "MicroRNA network associated with chronic lymphocytic leukemia",
+              "matched_span": "chronic",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP4751",
+              "name": "HIPK2 in kidney fibrosis",
+              "matched_span": "kidney",
+              "entity_type": "pathways",
+              "match_score": 90
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "pw_en_008",
+      "question": "Compare pathway scores for cetirizine, omeprazole, and diazepam against epilepsy",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "sort",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Epilepsy",
+          "drug": "CETIRIZINE / OMEPRAZOLE / DIAZEPAM"
+        }
+      },
+      "eval": {
+        "top1_table": "dr_pathways",
+        "expected_primary_table": "dr_pathways",
+        "selected_tables": [
+          "disease",
+          "dr_pathways",
+          "drug",
+          "gene",
+          "pathway"
+        ],
+        "contains_required_tables": true,
+        "missing_required_tables": [],
+        "forbidden_tables_present": [],
+        "intent_ok": true,
+        "metric_ok": true,
+        "operator_ok": false,
+        "result_types_ok": false,
+        "predicted_entity_types_ok": true,
+        "top1_ok": true,
+        "contamination_ok": true,
+        "exact_semantic_ok": false,
+        "exact_retrieval_ok": false,
+        "precision": 0.6,
+        "recall": 1.0,
+        "f1": 0.7499999999999999,
+        "mrr": 1.0,
+        "n_required_tables": 3,
+        "predicted_semantic": {
+          "intents": {
+            "pathways_method": 4
+          },
+          "metric": "score",
+          "operator": null,
+          "result_types_requested": [],
+          "predicted_entity_types": [
+            "diseases",
+            "drugs"
+          ]
+        }
+      },
+      "predicted_selected_tables": [
+        "drug",
+        "dr_pathways",
+        "disease",
+        "gene",
+        "pathway"
+      ],
+      "predicted_ranking": [
+        [
+          "dr_pathways",
+          22
+        ],
+        [
+          "pathway",
+          18
+        ],
+        [
+          "disease",
+          14
+        ],
+        [
+          "drug",
+          14
+        ],
+        [
+          "gene",
+          3
+        ],
+        [
+          "dr_threshold_values",
+          2
+        ],
+        [
+          "dr_pathways_count",
+          1
+        ],
+        [
+          "encodes",
+          0
+        ],
+        [
+          "dr_gnns",
+          -4
+        ],
+        [
+          "dr_network_proximity",
+          -10
+        ],
+        [
+          "dr_information_paths",
+          -10
+        ],
+        [
+          "dr_diseasepathways",
+          -11
+        ]
+      ],
+      "predicted_semantic_parse": {
+        "intents": {
+          "pathways_method": 4
+        },
+        "metric": "score",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "query_template": "association_lookup",
+        "candidate_spans": [
+          "cetirizine omeprazole and diazepam against epilepsy",
+          "cetirizine omeprazole",
+          "diazepam against epilepsy",
+          "compare scores cetirizine omeprazole diazepam",
+          "scores cetirizine omeprazole diazepam against",
+          "cetirizine omeprazole diazepam against epilepsy",
+          "compare scores cetirizine omeprazole",
+          "scores cetirizine omeprazole diazepam",
+          "cetirizine omeprazole diazepam against",
+          "omeprazole diazepam against epilepsy",
+          "compare scores cetirizine",
+          "scores cetirizine omeprazole",
+          "cetirizine omeprazole diazepam",
+          "omeprazole diazepam against",
+          "compare scores",
+          "scores cetirizine",
+          "omeprazole diazepam",
+          "diazepam against",
+          "against epilepsy",
+          "compare",
+          "scores",
+          "cetirizine",
+          "omeprazole",
+          "diazepam",
+          "against",
+          "epilepsy"
+        ],
+        "pattern_targets": {
+          "diseases": false,
+          "drugs": false,
+          "genes": false,
+          "pathways": false
+        },
+        "gnn_subtype": null,
+        "is_cross_method": false
+      },
+      "detected_entities": {
+        "diseases": [
+          {
+            "id": "C0014544",
+            "name": "Epilepsy",
+            "matched_span": "epilepsy",
+            "entity_type": "diseases",
+            "match_score": 100
+          }
+        ],
+        "drugs": [
+          {
+            "id": "CHEMBL1000",
+            "name": "CETIRIZINE",
+            "matched_span": "cetirizine",
+            "entity_type": "drugs",
+            "match_score": 100
+          }
+        ],
+        "genes": [
+          {
+            "id": 100131454,
+            "name": "diazepam binding inhibitor-like 5, pseudogene",
+            "matched_span": "diazepam",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 100169989,
+            "name": "diazepam binding inhibitor-like 5 pseudogene 2",
+            "matched_span": "diazepam",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 1622,
+            "name": "diazepam binding inhibitor, acyl-CoA binding protein",
+            "matched_span": "diazepam",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 50966,
+            "name": "epilepsy, childhood absence 1",
+            "matched_span": "epilepsy",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 50715,
+            "name": "epilepsy, juvenile myoclonic 2",
+            "matched_span": "epilepsy",
+            "entity_type": "genes",
+            "match_score": 90
+          }
+        ],
+        "pathways": []
+      },
+      "entity_strategies": {
+        "diseases": {
+          "strategy": "exact_match",
+          "selected": {
+            "id": "C0014544",
+            "name": "Epilepsy",
+            "matched_span": "epilepsy",
+            "entity_type": "diseases",
+            "match_score": 100
+          },
+          "candidates": [
+            {
+              "id": "C0014544",
+              "name": "Epilepsy",
+              "matched_span": "epilepsy",
+              "entity_type": "diseases",
+              "match_score": 100
+            }
+          ]
+        },
+        "drugs": {
+          "strategy": "exact_match",
+          "selected": {
+            "id": "CHEMBL1000",
+            "name": "CETIRIZINE",
+            "matched_span": "cetirizine",
+            "entity_type": "drugs",
+            "match_score": 100
+          },
+          "candidates": [
+            {
+              "id": "CHEMBL1000",
+              "name": "CETIRIZINE",
+              "matched_span": "cetirizine",
+              "entity_type": "drugs",
+              "match_score": 100
+            }
+          ]
+        },
+        "genes": {
+          "strategy": "multiple_exact",
+          "selected": [
+            {
+              "id": 100131454,
+              "name": "diazepam binding inhibitor-like 5, pseudogene",
+              "matched_span": "diazepam",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 100169989,
+              "name": "diazepam binding inhibitor-like 5 pseudogene 2",
+              "matched_span": "diazepam",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 1622,
+              "name": "diazepam binding inhibitor, acyl-CoA binding protein",
+              "matched_span": "diazepam",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 50966,
+              "name": "epilepsy, childhood absence 1",
+              "matched_span": "epilepsy",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 50715,
+              "name": "epilepsy, juvenile myoclonic 2",
+              "matched_span": "epilepsy",
+              "entity_type": "genes",
+              "match_score": 90
+            }
+          ],
+          "candidates": [
+            {
+              "id": 100131454,
+              "name": "diazepam binding inhibitor-like 5, pseudogene",
+              "matched_span": "diazepam",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 100169989,
+              "name": "diazepam binding inhibitor-like 5 pseudogene 2",
+              "matched_span": "diazepam",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 1622,
+              "name": "diazepam binding inhibitor, acyl-CoA binding protein",
+              "matched_span": "diazepam",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 50966,
+              "name": "epilepsy, childhood absence 1",
+              "matched_span": "epilepsy",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 50715,
+              "name": "epilepsy, juvenile myoclonic 2",
+              "matched_span": "epilepsy",
+              "entity_type": "genes",
+              "match_score": 90
+            }
+          ]
+        },
+        "pathways": {
+          "strategy": "no_entity",
+          "selected": null,
+          "candidates": []
+        }
+      }
+    },
+    {
+      "id": "pw_en_009",
+      "question": "For doxorubicin, which disease has a higher pathway score: anemia, Sickle Cell or psoriasis?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Anemia, Sickle Cell / Psoriasis",
+          "drug": "DOXORUBICIN"
+        }
+      },
+      "eval": {
+        "top1_table": "dr_pathways",
+        "expected_primary_table": "dr_pathways",
+        "selected_tables": [
+          "disease",
+          "dr_pathways",
+          "dr_threshold_values",
+          "drug",
+          "gene",
+          "pathway"
+        ],
+        "contains_required_tables": true,
+        "missing_required_tables": [],
+        "forbidden_tables_present": [
+          "dr_threshold_values"
+        ],
+        "intent_ok": true,
+        "metric_ok": true,
+        "operator_ok": false,
+        "result_types_ok": false,
+        "predicted_entity_types_ok": true,
+        "top1_ok": true,
+        "contamination_ok": false,
+        "exact_semantic_ok": false,
+        "exact_retrieval_ok": false,
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.6666666666666666,
+        "mrr": 1.0,
+        "n_required_tables": 3,
+        "predicted_semantic": {
+          "intents": {
+            "pathways_method": 4
+          },
+          "metric": "score",
+          "operator": null,
+          "result_types_requested": [],
+          "predicted_entity_types": [
+            "diseases",
+            "drugs"
+          ]
+        }
+      },
+      "predicted_selected_tables": [
+        "dr_threshold_values",
+        "drug",
+        "dr_pathways",
+        "disease",
+        "gene",
+        "pathway"
+      ],
+      "predicted_ranking": [
+        [
+          "dr_pathways",
+          24
+        ],
+        [
+          "disease",
+          19
+        ],
+        [
+          "pathway",
+          18
+        ],
+        [
+          "drug",
+          6
+        ],
+        [
+          "dr_threshold_values",
+          6
+        ],
+        [
+          "gene",
+          3
+        ],
+        [
+          "dr_pathways_count",
+          3
+        ],
+        [
+          "encodes",
+          0
+        ],
+        [
+          "dr_gnns",
+          -3
+        ],
+        [
+          "dr_diseasepathways",
+          -6
+        ],
+        [
+          "dr_network_proximity",
+          -7
+        ],
+        [
+          "dr_information_paths",
+          -8
+        ]
+      ],
+      "predicted_semantic_parse": {
+        "intents": {
+          "pathways_method": 4
+        },
+        "metric": "score",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "query_template": "association_lookup",
+        "candidate_spans": [
+          "doxorubicin which disease has a higher pathway",
+          "doxorubicin higher anemia sickle cell",
+          "higher anemia sickle cell psoriasis",
+          "doxorubicin higher anemia sickle",
+          "higher anemia sickle cell",
+          "anemia sickle cell psoriasis",
+          "doxorubicin higher anemia",
+          "higher anemia sickle",
+          "anemia sickle cell",
+          "sickle cell psoriasis",
+          "doxorubicin higher",
+          "higher anemia",
+          "anemia sickle",
+          "sickle cell",
+          "cell psoriasis",
+          "doxorubicin",
+          "higher",
+          "anemia",
+          "sickle",
+          "psoriasis"
+        ],
+        "pattern_targets": {
+          "diseases": false,
+          "drugs": false,
+          "genes": false,
+          "pathways": false
+        },
+        "gnn_subtype": null,
+        "is_cross_method": false
+      },
+      "detected_entities": {
+        "diseases": [
+          {
+            "id": "C0002895",
+            "name": "Anemia, Sickle Cell",
+            "matched_span": "anemia sickle cell",
+            "entity_type": "diseases",
+            "match_score": 100
+          },
+          {
+            "id": "C0033860",
+            "name": "Psoriasis",
+            "matched_span": "psoriasis",
+            "entity_type": "diseases",
+            "match_score": 100
+          },
+          {
+            "id": "C1867449",
+            "name": "Psoriasis",
+            "matched_span": "psoriasis",
+            "entity_type": "diseases",
+            "match_score": 100
+          },
+          {
+            "id": "C0002871",
+            "name": "Anemia",
+            "matched_span": "anemia",
+            "entity_type": "diseases",
+            "match_score": 100
+          },
+          {
+            "id": "C0037054",
+            "name": "Sickle Cell Trait",
+            "matched_span": "sickle cell",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C0852711",
+            "name": "Sickle Cell Dactylitis",
+            "matched_span": "sickle cell",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C4321477",
+            "name": "Sickle Cell-SS Disease",
+            "matched_span": "sickle cell",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C0238305",
+            "name": "Sickle cell nephropathy",
+            "matched_span": "sickle cell",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C0221019",
+            "name": "Sickle cell-beta-thalassemia",
+            "matched_span": "sickle cell",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C0857812",
+            "name": "Sickle cell-beta^+^-thalassemia",
+            "matched_span": "sickle cell",
+            "entity_type": "diseases",
+            "match_score": 90
+          }
+        ],
+        "drugs": [
+          {
+            "id": "CHEMBL53463",
+            "name": "DOXORUBICIN",
+            "matched_span": "doxorubicin",
+            "entity_type": "drugs",
+            "match_score": 100
+          },
+          {
+            "id": "CHEMBL359744",
+            "name": "DOXORUBICIN HYDROCHLORIDE",
+            "matched_span": "doxorubicin",
+            "entity_type": "drugs",
+            "match_score": 90
+          }
+        ],
+        "genes": [
+          {
+            "id": 7889,
+            "name": "psoriasis susceptibility 3",
+            "matched_span": "psoriasis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 10547,
+            "name": "psoriasis susceptibility 4",
+            "matched_span": "psoriasis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 63869,
+            "name": "psoriasis susceptibility 6",
+            "matched_span": "psoriasis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 63870,
+            "name": "psoriasis susceptibility 5",
+            "matched_span": "psoriasis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 65245,
+            "name": "psoriasis susceptibility 7",
+            "matched_span": "psoriasis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 140454,
+            "name": "psoriasis susceptibility 8",
+            "matched_span": "psoriasis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 359825,
+            "name": "psoriasis susceptibility 9",
+            "matched_span": "psoriasis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 170679,
+            "name": "psoriasis susceptibility 1 candidate 1",
+            "matched_span": "psoriasis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 170680,
+            "name": "psoriasis susceptibility 1 candidate 2",
+            "matched_span": "psoriasis",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 100130889,
+            "name": "psoriasis susceptibility 1 candidate 3",
+            "matched_span": "psoriasis",
+            "entity_type": "genes",
+            "match_score": 90
+          }
+        ],
+        "pathways": [
+          {
+            "id": "WP3569",
+            "name": "Fanconi Anemia Pathway",
+            "matched_span": "anemia",
+            "entity_type": "pathways",
+            "match_score": 90
+          }
+        ]
+      },
+      "entity_strategies": {
+        "diseases": {
+          "strategy": "multiple_exact",
+          "selected": [
+            {
+              "id": "C0002895",
+              "name": "Anemia, Sickle Cell",
+              "matched_span": "anemia sickle cell",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C0033860",
+              "name": "Psoriasis",
+              "matched_span": "psoriasis",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C1867449",
+              "name": "Psoriasis",
+              "matched_span": "psoriasis",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C0002871",
+              "name": "Anemia",
+              "matched_span": "anemia",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C0037054",
+              "name": "Sickle Cell Trait",
+              "matched_span": "sickle cell",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0852711",
+              "name": "Sickle Cell Dactylitis",
+              "matched_span": "sickle cell",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C4321477",
+              "name": "Sickle Cell-SS Disease",
+              "matched_span": "sickle cell",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0238305",
+              "name": "Sickle cell nephropathy",
+              "matched_span": "sickle cell",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0221019",
+              "name": "Sickle cell-beta-thalassemia",
+              "matched_span": "sickle cell",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0857812",
+              "name": "Sickle cell-beta^+^-thalassemia",
+              "matched_span": "sickle cell",
+              "entity_type": "diseases",
+              "match_score": 90
+            }
+          ],
+          "candidates": [
+            {
+              "id": "C0002895",
+              "name": "Anemia, Sickle Cell",
+              "matched_span": "anemia sickle cell",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C0033860",
+              "name": "Psoriasis",
+              "matched_span": "psoriasis",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C1867449",
+              "name": "Psoriasis",
+              "matched_span": "psoriasis",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C0002871",
+              "name": "Anemia",
+              "matched_span": "anemia",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C0037054",
+              "name": "Sickle Cell Trait",
+              "matched_span": "sickle cell",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0852711",
+              "name": "Sickle Cell Dactylitis",
+              "matched_span": "sickle cell",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C4321477",
+              "name": "Sickle Cell-SS Disease",
+              "matched_span": "sickle cell",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0238305",
+              "name": "Sickle cell nephropathy",
+              "matched_span": "sickle cell",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0221019",
+              "name": "Sickle cell-beta-thalassemia",
+              "matched_span": "sickle cell",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0857812",
+              "name": "Sickle cell-beta^+^-thalassemia",
+              "matched_span": "sickle cell",
+              "entity_type": "diseases",
+              "match_score": 90
+            }
+          ]
+        },
+        "drugs": {
+          "strategy": "multiple_exact",
+          "selected": [
+            {
+              "id": "CHEMBL53463",
+              "name": "DOXORUBICIN",
+              "matched_span": "doxorubicin",
+              "entity_type": "drugs",
+              "match_score": 100
+            },
+            {
+              "id": "CHEMBL359744",
+              "name": "DOXORUBICIN HYDROCHLORIDE",
+              "matched_span": "doxorubicin",
+              "entity_type": "drugs",
+              "match_score": 90
+            }
+          ],
+          "candidates": [
+            {
+              "id": "CHEMBL53463",
+              "name": "DOXORUBICIN",
+              "matched_span": "doxorubicin",
+              "entity_type": "drugs",
+              "match_score": 100
+            },
+            {
+              "id": "CHEMBL359744",
+              "name": "DOXORUBICIN HYDROCHLORIDE",
+              "matched_span": "doxorubicin",
+              "entity_type": "drugs",
+              "match_score": 90
+            }
+          ]
+        },
+        "genes": {
+          "strategy": "multiple_exact",
+          "selected": [
+            {
+              "id": 7889,
+              "name": "psoriasis susceptibility 3",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 10547,
+              "name": "psoriasis susceptibility 4",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 63869,
+              "name": "psoriasis susceptibility 6",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 63870,
+              "name": "psoriasis susceptibility 5",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 65245,
+              "name": "psoriasis susceptibility 7",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 140454,
+              "name": "psoriasis susceptibility 8",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 359825,
+              "name": "psoriasis susceptibility 9",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 170679,
+              "name": "psoriasis susceptibility 1 candidate 1",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 170680,
+              "name": "psoriasis susceptibility 1 candidate 2",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 100130889,
+              "name": "psoriasis susceptibility 1 candidate 3",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            }
+          ],
+          "candidates": [
+            {
+              "id": 7889,
+              "name": "psoriasis susceptibility 3",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 10547,
+              "name": "psoriasis susceptibility 4",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 63869,
+              "name": "psoriasis susceptibility 6",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 63870,
+              "name": "psoriasis susceptibility 5",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 65245,
+              "name": "psoriasis susceptibility 7",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 140454,
+              "name": "psoriasis susceptibility 8",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 359825,
+              "name": "psoriasis susceptibility 9",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 170679,
+              "name": "psoriasis susceptibility 1 candidate 1",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 170680,
+              "name": "psoriasis susceptibility 1 candidate 2",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 100130889,
+              "name": "psoriasis susceptibility 1 candidate 3",
+              "matched_span": "psoriasis",
+              "entity_type": "genes",
+              "match_score": 90
+            }
+          ]
+        },
+        "pathways": {
+          "strategy": "best_candidate",
+          "selected": {
+            "id": "WP3569",
+            "name": "Fanconi Anemia Pathway",
+            "matched_span": "anemia",
+            "entity_type": "pathways",
+            "match_score": 90
+          },
+          "candidates": [
+            {
+              "id": "WP3569",
+              "name": "Fanconi Anemia Pathway",
+              "matched_span": "anemia",
+              "entity_type": "pathways",
+              "match_score": 90
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "pw_en_010",
+      "question": "Is tamoxifen or cisplatin a better candidate for multiple Sclerosis by pathway score?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Multiple Sclerosis",
+          "drug": "TAMOXIFEN / CISPLATIN"
+        }
+      },
+      "eval": {
+        "top1_table": "dr_pathways",
+        "expected_primary_table": "dr_pathways",
+        "selected_tables": [
+          "disease",
+          "dr_pathways",
+          "dr_threshold_values",
+          "drug",
+          "gene",
+          "pathway"
+        ],
+        "contains_required_tables": true,
+        "missing_required_tables": [],
+        "forbidden_tables_present": [
+          "dr_threshold_values"
+        ],
+        "intent_ok": true,
+        "metric_ok": true,
+        "operator_ok": false,
+        "result_types_ok": false,
+        "predicted_entity_types_ok": true,
+        "top1_ok": true,
+        "contamination_ok": false,
+        "exact_semantic_ok": false,
+        "exact_retrieval_ok": false,
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.6666666666666666,
+        "mrr": 1.0,
+        "n_required_tables": 3,
+        "predicted_semantic": {
+          "intents": {
+            "pathways_method": 6
+          },
+          "metric": "score",
+          "operator": null,
+          "result_types_requested": [],
+          "predicted_entity_types": [
+            "diseases",
+            "drugs"
+          ]
+        }
+      },
+      "predicted_selected_tables": [
+        "dr_threshold_values",
+        "drug",
+        "dr_pathways",
+        "disease",
+        "gene",
+        "pathway"
+      ],
+      "predicted_ranking": [
+        [
+          "dr_pathways",
+          23
+        ],
+        [
+          "pathway",
+          19
+        ],
+        [
+          "disease",
+          7
+        ],
+        [
+          "drug",
+          7
+        ],
+        [
+          "gene",
+          4
+        ],
+        [
+          "dr_threshold_values",
+          4
+        ],
+        [
+          "dr_pathways_count",
+          1
+        ],
+        [
+          "encodes",
+          0
+        ],
+        [
+          "dr_gnns",
+          -5
+        ],
+        [
+          "dr_network_proximity",
+          -10
+        ],
+        [
+          "dr_information_paths",
+          -10
+        ],
+        [
+          "dr_diseasepathways",
+          -10
+        ]
+      ],
+      "predicted_semantic_parse": {
+        "intents": {
+          "pathways_method": 6
+        },
+        "metric": "score",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "query_template": "association_lookup",
+        "candidate_spans": [
+          "multiple sclerosis by pathway",
+          "tamoxifen cisplatin better candidate multiple",
+          "cisplatin better candidate multiple sclerosis",
+          "tamoxifen cisplatin better candidate",
+          "cisplatin better candidate multiple",
+          "better candidate multiple sclerosis",
+          "tamoxifen cisplatin better",
+          "cisplatin better candidate",
+          "better candidate multiple",
+          "candidate multiple sclerosis",
+          "tamoxifen cisplatin",
+          "cisplatin better",
+          "better candidate",
+          "candidate multiple",
+          "multiple sclerosis",
+          "tamoxifen",
+          "cisplatin",
+          "better",
+          "candidate",
+          "multiple",
+          "sclerosis"
+        ],
+        "pattern_targets": {
+          "diseases": false,
+          "drugs": false,
+          "genes": false,
+          "pathways": false
+        },
+        "gnn_subtype": null,
+        "is_cross_method": false
+      },
+      "detected_entities": {
+        "diseases": [
+          {
+            "id": "C0026769",
+            "name": "Multiple Sclerosis",
+            "matched_span": "multiple sclerosis",
+            "entity_type": "diseases",
+            "match_score": 100
+          },
+          {
+            "id": "C0036429",
+            "name": "Sclerosis",
+            "matched_span": "sclerosis",
+            "entity_type": "diseases",
+            "match_score": 100
+          },
+          {
+            "id": "C3825939",
+            "name": "Multiple sclerosis in children",
+            "matched_span": "multiple sclerosis",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C0393664",
+            "name": "Multiple Sclerosis, Acute Relapsing",
+            "matched_span": "multiple sclerosis",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C0751324",
+            "name": "Multiple Sclerosis, Acute Fulminating",
+            "matched_span": "multiple sclerosis",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C0393665",
+            "name": "Multiple Sclerosis, Chronic Progressive",
+            "matched_span": "multiple sclerosis",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C0751964",
+            "name": "Multiple Sclerosis, Primary Progressive",
+            "matched_span": "multiple sclerosis",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C0751967",
+            "name": "Multiple Sclerosis, Relapsing-Remitting",
+            "matched_span": "multiple sclerosis",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C0393666",
+            "name": "Multiple Sclerosis, Progressive Relapsing",
+            "matched_span": "multiple sclerosis",
+            "entity_type": "diseases",
+            "match_score": 90
+          },
+          {
+            "id": "C0751965",
+            "name": "Multiple Sclerosis, Secondary Progressive",
+            "matched_span": "multiple sclerosis",
+            "entity_type": "diseases",
+            "match_score": 90
+          }
+        ],
+        "drugs": [
+          {
+            "id": "CHEMBL83",
+            "name": "TAMOXIFEN",
+            "matched_span": "tamoxifen",
+            "entity_type": "drugs",
+            "match_score": 100
+          },
+          {
+            "id": "CHEMBL11359",
+            "name": "CISPLATIN",
+            "matched_span": "cisplatin",
+            "entity_type": "drugs",
+            "match_score": 100
+          },
+          {
+            "id": "CHEMBL2068237",
+            "name": "CISPLATIN",
+            "matched_span": "cisplatin",
+            "entity_type": "drugs",
+            "match_score": 100
+          },
+          {
+            "id": "CHEMBL786",
+            "name": "TAMOXIFEN CITRATE",
+            "matched_span": "tamoxifen",
+            "entity_type": "drugs",
+            "match_score": 90
+          }
+        ],
+        "genes": [
+          {
+            "id": 4397,
+            "name": "multiple sclerosis",
+            "matched_span": "multiple sclerosis",
+            "entity_type": "genes",
+            "match_score": 100
+          },
+          {
+            "id": 7991,
+            "name": "tumor suppressor candidate 3",
+            "matched_span": "candidate",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 285194,
+            "name": "tumor suppressor candidate 7",
+            "matched_span": "candidate",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 286319,
+            "name": "tumor suppressor candidate 1",
+            "matched_span": "candidate",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 400128,
+            "name": "tumor suppressor candidate 8",
+            "matched_span": "candidate",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 266553,
+            "name": "orofacial cleft 1 candidate 1",
+            "matched_span": "candidate",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 53336,
+            "name": "CPX chromosome region, candidate 1",
+            "matched_span": "candidate",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 100529145,
+            "name": "TEN1-CDK3 readthrough (NMD candidate)",
+            "matched_span": "candidate",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 100529262,
+            "name": "MIA-RAB4B readthrough (NMD candidate)",
+            "matched_span": "candidate",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 170679,
+            "name": "psoriasis susceptibility 1 candidate 1",
+            "matched_span": "candidate",
+            "entity_type": "genes",
+            "match_score": 90
+          }
+        ],
+        "pathways": [
+          {
+            "id": "WP691",
+            "name": "Tamoxifen metabolism",
+            "matched_span": "tamoxifen",
+            "entity_type": "pathways",
+            "match_score": 90
+          },
+          {
+            "id": "WP3879",
+            "name": "4-hydroxytamoxifen, Dexamethasone, and Retinoic Acids Regulation of p27 Expression",
+            "matched_span": "tamoxifen",
+            "entity_type": "pathways",
+            "match_score": 90
+          },
+          {
+            "id": "WP2447",
+            "name": "Amyotrophic lateral sclerosis (ALS)",
+            "matched_span": "sclerosis",
+            "entity_type": "pathways",
+            "match_score": 90
+          },
+          {
+            "id": "WP2572",
+            "name": "Primary Focal Segmental Glomerulosclerosis FSGS",
+            "matched_span": "sclerosis",
+            "entity_type": "pathways",
+            "match_score": 90
+          },
+          {
+            "id": "WP3926",
+            "name": "ApoE and miR-146 in inflammation and atherosclerosis",
+            "matched_span": "sclerosis",
+            "entity_type": "pathways",
+            "match_score": 90
+          },
+          {
+            "id": "WP4115",
+            "name": "Deregulated CDK5 triggers multiple neurodegenerative pathways in Alzheimer's disease models",
+            "matched_span": "multiple",
+            "entity_type": "pathways",
+            "match_score": 90
+          }
+        ]
+      },
+      "entity_strategies": {
+        "diseases": {
+          "strategy": "multiple_exact",
+          "selected": [
+            {
+              "id": "C0026769",
+              "name": "Multiple Sclerosis",
+              "matched_span": "multiple sclerosis",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C0036429",
+              "name": "Sclerosis",
+              "matched_span": "sclerosis",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C3825939",
+              "name": "Multiple sclerosis in children",
+              "matched_span": "multiple sclerosis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0393664",
+              "name": "Multiple Sclerosis, Acute Relapsing",
+              "matched_span": "multiple sclerosis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0751324",
+              "name": "Multiple Sclerosis, Acute Fulminating",
+              "matched_span": "multiple sclerosis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0393665",
+              "name": "Multiple Sclerosis, Chronic Progressive",
+              "matched_span": "multiple sclerosis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0751964",
+              "name": "Multiple Sclerosis, Primary Progressive",
+              "matched_span": "multiple sclerosis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0751967",
+              "name": "Multiple Sclerosis, Relapsing-Remitting",
+              "matched_span": "multiple sclerosis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0393666",
+              "name": "Multiple Sclerosis, Progressive Relapsing",
+              "matched_span": "multiple sclerosis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0751965",
+              "name": "Multiple Sclerosis, Secondary Progressive",
+              "matched_span": "multiple sclerosis",
+              "entity_type": "diseases",
+              "match_score": 90
+            }
+          ],
+          "candidates": [
+            {
+              "id": "C0026769",
+              "name": "Multiple Sclerosis",
+              "matched_span": "multiple sclerosis",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C0036429",
+              "name": "Sclerosis",
+              "matched_span": "sclerosis",
+              "entity_type": "diseases",
+              "match_score": 100
+            },
+            {
+              "id": "C3825939",
+              "name": "Multiple sclerosis in children",
+              "matched_span": "multiple sclerosis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0393664",
+              "name": "Multiple Sclerosis, Acute Relapsing",
+              "matched_span": "multiple sclerosis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0751324",
+              "name": "Multiple Sclerosis, Acute Fulminating",
+              "matched_span": "multiple sclerosis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0393665",
+              "name": "Multiple Sclerosis, Chronic Progressive",
+              "matched_span": "multiple sclerosis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0751964",
+              "name": "Multiple Sclerosis, Primary Progressive",
+              "matched_span": "multiple sclerosis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0751967",
+              "name": "Multiple Sclerosis, Relapsing-Remitting",
+              "matched_span": "multiple sclerosis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0393666",
+              "name": "Multiple Sclerosis, Progressive Relapsing",
+              "matched_span": "multiple sclerosis",
+              "entity_type": "diseases",
+              "match_score": 90
+            },
+            {
+              "id": "C0751965",
+              "name": "Multiple Sclerosis, Secondary Progressive",
+              "matched_span": "multiple sclerosis",
+              "entity_type": "diseases",
+              "match_score": 90
+            }
+          ]
+        },
+        "drugs": {
+          "strategy": "multiple_exact",
+          "selected": [
+            {
+              "id": "CHEMBL83",
+              "name": "TAMOXIFEN",
+              "matched_span": "tamoxifen",
+              "entity_type": "drugs",
+              "match_score": 100
+            },
+            {
+              "id": "CHEMBL11359",
+              "name": "CISPLATIN",
+              "matched_span": "cisplatin",
+              "entity_type": "drugs",
+              "match_score": 100
+            },
+            {
+              "id": "CHEMBL2068237",
+              "name": "CISPLATIN",
+              "matched_span": "cisplatin",
+              "entity_type": "drugs",
+              "match_score": 100
+            },
+            {
+              "id": "CHEMBL786",
+              "name": "TAMOXIFEN CITRATE",
+              "matched_span": "tamoxifen",
+              "entity_type": "drugs",
+              "match_score": 90
+            }
+          ],
+          "candidates": [
+            {
+              "id": "CHEMBL83",
+              "name": "TAMOXIFEN",
+              "matched_span": "tamoxifen",
+              "entity_type": "drugs",
+              "match_score": 100
+            },
+            {
+              "id": "CHEMBL11359",
+              "name": "CISPLATIN",
+              "matched_span": "cisplatin",
+              "entity_type": "drugs",
+              "match_score": 100
+            },
+            {
+              "id": "CHEMBL2068237",
+              "name": "CISPLATIN",
+              "matched_span": "cisplatin",
+              "entity_type": "drugs",
+              "match_score": 100
+            },
+            {
+              "id": "CHEMBL786",
+              "name": "TAMOXIFEN CITRATE",
+              "matched_span": "tamoxifen",
+              "entity_type": "drugs",
+              "match_score": 90
+            }
+          ]
+        },
+        "genes": {
+          "strategy": "multiple_exact",
+          "selected": [
+            {
+              "id": 4397,
+              "name": "multiple sclerosis",
+              "matched_span": "multiple sclerosis",
+              "entity_type": "genes",
+              "match_score": 100
+            },
+            {
+              "id": 7991,
+              "name": "tumor suppressor candidate 3",
+              "matched_span": "candidate",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 285194,
+              "name": "tumor suppressor candidate 7",
+              "matched_span": "candidate",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 286319,
+              "name": "tumor suppressor candidate 1",
+              "matched_span": "candidate",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 400128,
+              "name": "tumor suppressor candidate 8",
+              "matched_span": "candidate",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 266553,
+              "name": "orofacial cleft 1 candidate 1",
+              "matched_span": "candidate",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 53336,
+              "name": "CPX chromosome region, candidate 1",
+              "matched_span": "candidate",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 100529145,
+              "name": "TEN1-CDK3 readthrough (NMD candidate)",
+              "matched_span": "candidate",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 100529262,
+              "name": "MIA-RAB4B readthrough (NMD candidate)",
+              "matched_span": "candidate",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 170679,
+              "name": "psoriasis susceptibility 1 candidate 1",
+              "matched_span": "candidate",
+              "entity_type": "genes",
+              "match_score": 90
+            }
+          ],
+          "candidates": [
+            {
+              "id": 4397,
+              "name": "multiple sclerosis",
+              "matched_span": "multiple sclerosis",
+              "entity_type": "genes",
+              "match_score": 100
+            },
+            {
+              "id": 7991,
+              "name": "tumor suppressor candidate 3",
+              "matched_span": "candidate",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 285194,
+              "name": "tumor suppressor candidate 7",
+              "matched_span": "candidate",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 286319,
+              "name": "tumor suppressor candidate 1",
+              "matched_span": "candidate",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 400128,
+              "name": "tumor suppressor candidate 8",
+              "matched_span": "candidate",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 266553,
+              "name": "orofacial cleft 1 candidate 1",
+              "matched_span": "candidate",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 53336,
+              "name": "CPX chromosome region, candidate 1",
+              "matched_span": "candidate",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 100529145,
+              "name": "TEN1-CDK3 readthrough (NMD candidate)",
+              "matched_span": "candidate",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 100529262,
+              "name": "MIA-RAB4B readthrough (NMD candidate)",
+              "matched_span": "candidate",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 170679,
+              "name": "psoriasis susceptibility 1 candidate 1",
+              "matched_span": "candidate",
+              "entity_type": "genes",
+              "match_score": 90
+            }
+          ]
+        },
+        "pathways": {
+          "strategy": "multiple_exact",
+          "selected": [
+            {
+              "id": "WP691",
+              "name": "Tamoxifen metabolism",
+              "matched_span": "tamoxifen",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP3879",
+              "name": "4-hydroxytamoxifen, Dexamethasone, and Retinoic Acids Regulation of p27 Expression",
+              "matched_span": "tamoxifen",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP2447",
+              "name": "Amyotrophic lateral sclerosis (ALS)",
+              "matched_span": "sclerosis",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP2572",
+              "name": "Primary Focal Segmental Glomerulosclerosis FSGS",
+              "matched_span": "sclerosis",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP3926",
+              "name": "ApoE and miR-146 in inflammation and atherosclerosis",
+              "matched_span": "sclerosis",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP4115",
+              "name": "Deregulated CDK5 triggers multiple neurodegenerative pathways in Alzheimer's disease models",
+              "matched_span": "multiple",
+              "entity_type": "pathways",
+              "match_score": 90
+            }
+          ],
+          "candidates": [
+            {
+              "id": "WP691",
+              "name": "Tamoxifen metabolism",
+              "matched_span": "tamoxifen",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP3879",
+              "name": "4-hydroxytamoxifen, Dexamethasone, and Retinoic Acids Regulation of p27 Expression",
+              "matched_span": "tamoxifen",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP2447",
+              "name": "Amyotrophic lateral sclerosis (ALS)",
+              "matched_span": "sclerosis",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP2572",
+              "name": "Primary Focal Segmental Glomerulosclerosis FSGS",
+              "matched_span": "sclerosis",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP3926",
+              "name": "ApoE and miR-146 in inflammation and atherosclerosis",
+              "matched_span": "sclerosis",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP4115",
+              "name": "Deregulated CDK5 triggers multiple neurodegenerative pathways in Alzheimer's disease models",
+              "matched_span": "multiple",
+              "entity_type": "pathways",
+              "match_score": 90
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "pw_en_011",
+      "question": "What drugs have pathway scores above 0.6 for glaucoma?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "threshold",
+        "input_type": "disease",
+        "operator": "sort",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Glaucoma",
+          "drug": null
+        }
+      },
+      "eval": {
+        "top1_table": "dr_pathways",
+        "expected_primary_table": "dr_pathways",
+        "selected_tables": [
+          "disease",
+          "dr_pathways",
+          "drug",
+          "gene",
+          "pathway"
+        ],
+        "contains_required_tables": true,
+        "missing_required_tables": [],
+        "forbidden_tables_present": [],
+        "intent_ok": true,
+        "metric_ok": true,
+        "operator_ok": false,
+        "result_types_ok": true,
+        "predicted_entity_types_ok": false,
+        "top1_ok": true,
+        "contamination_ok": true,
+        "exact_semantic_ok": false,
+        "exact_retrieval_ok": false,
+        "precision": 0.6,
+        "recall": 1.0,
+        "f1": 0.7499999999999999,
+        "mrr": 1.0,
+        "n_required_tables": 3,
+        "predicted_semantic": {
+          "intents": {
+            "pathways_method": 4
+          },
+          "metric": "score",
+          "operator": null,
+          "result_types_requested": [
+            "drugs"
+          ],
+          "predicted_entity_types": [
+            "diseases",
+            "genes"
+          ]
+        }
+      },
+      "predicted_selected_tables": [
+        "drug",
+        "dr_pathways",
+        "disease",
+        "gene",
+        "pathway"
+      ],
+      "predicted_ranking": [
+        [
+          "dr_pathways",
+          26
+        ],
+        [
+          "drug",
+          21
+        ],
+        [
+          "pathway",
+          18
+        ],
+        [
+          "disease",
+          14
+        ],
+        [
+          "gene",
+          3
+        ],
+        [
+          "dr_threshold_values",
+          2
+        ],
+        [
+          "dr_pathways_count",
+          1
+        ],
+        [
+          "encodes",
+          0
+        ],
+        [
+          "dr_gnns",
+          -4
+        ],
+        [
+          "dr_network_proximity",
+          -10
+        ],
+        [
+          "dr_information_paths",
+          -10
+        ],
+        [
+          "dr_diseasepathways",
+          -10
+        ]
+      ],
+      "predicted_semantic_parse": {
+        "intents": {
+          "pathways_method": 4
+        },
+        "metric": "score",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases",
+          "genes"
+        ],
+        "query_template": "method_ranking_by_disease",
+        "candidate_spans": [
+          "glaucoma",
+          "scores above glaucoma",
+          "scores above",
+          "above glaucoma",
+          "scores",
+          "above"
+        ],
+        "pattern_targets": {
+          "diseases": false,
+          "drugs": false,
+          "genes": false,
+          "pathways": false
+        },
+        "gnn_subtype": null,
+        "is_cross_method": false
+      },
+      "detected_entities": {
+        "diseases": [
+          {
+            "id": "C0017601",
+            "name": "Glaucoma",
+            "matched_span": "glaucoma",
+            "entity_type": "diseases",
+            "match_score": 100
+          }
+        ],
+        "drugs": [],
+        "genes": [
+          {
+            "id": 2723,
+            "name": "glaucoma 1, open angle, C",
+            "matched_span": "glaucoma",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 497188,
+            "name": "glaucoma 1, open angle, I",
+            "matched_span": "glaucoma",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 101448070,
+            "name": "glaucoma 1, open angle, P",
+            "matched_span": "glaucoma",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 109729102,
+            "name": "glaucoma 1, open angle, Q",
+            "matched_span": "glaucoma",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          {
+            "id": 2728,
+            "name": "glaucoma 3, primary infantile, B",
+            "matched_span": "glaucoma",
+            "entity_type": "genes",
+            "match_score": 90
+          }
+        ],
+        "pathways": []
+      },
+      "entity_strategies": {
+        "diseases": {
+          "strategy": "exact_match",
+          "selected": {
+            "id": "C0017601",
+            "name": "Glaucoma",
+            "matched_span": "glaucoma",
+            "entity_type": "diseases",
+            "match_score": 100
+          },
+          "candidates": [
+            {
+              "id": "C0017601",
+              "name": "Glaucoma",
+              "matched_span": "glaucoma",
+              "entity_type": "diseases",
+              "match_score": 100
+            }
+          ]
+        },
+        "drugs": {
+          "strategy": "no_entity",
+          "selected": null,
+          "candidates": []
+        },
+        "genes": {
+          "strategy": "multiple_exact",
+          "selected": [
+            {
+              "id": 2723,
+              "name": "glaucoma 1, open angle, C",
+              "matched_span": "glaucoma",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 497188,
+              "name": "glaucoma 1, open angle, I",
+              "matched_span": "glaucoma",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 101448070,
+              "name": "glaucoma 1, open angle, P",
+              "matched_span": "glaucoma",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 109729102,
+              "name": "glaucoma 1, open angle, Q",
+              "matched_span": "glaucoma",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 2728,
+              "name": "glaucoma 3, primary infantile, B",
+              "matched_span": "glaucoma",
+              "entity_type": "genes",
+              "match_score": 90
+            }
+          ],
+          "candidates": [
+            {
+              "id": 2723,
+              "name": "glaucoma 1, open angle, C",
+              "matched_span": "glaucoma",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 497188,
+              "name": "glaucoma 1, open angle, I",
+              "matched_span": "glaucoma",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 101448070,
+              "name": "glaucoma 1, open angle, P",
+              "matched_span": "glaucoma",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 109729102,
+              "name": "glaucoma 1, open angle, Q",
+              "matched_span": "glaucoma",
+              "entity_type": "genes",
+              "match_score": 90
+            },
+            {
+              "id": 2728,
+              "name": "glaucoma 3, primary infantile, B",
+              "matched_span": "glaucoma",
+              "entity_type": "genes",
+              "match_score": 90
+            }
+          ]
+        },
+        "pathways": {
+          "strategy": "no_entity",
+          "selected": null,
+          "candidates": []
+        }
+      }
+    },
+    {
+      "id": "pw_en_012",
+      "question": "What association type does omeprazole have with obesity via the pathways method?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "association_type",
+        "task_type": "pair_lookup",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Obesity",
+          "drug": "OMEPRAZOLE"
+        }
+      },
+      "eval": {
+        "top1_table": "dr_pathways_count",
+        "expected_primary_table": "dr_pathways",
+        "selected_tables": [
+          "disease",
+          "dr_pathways",
+          "dr_pathways_count",
+          "drug",
+          "gene",
+          "pathway"
+        ],
+        "contains_required_tables": true,
+        "missing_required_tables": [],
+        "forbidden_tables_present": [
+          "dr_pathways_count"
+        ],
+        "intent_ok": true,
+        "metric_ok": true,
+        "operator_ok": true,
+        "result_types_ok": true,
+        "predicted_entity_types_ok": true,
+        "top1_ok": false,
+        "contamination_ok": false,
+        "exact_semantic_ok": true,
+        "exact_retrieval_ok": false,
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.6666666666666666,
+        "mrr": 0.2,
+        "n_required_tables": 3,
+        "predicted_semantic": {
+          "intents": {
+            "pathways_method": 4
+          },
+          "metric": "association_type",
+          "operator": null,
+          "result_types_requested": [],
+          "predicted_entity_types": [
+            "diseases",
+            "drugs"
+          ]
+        }
+      },
+      "predicted_selected_tables": [
+        "drug",
+        "dr_pathways",
+        "disease",
+        "gene",
+        "dr_pathways_count",
+        "pathway"
+      ],
+      "predicted_ranking": [
+        [
+          "dr_pathways_count",
+          32
+        ],
+        [
+          "pathway",
+          26
+        ],
+        [
+          "disease",
+          18
+        ],
+        [
+          "drug",
+          16
+        ],
+        [
+          "dr_pathways",
+          8
+        ],
+        [
+          "gene",
+          5
+        ],
+        [
+          "encodes",
+          0
+        ],
+        [
+          "dr_threshold_values",
+          -8
+        ],
+        [
+          "dr_information_paths",
+          -9
+        ],
+        [
+          "dr_gnns",
+          -10
+        ],
+        [
+          "dr_network_proximity",
+          -10
+        ],
+        [
+          "dr_diseasepathways",
+          -15
+        ]
+      ],
+      "predicted_semantic_parse": {
+        "intents": {
+          "pathways_method": 4
+        },
+        "metric": "association_type",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "query_template": "association_lookup",
+        "candidate_spans": [
+          "obesity via the pathways method",
+          "type does omeprazole obesity",
+          "type does omeprazole",
+          "does omeprazole obesity",
+          "type does",
+          "does omeprazole",
+          "omeprazole obesity",
+          "omeprazole",
+          "obesity"
+        ],
+        "pattern_targets": {
+          "diseases": false,
+          "drugs": false,
+          "genes": false,
+          "pathways": false
+        },
+        "gnn_subtype": null,
+        "is_cross_method": false
+      },
+      "detected_entities": {
+        "diseases": [
+          {
+            "id": "C0028754",
+            "name": "Obesity",
+            "matched_span": "obesity",
+            "entity_type": "diseases",
+            "match_score": 100
+          }
+        ],
+        "drugs": [
+          {
+            "id": "CHEMBL1503",
+            "name": "OMEPRAZOLE",
+            "matched_span": "omeprazole",
+            "entity_type": "drugs",
+            "match_score": 100
+          }
+        ],
+        "genes": [
+          {
+            "id": 8422,
+            "name": "mental retardation, epileptic seizures, hypogonadism and -genitalism, microcephaly and obesity syndrome",
+            "matched_span": "obesity",
+            "entity_type": "genes",
+            "match_score": 90
+          }
+        ],
+        "pathways": [
+          {
+            "id": "WP3407",
+            "name": "FTO Obesity Variant Mechanism",
+            "matched_span": "obesity",
+            "entity_type": "pathways",
+            "match_score": 90
+          },
+          {
+            "id": "WP2865",
+            "name": "IL1 and megakaryocytes in obesity",
+            "matched_span": "obesity",
+            "entity_type": "pathways",
+            "match_score": 90
+          }
+        ]
+      },
+      "entity_strategies": {
+        "diseases": {
+          "strategy": "exact_match",
+          "selected": {
+            "id": "C0028754",
+            "name": "Obesity",
+            "matched_span": "obesity",
+            "entity_type": "diseases",
+            "match_score": 100
+          },
+          "candidates": [
+            {
+              "id": "C0028754",
+              "name": "Obesity",
+              "matched_span": "obesity",
+              "entity_type": "diseases",
+              "match_score": 100
+            }
+          ]
+        },
+        "drugs": {
+          "strategy": "exact_match",
+          "selected": {
+            "id": "CHEMBL1503",
+            "name": "OMEPRAZOLE",
+            "matched_span": "omeprazole",
+            "entity_type": "drugs",
+            "match_score": 100
+          },
+          "candidates": [
+            {
+              "id": "CHEMBL1503",
+              "name": "OMEPRAZOLE",
+              "matched_span": "omeprazole",
+              "entity_type": "drugs",
+              "match_score": 100
+            }
+          ]
+        },
+        "genes": {
+          "strategy": "best_candidate",
+          "selected": {
+            "id": 8422,
+            "name": "mental retardation, epileptic seizures, hypogonadism and -genitalism, microcephaly and obesity syndrome",
+            "matched_span": "obesity",
+            "entity_type": "genes",
+            "match_score": 90
+          },
+          "candidates": [
+            {
+              "id": 8422,
+              "name": "mental retardation, epileptic seizures, hypogonadism and -genitalism, microcephaly and obesity syndrome",
+              "matched_span": "obesity",
+              "entity_type": "genes",
+              "match_score": 90
+            }
+          ]
+        },
+        "pathways": {
+          "strategy": "multiple_exact",
+          "selected": [
+            {
+              "id": "WP3407",
+              "name": "FTO Obesity Variant Mechanism",
+              "matched_span": "obesity",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP2865",
+              "name": "IL1 and megakaryocytes in obesity",
+              "matched_span": "obesity",
+              "entity_type": "pathways",
+              "match_score": 90
+            }
+          ],
+          "candidates": [
+            {
+              "id": "WP3407",
+              "name": "FTO Obesity Variant Mechanism",
+              "matched_span": "obesity",
+              "entity_type": "pathways",
+              "match_score": 90
+            },
+            {
+              "id": "WP2865",
+              "name": "IL1 and megakaryocytes in obesity",
+              "matched_span": "obesity",
+              "entity_type": "pathways",
+              "match_score": 90
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

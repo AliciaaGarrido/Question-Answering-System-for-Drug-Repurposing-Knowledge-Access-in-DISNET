@@ -1,0 +1,1229 @@
+[
+  {
+    "id": "tv_001",
+    "question": "¿Qué fármacos tienen mayor score en el método threshold values para abdominal Pain?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "ranking",
+      "input_type": "disease",
+      "operator": "max",
+      "result_types_requested": [
+        "drugs"
+      ],
+      "predicted_entity_types": [
+        "diseases"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Abdominal Pain",
+        "drug": null,
+        "gene": null,
+        "action_type": null
+      }
+    }
+  },
+  {
+    "id": "tv_002",
+    "question": "¿Cuáles son los 5 medicamentos con mayor valor en el modelo de valores umbral para acidosis?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "ranking",
+      "input_type": "disease",
+      "operator": "max",
+      "result_types_requested": [
+        "drugs"
+      ],
+      "predicted_entity_types": [
+        "diseases"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Acidosis",
+        "drug": null,
+        "gene": null,
+        "action_type": null
+      }
+    }
+  },
+  {
+    "id": "tv_003",
+    "question": "¿Qué drugs aparecen mejor puntuados en el threshold-based method para acne Vulgaris?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "ranking",
+      "input_type": "disease",
+      "operator": "max",
+      "result_types_requested": [
+        "drugs"
+      ],
+      "predicted_entity_types": [
+        "diseases"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Acne Vulgaris",
+        "drug": null,
+        "gene": null,
+        "action_type": null
+      }
+    }
+  },
+  {
+    "id": "tv_004",
+    "question": "Ordena los fármacos por score en threshold values para adenocarcinoma.",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "ranking",
+      "input_type": "disease",
+      "operator": "sort",
+      "result_types_requested": [
+        "drugs"
+      ],
+      "predicted_entity_types": [
+        "diseases"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Adenocarcinoma",
+        "drug": null,
+        "gene": null,
+        "action_type": null
+      }
+    }
+  },
+  {
+    "id": "tv_005",
+    "question": "¿Qué medicamentos tienen menor valor en el método basado en umbral para addison Disease?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "ranking",
+      "input_type": "disease",
+      "operator": "min",
+      "result_types_requested": [
+        "drugs"
+      ],
+      "predicted_entity_types": [
+        "diseases"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Addison Disease",
+        "drug": null,
+        "gene": null,
+        "action_type": null
+      }
+    }
+  },
+  {
+    "id": "tv_006",
+    "question": "¿Para qué enfermedades tiene mayor score cetirizine en el método threshold values?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "ranking",
+      "input_type": "drug",
+      "operator": "max",
+      "result_types_requested": [
+        "diseases"
+      ],
+      "predicted_entity_types": [
+        "drugs"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": null,
+        "drug": "CETIRIZINE",
+        "gene": null,
+        "action_type": null
+      }
+    }
+  },
+  {
+    "id": "tv_007",
+    "question": "¿Qué diseases tienen mayor valor para simvastatin en el modelo de valores umbral?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "ranking",
+      "input_type": "drug",
+      "operator": "max",
+      "result_types_requested": [
+        "diseases"
+      ],
+      "predicted_entity_types": [
+        "drugs"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": null,
+        "drug": "SIMVASTATIN",
+        "gene": null,
+        "action_type": null
+      }
+    }
+  },
+  {
+    "id": "tv_008",
+    "question": "Ordena las enfermedades por score para pregabalin en threshold-based model.",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "ranking",
+      "input_type": "drug",
+      "operator": "sort",
+      "result_types_requested": [
+        "diseases"
+      ],
+      "predicted_entity_types": [
+        "drugs"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": null,
+        "drug": "PREGABALIN",
+        "gene": null,
+        "action_type": null
+      }
+    }
+  },
+  {
+    "id": "tv_009",
+    "question": "¿Qué enfermedades aparecen mejor puntuadas para amoxicillin en el método basado en umbral?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "ranking",
+      "input_type": "drug",
+      "operator": "max",
+      "result_types_requested": [
+        "diseases"
+      ],
+      "predicted_entity_types": [
+        "drugs"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": null,
+        "drug": "AMOXICILLIN",
+        "gene": null,
+        "action_type": null
+      }
+    }
+  },
+  {
+    "id": "tv_010",
+    "question": "¿Qué enfermedades tienen menor score para valproic acid en threshold values?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "ranking",
+      "input_type": "drug",
+      "operator": "min",
+      "result_types_requested": [
+        "diseases"
+      ],
+      "predicted_entity_types": [
+        "drugs"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": null,
+        "drug": "VALPROIC ACID",
+        "gene": null,
+        "action_type": null
+      }
+    }
+  },
+  {
+    "id": "tv_pair_001",
+    "question": "¿Cuál es el score de cetirizine para abdominal Pain en threshold values?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "pair_lookup",
+      "input_type": "pair",
+      "operator": null,
+      "result_types_requested": [],
+      "predicted_entity_types": [
+        "diseases",
+        "drugs"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Abdominal Pain",
+        "drug": "CETIRIZINE",
+        "gene": null,
+        "action_type": null
+      }
+    }
+  },
+  {
+    "id": "tv_pair_002",
+    "question": "¿Qué valor tiene simvastatin para acidosis en el modelo de valores umbral?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "pair_lookup",
+      "input_type": "pair",
+      "operator": null,
+      "result_types_requested": [],
+      "predicted_entity_types": [
+        "diseases",
+        "drugs"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Acidosis",
+        "drug": "SIMVASTATIN",
+        "gene": null,
+        "action_type": null
+      }
+    }
+  },
+  {
+    "id": "tv_pair_003",
+    "question": "¿Cuál es el valor del caso acne Vulgaris–pregabalin en threshold-based method?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "pair_lookup",
+      "input_type": "pair",
+      "operator": null,
+      "result_types_requested": [],
+      "predicted_entity_types": [
+        "diseases",
+        "drugs"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Acne Vulgaris",
+        "drug": "PREGABALIN",
+        "gene": null,
+        "action_type": null
+      }
+    }
+  },
+  {
+    "id": "tv_pair_004",
+    "question": "¿Qué score asigna el método threshold values al par adenocarcinoma–amoxicillin?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "pair_lookup",
+      "input_type": "pair",
+      "operator": null,
+      "result_types_requested": [],
+      "predicted_entity_types": [
+        "diseases",
+        "drugs"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Adenocarcinoma",
+        "drug": "AMOXICILLIN",
+        "gene": null,
+        "action_type": null
+      }
+    }
+  },
+  {
+    "id": "tv_gene_pair_001",
+    "question": "¿Qué gen está asociado a cetirizine para abdominal Pain en threshold values?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "pair_lookup",
+      "input_type": "pair",
+      "operator": null,
+      "result_types_requested": [
+        "genes"
+      ],
+      "predicted_entity_types": [
+        "diseases",
+        "drugs"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug",
+        "gene"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Abdominal Pain",
+        "drug": "CETIRIZINE",
+        "gene": null,
+        "action_type": null
+      }
+    }
+  },
+  {
+    "id": "tv_gene_pair_002",
+    "question": "¿Qué genes aparecen en los casos de simvastatin para acidosis según el modelo de valores umbral?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "ranking",
+      "input_type": "pair",
+      "operator": null,
+      "result_types_requested": [
+        "genes"
+      ],
+      "predicted_entity_types": [
+        "diseases",
+        "drugs"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug",
+        "gene"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Acidosis",
+        "drug": "SIMVASTATIN",
+        "gene": null,
+        "action_type": null
+      }
+    }
+  },
+  {
+    "id": "tv_gene_pair_003",
+    "question": "¿Qué genes participan en los casos mejor puntuados de pregabalin para acne Vulgaris en threshold-based method?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "ranking",
+      "input_type": "pair",
+      "operator": "max",
+      "result_types_requested": [
+        "genes"
+      ],
+      "predicted_entity_types": [
+        "diseases",
+        "drugs"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug",
+        "gene"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Acne Vulgaris",
+        "drug": "PREGABALIN",
+        "gene": null,
+        "action_type": null
+      }
+    }
+  },
+  {
+    "id": "tv_gene_pair_004",
+    "question": "¿Qué gen interviene en el caso amoxicillin–adenocarcinoma en threshold values?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "pair_lookup",
+      "input_type": "pair",
+      "operator": null,
+      "result_types_requested": [
+        "genes"
+      ],
+      "predicted_entity_types": [
+        "diseases",
+        "drugs"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug",
+        "gene"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Adenocarcinoma",
+        "drug": "AMOXICILLIN",
+        "gene": null,
+        "action_type": null
+      }
+    }
+  },
+  {
+    "id": "tv_shared_001",
+    "question": "¿Qué gen diana compartido aparece en el caso cetirizine–abdominal Pain según threshold values?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "pair_lookup",
+      "input_type": "pair",
+      "operator": null,
+      "result_types_requested": [
+        "genes"
+      ],
+      "predicted_entity_types": [
+        "diseases",
+        "drugs"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug",
+        "gene"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Abdominal Pain",
+        "drug": "CETIRIZINE",
+        "gene": null,
+        "action_type": null
+      }
+    }
+  },
+  {
+    "id": "tv_shared_002",
+    "question": "¿Cuál es el shared target gene del caso simvastatin–acidosis en el modelo de valores umbral?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "pair_lookup",
+      "input_type": "pair",
+      "operator": null,
+      "result_types_requested": [
+        "genes"
+      ],
+      "predicted_entity_types": [
+        "diseases",
+        "drugs"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug",
+        "gene"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Acidosis",
+        "drug": "SIMVASTATIN",
+        "gene": null,
+        "action_type": null
+      }
+    }
+  },
+  {
+    "id": "tv_shared_003",
+    "question": "¿Qué genes diana compartidos están implicados en los casos mejor puntuados de threshold values para acne Vulgaris?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "ranking",
+      "input_type": "disease",
+      "operator": "max",
+      "result_types_requested": [
+        "genes"
+      ],
+      "predicted_entity_types": [
+        "diseases"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "gene"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Acne Vulgaris",
+        "drug": null,
+        "gene": null,
+        "action_type": null
+      }
+    }
+  },
+  {
+    "id": "tv_action_001",
+    "question": "¿Qué fármacos actúan como inhibitor en el modelo threshold values para abdominal Pain?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "action_type",
+      "task_type": "filter",
+      "input_type": "disease",
+      "operator": null,
+      "result_types_requested": [
+        "drugs"
+      ],
+      "predicted_entity_types": [
+        "diseases"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Abdominal Pain",
+        "drug": null,
+        "gene": null,
+        "action_type": "INHIBITOR"
+      }
+    }
+  },
+  {
+    "id": "tv_action_002",
+    "question": "¿Qué medicamentos tienen acción agonist en el modelo basado en umbral para acidosis?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "action_type",
+      "task_type": "filter",
+      "input_type": "disease",
+      "operator": null,
+      "result_types_requested": [
+        "drugs"
+      ],
+      "predicted_entity_types": [
+        "diseases"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Acidosis",
+        "drug": null,
+        "gene": null,
+        "action_type": "AGONIST"
+      }
+    }
+  },
+  {
+    "id": "tv_action_003",
+    "question": "Lista los drugs con acción antagonist en threshold-based model para acne Vulgaris.",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "action_type",
+      "task_type": "filter",
+      "input_type": "disease",
+      "operator": null,
+      "result_types_requested": [
+        "drugs"
+      ],
+      "predicted_entity_types": [
+        "diseases"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Acne Vulgaris",
+        "drug": null,
+        "gene": null,
+        "action_type": "ANTAGONIST"
+      }
+    }
+  },
+  {
+    "id": "tv_action_004",
+    "question": "¿Qué fármacos presentan acción binding en el modelo de valores umbral para adenocarcinoma?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "action_type",
+      "task_type": "filter",
+      "input_type": "disease",
+      "operator": null,
+      "result_types_requested": [
+        "drugs"
+      ],
+      "predicted_entity_types": [
+        "diseases"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Adenocarcinoma",
+        "drug": null,
+        "gene": null,
+        "action_type": "BINDING"
+      }
+    }
+  },
+  {
+    "id": "tv_action_005",
+    "question": "¿Qué medicamentos tienen acción weak inhibitor en threshold values para addison Disease?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "action_type",
+      "task_type": "filter",
+      "input_type": "disease",
+      "operator": null,
+      "result_types_requested": [
+        "drugs"
+      ],
+      "predicted_entity_types": [
+        "diseases"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Addison Disease",
+        "drug": null,
+        "gene": null,
+        "action_type": "WEAK INHIBITOR"
+      }
+    }
+  },
+  {
+    "id": "tv_action_006",
+    "question": "¿Qué fármacos con acción inhibitor tienen mayor score en el modelo threshold values para abdominal Pain?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "ranking",
+      "input_type": "disease",
+      "operator": "max",
+      "result_types_requested": [
+        "drugs"
+      ],
+      "predicted_entity_types": [
+        "diseases"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Abdominal Pain",
+        "drug": null,
+        "gene": null,
+        "action_type": "INHIBITOR"
+      }
+    }
+  },
+  {
+    "id": "tv_action_007",
+    "question": "Lista medicamentos con acción agonist ordenados por score en el modelo basado en umbral para acidosis.",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "ranking",
+      "input_type": "disease",
+      "operator": "sort",
+      "result_types_requested": [
+        "drugs"
+      ],
+      "predicted_entity_types": [
+        "diseases"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Acidosis",
+        "drug": null,
+        "gene": null,
+        "action_type": "AGONIST"
+      }
+    }
+  },
+  {
+    "id": "tv_action_008",
+    "question": "¿Qué fármacos con acción binding tienen mayor score en el modelo de valores umbral para adenocarcinoma?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "ranking",
+      "input_type": "disease",
+      "operator": "max",
+      "result_types_requested": [
+        "drugs"
+      ],
+      "predicted_entity_types": [
+        "diseases"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Adenocarcinoma",
+        "drug": null,
+        "gene": null,
+        "action_type": "BINDING"
+      }
+    }
+  },
+  {
+    "id": "tv_comp_001",
+    "question": "¿Qué fármaco tiene mayor score threshold para alcoholic Intoxication, Chronic: aspirin o cetirizine?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "comparison",
+      "input_type": "pair",
+      "operator": "max",
+      "result_types_requested": [
+        "drugs"
+      ],
+      "predicted_entity_types": [
+        "drugs",
+        "diseases"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Alcoholic Intoxication, Chronic",
+        "drug": "ASPIRIN / CETIRIZINE"
+      }
+    }
+  },
+  {
+    "id": "tv_comp_002",
+    "question": "Entre asthma y rheumatoid Arthritis, ¿para cuál tiene mayor threshold value methotrexate?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "comparison",
+      "input_type": "pair",
+      "operator": "max",
+      "result_types_requested": [
+        "diseases"
+      ],
+      "predicted_entity_types": [
+        "drugs",
+        "diseases"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Asthma / Rheumatoid Arthritis",
+        "drug": "METHOTREXATE"
+      }
+    }
+  },
+  {
+    "id": "tv_comp_003",
+    "question": "Compara los threshold values de simvastatin, atorvastatin y fluoxetine para epilepsy",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "comparison",
+      "input_type": "pair",
+      "operator": "sort",
+      "result_types_requested": [
+        "drugs"
+      ],
+      "predicted_entity_types": [
+        "drugs",
+        "diseases"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Epilepsy",
+        "drug": "SIMVASTATIN / ATORVASTATIN / FLUOXETINE"
+      }
+    }
+  },
+  {
+    "id": "tv_comp_004",
+    "question": "¿doxorubicin o tamoxifen tienen mayor score en threshold values para kidney Failure, Chronic?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "comparison",
+      "input_type": "pair",
+      "operator": "max",
+      "result_types_requested": [
+        "drugs"
+      ],
+      "predicted_entity_types": [
+        "drugs",
+        "diseases"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Kidney Failure, Chronic",
+        "drug": "DOXORUBICIN / TAMOXIFEN"
+      }
+    }
+  },
+  {
+    "id": "tv_comp_005",
+    "question": "Para warfarin, ¿qué enfermedad tiene mayor threshold value: obesity, glaucoma o anemia, Sickle Cell?",
+    "gold": {
+      "intent": "threshold_values",
+      "metric": "score",
+      "task_type": "comparison",
+      "input_type": "pair",
+      "operator": "max",
+      "result_types_requested": [
+        "diseases"
+      ],
+      "predicted_entity_types": [
+        "drugs",
+        "diseases"
+      ],
+      "required_tables": [
+        "dr_threshold_values",
+        "disease",
+        "drug"
+      ],
+      "forbidden_tables": [
+        "dr_gnns",
+        "dr_network_proximity",
+        "dr_information_paths",
+        "dr_pathways",
+        "dr_diseasepathways",
+        "dr_pathways_count"
+      ],
+      "entities": {
+        "disease": "Obesity / Glaucoma / Anemia, Sickle Cell",
+        "drug": "WARFARIN"
+      }
+    }
+  }
+]

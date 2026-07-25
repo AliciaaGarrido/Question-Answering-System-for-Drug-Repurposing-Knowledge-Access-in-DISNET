@@ -1,0 +1,383 @@
+{
+  "dataset_name": "dr_cross_method_retriever_eval_bank_en",
+  "version": "1.0",
+  "description": "English evaluation bank for cross-method aggregation queries that span multiple hypothesis generation tables.",
+  "notes": [
+    "Questions require combining results from 2+ drug repurposing methods."
+  ],
+  "cases": [
+    {
+      "id": "cm_en_001",
+      "question": "In how many methods does aspirin appear as a candidate for asthma?",
+      "gold": {
+        "intent": "cross_method",
+        "metric": null,
+        "task_type": "count",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Asthma",
+          "drug": "ASPIRIN"
+        }
+      }
+    },
+    {
+      "id": "cm_en_002",
+      "question": "Which drugs appear in all repurposing methods for epilepsy?",
+      "gold": {
+        "intent": "cross_method",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Epilepsy",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_en_003",
+      "question": "How many diseases have repurposing hypotheses across all computational methods?",
+      "gold": {
+        "intent": "cross_method",
+        "metric": null,
+        "task_type": "count",
+        "input_type": null,
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_en_004",
+      "question": "What drugs are suggested for rheumatoid Arthritis by both GNNs and network proximity?",
+      "gold": {
+        "intent": "cross_method",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Rheumatoid Arthritis",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "cm_en_005",
+      "question": "Which method gives cetirizine the best score for abdominal Pain?",
+      "gold": {
+        "intent": "cross_method",
+        "metric": null,
+        "task_type": "ranking",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Abdominal Pain",
+          "drug": "CETIRIZINE"
+        }
+      }
+    },
+    {
+      "id": "cm_en_006",
+      "question": "In how many methods does aspirin appear for asthma versus rheumatoid Arthritis?",
+      "gold": {
+        "intent": "cross_method",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Asthma / Rheumatoid Arthritis",
+          "drug": "ASPIRIN"
+        }
+      }
+    },
+    {
+      "id": "cm_en_007",
+      "question": "Between metformin and simvastatin, which appears in more methods for diabetes Mellitus?",
+      "gold": {
+        "intent": "cross_method",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Diabetes Mellitus",
+          "drug": "METFORMIN / SIMVASTATIN"
+        }
+      }
+    },
+    {
+      "id": "cm_en_008",
+      "question": "For kidney Failure, Chronic, do omeprazole and cetirizine overlap in the same repurposing methods?",
+      "gold": {
+        "intent": "cross_method",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Kidney Failure, Chronic",
+          "drug": "OMEPRAZOLE / CETIRIZINE"
+        }
+      }
+    },
+    {
+      "id": "cm_en_009",
+      "question": "Compare in how many methods fluoxetine appears for anemia, Sickle Cell versus epilepsy",
+      "gold": {
+        "intent": "cross_method",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Anemia, Sickle Cell / Epilepsy",
+          "drug": "FLUOXETINE"
+        }
+      }
+    },
+    {
+      "id": "cm_en_010",
+      "question": "Does warfarin or tamoxifen appear in more computational methods for alcoholic Intoxication, Chronic?",
+      "gold": {
+        "intent": "cross_method",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Alcoholic Intoxication, Chronic",
+          "drug": "WARFARIN / TAMOXIFEN"
+        }
+      }
+    },
+    {
+      "id": "cm_en_011",
+      "question": "Which diseases have ibuprofen as a candidate in at least 3 different methods?",
+      "gold": {
+        "intent": "cross_method",
+        "metric": null,
+        "task_type": "threshold",
+        "input_type": "drug",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": null,
+          "drug": "IBUPROFEN"
+        }
+      }
+    },
+    {
+      "id": "cm_en_012",
+      "question": "For multiple Sclerosis, list drugs that appear in both threshold values and information paths",
+      "gold": {
+        "intent": "cross_method",
+        "metric": null,
+        "task_type": "intersection",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_threshold_values",
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [],
+        "entities": {
+          "disease": "Multiple Sclerosis",
+          "drug": null
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,417 @@
+{
+  "dataset_name": "dr_information_paths_retriever_eval_bank_en",
+  "version": "1.0",
+  "description": "English evaluation bank for the retriever on the dr_information_paths table.",
+  "notes": [
+    "Questions reference information paths and drug-disease connections."
+  ],
+  "cases": [
+    {
+      "id": "ip_en_001",
+      "question": "How many information paths connect cetirizine to abdominal Cramps?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": null,
+        "task_type": "count",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Abdominal Cramps",
+          "drug": "CETIRIZINE"
+        }
+      }
+    },
+    {
+      "id": "ip_en_002",
+      "question": "What path IDs support the repurposing hypothesis between aspirin and rheumatoid Arthritis?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Rheumatoid Arthritis",
+          "drug": "ASPIRIN"
+        }
+      }
+    },
+    {
+      "id": "ip_en_003",
+      "question": "Which drugs have information paths towards epilepsy?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Epilepsy",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_en_004",
+      "question": "For simvastatin, which diseases have the most information paths?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": null,
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "SIMVASTATIN"
+        }
+      }
+    },
+    {
+      "id": "ip_en_005",
+      "question": "Is there an information path linking metformin to obesity?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": null,
+        "task_type": "existence",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Obesity",
+          "drug": "METFORMIN"
+        }
+      }
+    },
+    {
+      "id": "ip_en_006",
+      "question": "Which drug has more information paths towards asthma: cetirizine or omeprazole?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Asthma",
+          "drug": "CETIRIZINE / OMEPRAZOLE"
+        }
+      }
+    },
+    {
+      "id": "ip_en_007",
+      "question": "Between rheumatoid Arthritis and alcoholic Intoxication, Chronic, which has more information paths with aspirin?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Rheumatoid Arthritis / Alcoholic Intoxication, Chronic",
+          "drug": "ASPIRIN"
+        }
+      }
+    },
+    {
+      "id": "ip_en_008",
+      "question": "Do metformin, ibuprofen, or diazepam have the most information paths for epilepsy?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Epilepsy",
+          "drug": "METFORMIN / IBUPROFEN / DIAZEPAM"
+        }
+      }
+    },
+    {
+      "id": "ip_en_009",
+      "question": "Compare information path counts between simvastatin and atorvastatin for kidney Failure, Chronic",
+      "gold": {
+        "intent": "information_paths",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Kidney Failure, Chronic",
+          "drug": "SIMVASTATIN / ATORVASTATIN"
+        }
+      }
+    },
+    {
+      "id": "ip_en_010",
+      "question": "For fluoxetine, with which disease are there more information paths: schizophrenia or multiple Sclerosis?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Schizophrenia / Multiple Sclerosis",
+          "drug": "FLUOXETINE"
+        }
+      }
+    },
+    {
+      "id": "ip_en_011",
+      "question": "What drugs connect to glaucoma through information paths?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Glaucoma",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_en_012",
+      "question": "How many unique information paths exist for doxorubicin?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": null,
+        "task_type": "count",
+        "input_type": "drug",
+        "operator": "count",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "DOXORUBICIN"
+        }
+      }
+    }
+  ]
+}

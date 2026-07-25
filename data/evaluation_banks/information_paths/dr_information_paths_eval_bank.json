@@ -1,0 +1,1753 @@
+{
+  "dataset_name": "dr_information_paths_retriever_eval_bank",
+  "version": "1.0",
+  "description": "Banco de preguntas para evaluar el retriever sobre la tabla dr_information_paths. Esta tabla almacena caminos de información (paths) que soportan hipótesis de reposicionamiento fármaco-enfermedad. Columnas: disease_id, drug_id, path_id.",
+  "notes": [
+    "Todas las preguntas están orientadas a information paths como metodología de drug repurposing.",
+    "El gold evalúa retrieval semántico, no SQL.",
+    "Las tablas requeridas incluyen dr_information_paths más disease y drug como tablas de soporte relacional."
+  ],
+  "cases": [
+    {
+      "id": "ip_001",
+      "question": "¿Cuántos caminos de información soportan la relación entre abdominal Pain y algún fármaco?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "count",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Abdominal Pain",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_002",
+      "question": "¿Qué fármacos tienen caminos de información para acidosis?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Acidosis",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_003",
+      "question": "¿Para qué enfermedades tiene aspirin caminos de información?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "listing",
+        "input_type": "drug",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "ASPIRIN"
+        }
+      }
+    },
+    {
+      "id": "ip_004",
+      "question": "¿Cuántos paths distintos existen entre acne Vulgaris y metformin según information paths?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "count",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Acne Vulgaris",
+          "drug": "METFORMIN"
+        }
+      }
+    },
+    {
+      "id": "ip_005",
+      "question": "¿Qué fármaco tiene más caminos de información para adenocarcinoma?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Adenocarcinoma",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_006",
+      "question": "¿Cuáles son los 10 fármacos con mayor número de information paths para alzheimer Disease?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Alzheimer Disease",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_007",
+      "question": "¿Existe algún camino de información entre diabetes Mellitus y ibuprofen?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "existence",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Diabetes Mellitus",
+          "drug": "IBUPROFEN"
+        }
+      }
+    },
+    {
+      "id": "ip_008",
+      "question": "Ordena los medicamentos por cantidad de paths para breast Neoplasms según information paths.",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "sort",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Breast Neoplasms",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_009",
+      "question": "¿Para qué enfermedades tiene doxorubicin mayor número de rutas de información?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "DOXORUBICIN"
+        }
+      }
+    },
+    {
+      "id": "ip_010",
+      "question": "¿Cuántos fármacos están conectados a lung Neoplasms mediante caminos de información?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "count",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Lung Neoplasms",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_011",
+      "question": "¿Qué medicamentos presentan paths en el método de information paths para hypertension?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Hypertension",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_012",
+      "question": "¿Cuántas enfermedades están asociadas a cetirizine por information paths?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "count",
+        "input_type": "drug",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "CETIRIZINE"
+        }
+      }
+    },
+    {
+      "id": "ip_013",
+      "question": "¿Para qué enfermedades existen rutas de información con omeprazole?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "listing",
+        "input_type": "drug",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "OMEPRAZOLE"
+        }
+      }
+    },
+    {
+      "id": "ip_014",
+      "question": "Lista los fármacos que tienen al menos 3 caminos de información para leukemia.",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "threshold",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Leukemia",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_015",
+      "question": "¿Cuántos caminos de información tiene simvastatin en total para todas las enfermedades?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "count",
+        "input_type": "drug",
+        "operator": "count",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "SIMVASTATIN"
+        }
+      }
+    },
+    {
+      "id": "ip_016",
+      "question": "¿Hay alguna ruta de información que conecte epilepsy con valproic acid?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "existence",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Epilepsy",
+          "drug": "VALPROIC ACID"
+        }
+      }
+    },
+    {
+      "id": "ip_017",
+      "question": "¿Qué fármacos tienen el menor número de paths para colorectal Neoplasms en information paths?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "min",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Colorectal Neoplasms",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_018",
+      "question": "¿Cuáles son los 3 mejores fármacos por número de information paths para melanoma?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Melanoma",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_019",
+      "question": "¿Cuántos pares fármaco-enfermedad hay en la tabla de information paths?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "count",
+        "input_type": null,
+        "operator": "count",
+        "result_types_requested": [],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_information_paths"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_020",
+      "question": "¿Qué enfermedades tienen más de 3 caminos de información con algún fármaco?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "threshold",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_information_paths",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_021",
+      "question": "¿Qué fármaco tiene el mayor número de rutas de información hacia parkinson Disease?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Parkinson Disease",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_022",
+      "question": "¿Entre methotrexate y rheumatoid Arthritis, qué paths existen en information paths?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "count",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Rheumatoid Arthritis",
+          "drug": "METHOTREXATE"
+        }
+      }
+    },
+    {
+      "id": "ip_023",
+      "question": "Muestra los fármacos conectados a asthma por el método de caminos de información.",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Asthma",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_024",
+      "question": "¿Qué 5 enfermedades comparten más paths con tamoxifen en information paths?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "TAMOXIFEN"
+        }
+      }
+    },
+    {
+      "id": "ip_026",
+      "question": "¿Qué drugs están soportados por rutas de información para liver Cirrhosis?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Liver Cirrhosis",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_027",
+      "question": "Según information paths, ¿cuántos medicamentos distintos están asociados a obesity?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "count",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Obesity",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_028",
+      "question": "¿Cuál es el fármaco con más paths dirigidos a myocardial Infarction?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Myocardial Infarction",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_029",
+      "question": "¿Existe algún path de información entre glioblastoma y temozolomide?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "existence",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Glioblastoma",
+          "drug": "TEMOZOLOMIDE"
+        }
+      }
+    },
+    {
+      "id": "ip_030",
+      "question": "¿Para cuántas enfermedades tiene cisplatin caminos de información asociados?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "count",
+        "input_type": "drug",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "CISPLATIN"
+        }
+      }
+    },
+    {
+      "id": "ip_031",
+      "question": "Ordena las enfermedades por número de paths con paclitaxel.",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": "sort",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "PACLITAXEL"
+        }
+      }
+    },
+    {
+      "id": "ip_032",
+      "question": "¿Qué fármacos tienen exactamente un camino de información con chronic Kidney Disease?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "filter",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Chronic Kidney Disease",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_034",
+      "question": "Lista las enfermedades para las que fluoxetine tiene rutas de información.",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "listing",
+        "input_type": "drug",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "FLUOXETINE"
+        }
+      }
+    },
+    {
+      "id": "ip_036",
+      "question": "¿Qué fármacos son los más conectados por paths a multiple Sclerosis?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Multiple Sclerosis",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_037",
+      "question": "¿Cuántos fármacos se conectan a hepatitis B mediante el método de information paths?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "count",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Hepatitis B",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_038",
+      "question": "¿Hay rutas de información entre psoriasis y cyclosporine?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "existence",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Psoriasis",
+          "drug": "CYCLOSPORINE"
+        }
+      }
+    },
+    {
+      "id": "ip_039",
+      "question": "¿Cuáles son los 5 fármacos con menos caminos de información para gastric Cancer?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "min",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Gastric Cancer",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_040",
+      "question": "¿Qué fármacos tienen paths para chronic Obstructive Pulmonary Disease según information paths?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Chronic Obstructive Pulmonary Disease",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_041",
+      "question": "Cuáles son los paths de información que conectan lithium con trastornos mentales?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "listing",
+        "input_type": "drug",
+        "operator": "count",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "LITHIUM"
+        }
+      }
+    },
+    {
+      "id": "ip_042",
+      "question": "¿Cuál es el fármaco con mayor cantidad de rutas de información para fibromyalgia?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Fibromyalgia",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_043",
+      "question": "¿Qué medicamentos están conectados a pancreatic Neoplasms mediante caminos de información?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Pancreatic Neoplasms",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_044",
+      "question": "Ordena los fármacos de mayor a menor número de paths para prostate Cancer en information paths.",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "sort",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Prostate Cancer",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_045",
+      "question": "Según information paths, ¿erlotinib tiene paths con ovarian Neoplasms?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "existence",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Ovarian Neoplasms",
+          "drug": "ERLOTINIB"
+        }
+      }
+    },
+    {
+      "id": "ip_046",
+      "question": "¿Cuántos pares enfermedad-fármaco únicos hay en la tabla de information paths?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "count",
+        "input_type": null,
+        "operator": "count",
+        "result_types_requested": [],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_information_paths"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_047",
+      "question": "¿Cuáles fármacos presentan más de 3 caminos de información para hepatocellular Carcinoma?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "threshold",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Hepatocellular Carcinoma",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_048",
+      "question": "¿Qué enfermedades tienen paths con gefitinib en el modelo de information paths?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "listing",
+        "input_type": "drug",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "GEFITINIB"
+        }
+      }
+    },
+    {
+      "id": "ip_049",
+      "question": "¿Cuántos paths conectan depression con sertraline en information paths?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "count",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Depression",
+          "drug": "SERTRALINE"
+        }
+      }
+    },
+    {
+      "id": "ip_050",
+      "question": "¿Cuáles son los 10 medicamentos con mayor número de rutas de información en la base de datos?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": "path_id",
+        "task_type": "ranking",
+        "input_type": null,
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_information_paths",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "ip_comp_001",
+      "question": "¿Qué fármaco tiene más information paths hacia asthma: cetirizine o omeprazole?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Asthma",
+          "drug": "CETIRIZINE / OMEPRAZOLE"
+        }
+      }
+    },
+    {
+      "id": "ip_comp_002",
+      "question": "Entre rheumatoid Arthritis y alcoholic Intoxication, Chronic, ¿cuál tiene más caminos de información con aspirin?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Rheumatoid Arthritis / Alcoholic Intoxication, Chronic",
+          "drug": "ASPIRIN"
+        }
+      }
+    },
+    {
+      "id": "ip_comp_003",
+      "question": "¿metformin, ibuprofen o diazepam tienen más information paths para epilepsy?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Epilepsy",
+          "drug": "METFORMIN / IBUPROFEN / DIAZEPAM"
+        }
+      }
+    },
+    {
+      "id": "ip_comp_004",
+      "question": "Compara el número de vías de información entre simvastatin y atorvastatin para kidney Failure, Chronic",
+      "gold": {
+        "intent": "information_paths",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Kidney Failure, Chronic",
+          "drug": "SIMVASTATIN / ATORVASTATIN"
+        }
+      }
+    },
+    {
+      "id": "ip_comp_005",
+      "question": "Para fluoxetine, ¿con qué enfermedad hay más information paths: schizophrenia o multiple Sclerosis?",
+      "gold": {
+        "intent": "information_paths",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_information_paths",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Schizophrenia / Multiple Sclerosis",
+          "drug": "FLUOXETINE"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,2116 @@
+{
+  "dataset_name": "dr_gnns_retriever_eval_bank",
+  "version": "1.2",
+  "description": "Banco de preguntas para evaluar el retriever sobre la tabla dr_gnns y sus métricas REDIRECTION, DMSR, DMSRC, BEHOR y BEHORC. Extended with additional pair metric lookup questions including disease and drug names.",
+  "notes": [
+    "Todas las preguntas incluyen contexto explícito del modelo GNN o de la métrica para evitar ambigüedad con otras tablas.",
+    "El gold está pensado para evaluar retrieval semántico, no SQL.",
+    "Las tablas requeridas incluyen dr_gnns más disease y drug porque el retriever añade tablas de soporte relacional."
+  ],
+  "cases": [
+    {
+      "id": "gnns_001",
+      "question": "¿Qué fármaco tiene el mayor score en el modelo gnn redirection para abdominal Cramps?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "redirection",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Abdominal Cramps",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "gnns_002",
+      "question": "¿Cuáles son los 5 fármacos con mayor puntuación en gnn redirection para abdominal Pain?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "redirection",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Abdominal Pain",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "gnns_003",
+      "question": "Según gnn redirection, ¿qué medicamentos están asociados a acne Vulgaris con mayor score?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "redirection",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Acne Vulgaris",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "gnns_004",
+      "question": "¿Qué fármacos tienen un score superior a 0.7 en gnn redirection para acidosis?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "redirection",
+        "task_type": "threshold",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Acidosis",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "gnns_005",
+      "question": "Ordena los fármacos por score en gnn redirection para addison Disease",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "redirection",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Addison Disease",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "gnns_006",
+      "question": "¿Qué fármacos aparecen en el top 10 para adenocarcinoma en gnn redirection?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "redirection",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Adenocarcinoma",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "gnns_007",
+      "question": "¿Para qué enfermedades tiene mayor score cetirizine en gnn redirection?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "redirection",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "CETIRIZINE"
+        }
+      }
+    },
+    {
+      "id": "gnns_008",
+      "question": "¿Cuáles son las 5 enfermedades mejor puntuadas para levodopa en gnn redirection?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "redirection",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "LEVODOPA"
+        }
+      }
+    },
+    {
+      "id": "gnns_009",
+      "question": "¿Qué enfermedades tienen score > 0.8 para simvastatin en gnn redirection?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "redirection",
+        "task_type": "threshold",
+        "input_type": "drug",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "SIMVASTATIN"
+        }
+      }
+    },
+    {
+      "id": "gnns_010",
+      "question": "Ordena las enfermedades según score para pregabalin en gnn redirection",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "redirection",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "PREGABALIN"
+        }
+      }
+    },
+    {
+      "id": "gnns_011",
+      "question": "¿Cuál es la enfermedad con mayor score para valsartan en gnn redirection?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "redirection",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "VALSARTAN"
+        }
+      }
+    },
+    {
+      "id": "gnns_012",
+      "question": "¿Cuál es el score entre cetirizine y abdominal Pain en gnn redirection?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "redirection",
+        "task_type": "pair_lookup",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Abdominal Pain",
+          "drug": "CETIRIZINE"
+        }
+      }
+    },
+    {
+      "id": "gnns_013",
+      "question": "¿Qué fármaco tiene el mayor score en el modelo gnn dmsr para abdominal Neoplasms?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsr",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Abdominal Neoplasms",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "gnns_014",
+      "question": "¿Cuáles son los fármacos mejor puntuados para acute Disease en gnn dmsr?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsr",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Acute Disease",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "gnns_015",
+      "question": "¿Qué fármacos tienen score superior a 0.75 en dmsr para acquired Immunodeficiency Syndrome?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsr",
+        "task_type": "threshold",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Acquired Immunodeficiency Syndrome",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "gnns_016",
+      "question": "Ordena los fármacos por score en dmsr para agranulocytosis",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsr",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Agranulocytosis",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "gnns_017",
+      "question": "¿Para qué enfermedades tiene mayor score amoxicillin en gnn dmsr?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsr",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "AMOXICILLIN"
+        }
+      }
+    },
+    {
+      "id": "gnns_018",
+      "question": "¿Cuáles son las enfermedades mejor rankeadas para fluconazole en dmsr?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsr",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "FLUCONAZOLE"
+        }
+      }
+    },
+    {
+      "id": "gnns_019",
+      "question": "¿Qué enfermedades tienen score alto para carbamazepine en dmsr?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsr",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "CARBAMAZEPINE"
+        }
+      }
+    },
+    {
+      "id": "gnns_020",
+      "question": "Para simvastatin, ¿qué enfermedad tiene mayor score en dmsr: acidosis o acidosis, Respiratory?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsr",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Acidosis / Acidosis, Respiratory",
+          "drug": "SIMVASTATIN"
+        }
+      }
+    },
+    {
+      "id": "gnns_021",
+      "question": "¿Qué enfermedad tiene mayor score para valproic acid en dmsr: affective Disorders, Psychotic o agoraphobia?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsr",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Affective Disorders, Psychotic / Agoraphobia",
+          "drug": "VALPROIC ACID"
+        }
+      }
+    },
+    {
+      "id": "gnns_022",
+      "question": "¿Cuál es el score entre amoxicillin y acute bronchiolitis en gnn dmsr?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsr",
+        "task_type": "pair_lookup",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Acute bronchiolitis",
+          "drug": "AMOXICILLIN"
+        }
+      }
+    },
+    {
+      "id": "gnns_023",
+      "question": "¿Qué fármacos tienen mayor score en gnn dmsrc para acute bronchiolitis?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsrc",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Acute bronchiolitis",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "gnns_024",
+      "question": "¿Cuál es el top 3 de fármacos para adenoma en dmsrc?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsrc",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Adenoma",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "gnns_025",
+      "question": "¿Qué fármacos superan 0.6 de score en dmsrc para adrenal Gland Diseases?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsrc",
+        "task_type": "threshold",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Adrenal Gland Diseases",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "gnns_026",
+      "question": "¿Qué enfermedades tienen mayor score para erlotinib hydrochloride en dmsrc?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsrc",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "ERLOTINIB HYDROCHLORIDE"
+        }
+      }
+    },
+    {
+      "id": "gnns_027",
+      "question": "¿Cuál es el ranking de enfermedades para niraparib en dmsrc?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsrc",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "NIRAPARIB"
+        }
+      }
+    },
+    {
+      "id": "gnns_028",
+      "question": "¿Qué enfermedades aparecen en el top 5 para enzalutamide en dmsrc?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsrc",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "ENZALUTAMIDE"
+        }
+      }
+    },
+    {
+      "id": "gnns_029",
+      "question": "¿Cuál es el score del par niraparib y adenocarcinoma en dmsrc?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsrc",
+        "task_type": "pair_lookup",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Adenocarcinoma",
+          "drug": "NIRAPARIB"
+        }
+      }
+    },
+    {
+      "id": "gnns_030",
+      "question": "En el modelo gnn dmsrc, ¿qué fármaco tiene la puntuación máxima para acromegaly?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsrc",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Acromegaly",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "gnns_031",
+      "question": "¿Qué fármaco tiene mayor score en gnn behor para acute pancreatitis?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behor",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Acute pancreatitis",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "gnns_032",
+      "question": "¿Cuáles son los fármacos mejor puntuados para aids Dementia Complex en behor?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behor",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "AIDS Dementia Complex",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "gnns_033",
+      "question": "¿Qué fármacos tienen score mayor a 0.85 en behor para acromegaly?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behor",
+        "task_type": "threshold",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Acromegaly",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "gnns_034",
+      "question": "¿Para qué enfermedades tiene mayor score clopidogrel bisulfate en behor?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behor",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "CLOPIDOGREL BISULFATE"
+        }
+      }
+    },
+    {
+      "id": "gnns_035",
+      "question": "¿Qué enfermedades están mejor rankeadas para amiodarone hydrochloride en behor?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behor",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "AMIODARONE HYDROCHLORIDE"
+        }
+      }
+    },
+    {
+      "id": "gnns_036",
+      "question": "¿Cuál es la enfermedad con mayor score para colchicine en behor?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behor",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "COLCHICINE"
+        }
+      }
+    },
+    {
+      "id": "gnns_037",
+      "question": "Ordena las enfermedades por score para pregabalin en behor",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behor",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "PREGABALIN"
+        }
+      }
+    },
+    {
+      "id": "gnns_038",
+      "question": "Ordena los fármacos por score para acne Vulgaris en behor",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behor",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Acne Vulgaris",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "gnns_039",
+      "question": "¿Cuál es el score entre colchicine y acne Vulgaris en gnn behor?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behor",
+        "task_type": "pair_lookup",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Acne Vulgaris",
+          "drug": "COLCHICINE"
+        }
+      }
+    },
+    {
+      "id": "gnns_040",
+      "question": "¿Qué fármacos tienen mayor score en gnn behorc para adenoma, Basophil?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behorc",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Adenoma, Basophil",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "gnns_041",
+      "question": "¿Cuáles son los 10 fármacos mejor puntuados para adrenal Cortex Diseases en behorc?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behorc",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Adrenal Cortex Diseases",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "gnns_042",
+      "question": "¿Qué fármacos tienen score > 0.7 en behorc para agammaglobulinemia?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behorc",
+        "task_type": "threshold",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Agammaglobulinemia",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "gnns_043",
+      "question": "¿Para qué enfermedades tiene mayor score suvorexant en behorc?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behorc",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "SUVOREXANT"
+        }
+      }
+    },
+    {
+      "id": "gnns_044",
+      "question": "¿Qué enfermedades están en el top 5 para tizanidine en behorc?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behorc",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "TIZANIDINE"
+        }
+      }
+    },
+    {
+      "id": "gnns_045",
+      "question": "¿Qué enfermedades tienen score distinto de cero para oxcarbazepine en behorc?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behorc",
+        "task_type": "threshold",
+        "input_type": "drug",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "OXCARBAZEPINE"
+        }
+      }
+    },
+    {
+      "id": "gnns_046",
+      "question": "¿Cuál es el score entre suvorexant y agoraphobia en behorc?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behorc",
+        "task_type": "pair_lookup",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Agoraphobia",
+          "drug": "SUVOREXANT"
+        }
+      }
+    },
+    {
+      "id": "gnns_047",
+      "question": "¿Qué puntuación asigna behorc al par tizanidine - affective Symptoms?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behorc",
+        "task_type": "pair_lookup",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Affective Symptoms",
+          "drug": "TIZANIDINE"
+        }
+      }
+    },
+    {
+      "id": "gnns_050",
+      "question": "¿Qué valor de redirection tienen la enfermedad Acromegaly con el fármaco Levodopa?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "redirection",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways"
+        ]
+      }
+    },
+    {
+      "id": "gnns_051",
+      "question": "¿Cuál es el valor de redirection entre Acne Vulgaris y Cetirizine?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "redirection",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways"
+        ]
+      }
+    },
+    {
+      "id": "gnns_052",
+      "question": "¿Qué score de dmsr tiene la enfermedad Acidosis con el fármaco Simvastatin?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsr",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways"
+        ]
+      }
+    },
+    {
+      "id": "gnns_053",
+      "question": "¿Cuál es la puntuación dmsr entre Agoraphobia y Valproic acid?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsr",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways"
+        ]
+      }
+    },
+    {
+      "id": "gnns_054",
+      "question": "¿Qué valor de dmsrc tiene la enfermedad Adenoma con el fármaco Niraparib?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsrc",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways"
+        ]
+      }
+    },
+    {
+      "id": "gnns_055",
+      "question": "¿Cuál es el score de dmsrc entre Adrenal Gland Diseases y Enzalutamide?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsrc",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways"
+        ]
+      }
+    },
+    {
+      "id": "gnns_056",
+      "question": "¿Qué puntuación de behor tienen la enfermedad Acute pancreatitis con el fármaco Colchicine?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behor",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways"
+        ]
+      }
+    },
+    {
+      "id": "gnns_057",
+      "question": "¿Cuál es el valor de behor entre Acne Vulgaris y Pregabalin?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behor",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways"
+        ]
+      }
+    },
+    {
+      "id": "gnns_058",
+      "question": "¿Qué valor de behorc tiene la enfermedad Agoraphobia con el fármaco Suvorexant?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behorc",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways"
+        ]
+      }
+    },
+    {
+      "id": "gnns_059",
+      "question": "¿Cuál es la puntuación behorc entre Affective Symptoms y Tizanidine?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behorc",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways"
+        ]
+      }
+    },
+    {
+      "id": "gnns_060",
+      "question": "¿Qué score de redirection tiene Abdominal Pain con Cetirizine?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "redirection",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways"
+        ]
+      }
+    },
+    {
+      "id": "gnns_061",
+      "question": "¿Qué valor de dmsr tiene Acquired Immunodeficiency Syndrome con Fluconazole?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsr",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_diseasepathways"
+        ]
+      }
+    },
+    {
+      "id": "gnns_062",
+      "question": "¿Qué enfermedad tiene mayor score redirection para cetirizine: rheumatoid Arthritis o alcoholic Intoxication, Chronic?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "redirection",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Rheumatoid Arthritis / Alcoholic Intoxication, Chronic",
+          "drug": "CETIRIZINE"
+        }
+      }
+    },
+    {
+      "id": "gnns_063",
+      "question": "Compara el score dmsr de aspirin y ibuprofen para la enfermedad asthma",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsr",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "sort",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Asthma",
+          "drug": "ASPIRIN / IBUPROFEN"
+        }
+      }
+    },
+    {
+      "id": "gnns_064",
+      "question": "Entre metformin, simvastatin y atorvastatin, ¿cuál tiene mejor score behor para diabetes Mellitus?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behor",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Diabetes Mellitus",
+          "drug": "METFORMIN / SIMVASTATIN / ATORVASTATIN"
+        }
+      }
+    },
+    {
+      "id": "gnns_065",
+      "question": "¿Qué enfermedad tiene mayor dmsrc para fluoxetine: schizophrenia, epilepsy o kidney Failure, Chronic?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsrc",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Schizophrenia / Epilepsy / Kidney Failure, Chronic",
+          "drug": "FLUOXETINE"
+        }
+      }
+    },
+    {
+      "id": "gnns_066",
+      "question": "¿warfarin o tamoxifen tienen mejor score behorc para glaucoma?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behorc",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Glaucoma",
+          "drug": "WARFARIN / TAMOXIFEN"
+        }
+      }
+    },
+    {
+      "id": "gnns_067",
+      "question": "Para anemia, Sickle Cell, ¿qué fármaco tiene mayor redirection: methotrexate o doxorubicin?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "redirection",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Anemia, Sickle Cell",
+          "drug": "METHOTREXATE / DOXORUBICIN"
+        }
+      }
+    }
+  ]
+}

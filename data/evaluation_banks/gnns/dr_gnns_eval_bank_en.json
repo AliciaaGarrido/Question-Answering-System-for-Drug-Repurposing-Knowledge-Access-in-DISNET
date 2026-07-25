@@ -1,0 +1,525 @@
+{
+  "dataset_name": "dr_gnns_retriever_eval_bank_en",
+  "version": "1.0",
+  "description": "English evaluation bank for the retriever on the dr_gnns table and its metrics REDIRECTION, DMSR, DMSRC, BEHOR and BEHORC.",
+  "notes": [
+    "Questions include explicit GNN model or metric context to avoid ambiguity.",
+    "Gold is designed for semantic retrieval evaluation, not SQL generation.",
+    "Required tables include dr_gnns plus disease and drug for relational support."
+  ],
+  "cases": [
+    {
+      "id": "gnns_en_001",
+      "question": "Which drug has the highest redirection score for abdominal Cramps?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "redirection",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Abdominal Cramps",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "gnns_en_002",
+      "question": "What is the top drug by gnn redirection for abdominal Pain?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "redirection",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Abdominal Pain",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "gnns_en_003",
+      "question": "According to the gnn model, which medication scores highest on dmsr for asthma?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsr",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Asthma",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "gnns_en_004",
+      "question": "List drugs with the best dmsrc value for epilepsy using GNNs",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsrc",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Epilepsy",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "gnns_en_005",
+      "question": "For rheumatoid Arthritis, which drug achieves the maximum behor score?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behor",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Rheumatoid Arthritis",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "gnns_en_006",
+      "question": "What is the behorc score of cetirizine for abdominal Cramps?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behorc",
+        "task_type": "pair_lookup",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Abdominal Cramps",
+          "drug": "CETIRIZINE"
+        }
+      }
+    },
+    {
+      "id": "gnns_en_007",
+      "question": "Show me the gnn redirection score between simvastatin and diabetes Mellitus",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "redirection",
+        "task_type": "pair_lookup",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Diabetes Mellitus",
+          "drug": "SIMVASTATIN"
+        }
+      }
+    },
+    {
+      "id": "gnns_en_008",
+      "question": "For which disease does aspirin have the highest redirection score?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "redirection",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "ASPIRIN"
+        }
+      }
+    },
+    {
+      "id": "gnns_en_009",
+      "question": "Rank diseases by dmsr score for methotrexate using GNNs",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsr",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": "sort",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "METHOTREXATE"
+        }
+      }
+    },
+    {
+      "id": "gnns_en_010",
+      "question": "Which disease has a higher redirection score for cetirizine: rheumatoid Arthritis or alcoholic Intoxication, Chronic?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "redirection",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Rheumatoid Arthritis / Alcoholic Intoxication, Chronic",
+          "drug": "CETIRIZINE"
+        }
+      }
+    },
+    {
+      "id": "gnns_en_011",
+      "question": "Compare dmsr scores of aspirin and ibuprofen for asthma",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "dmsr",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "sort",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Asthma",
+          "drug": "ASPIRIN / IBUPROFEN"
+        }
+      }
+    },
+    {
+      "id": "gnns_en_012",
+      "question": "Among metformin, simvastatin, and atorvastatin, which has the best behor for diabetes Mellitus?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behor",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Diabetes Mellitus",
+          "drug": "METFORMIN / SIMVASTATIN / ATORVASTATIN"
+        }
+      }
+    },
+    {
+      "id": "gnns_en_013",
+      "question": "Does warfarin or tamoxifen score higher on behorc for glaucoma?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "behorc",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Glaucoma",
+          "drug": "WARFARIN / TAMOXIFEN"
+        }
+      }
+    },
+    {
+      "id": "gnns_en_014",
+      "question": "For anemia, Sickle Cell, is methotrexate or doxorubicin better according to redirection?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "redirection",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Anemia, Sickle Cell",
+          "drug": "METHOTREXATE / DOXORUBICIN"
+        }
+      }
+    },
+    {
+      "id": "gnns_en_015",
+      "question": "What drugs have a redirection score above 0.5 for multiple Sclerosis?",
+      "gold": {
+        "intent": "gnn_score",
+        "metric": "redirection",
+        "task_type": "threshold",
+        "input_type": "disease",
+        "operator": "sort",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_gnns",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Multiple Sclerosis",
+          "drug": null
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,423 @@
+{
+  "dataset_name": "dr_pathways_retriever_eval_bank_en",
+  "version": "1.0",
+  "description": "English evaluation bank for the retriever on the dr_pathways table.",
+  "notes": [
+    "Questions reference pathway-based drug repurposing scores."
+  ],
+  "cases": [
+    {
+      "id": "pw_en_001",
+      "question": "Which drug has the highest pathway score for rheumatoid Arthritis?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Rheumatoid Arthritis",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pw_en_002",
+      "question": "What is the pathway-based score between metformin and diabetes Mellitus?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "pair_lookup",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Diabetes Mellitus",
+          "drug": "METFORMIN"
+        }
+      }
+    },
+    {
+      "id": "pw_en_003",
+      "question": "Rank drugs by pathway score for asthma",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "sort",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Asthma",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pw_en_004",
+      "question": "For which disease does ibuprofen have the highest pathway score?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "IBUPROFEN"
+        }
+      }
+    },
+    {
+      "id": "pw_en_005",
+      "question": "What genes participate in the pathway hypothesis between aspirin and psoriasis?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "listing",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [
+          "genes"
+        ],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug",
+          "gene"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Psoriasis",
+          "drug": "ASPIRIN"
+        }
+      }
+    },
+    {
+      "id": "pw_en_006",
+      "question": "Does aspirin or ibuprofen have a higher pathway score for rheumatoid Arthritis?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Rheumatoid Arthritis",
+          "drug": "ASPIRIN / IBUPROFEN"
+        }
+      }
+    },
+    {
+      "id": "pw_en_007",
+      "question": "Between asthma and kidney Failure, Chronic, for which does metformin have a better pathway score?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Asthma / Kidney Failure, Chronic",
+          "drug": "METFORMIN"
+        }
+      }
+    },
+    {
+      "id": "pw_en_008",
+      "question": "Compare pathway scores for cetirizine, omeprazole, and diazepam against epilepsy",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "sort",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Epilepsy",
+          "drug": "CETIRIZINE / OMEPRAZOLE / DIAZEPAM"
+        }
+      }
+    },
+    {
+      "id": "pw_en_009",
+      "question": "For doxorubicin, which disease has a higher pathway score: anemia, Sickle Cell or psoriasis?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Anemia, Sickle Cell / Psoriasis",
+          "drug": "DOXORUBICIN"
+        }
+      }
+    },
+    {
+      "id": "pw_en_010",
+      "question": "Is tamoxifen or cisplatin a better candidate for multiple Sclerosis by pathway score?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Multiple Sclerosis",
+          "drug": "TAMOXIFEN / CISPLATIN"
+        }
+      }
+    },
+    {
+      "id": "pw_en_011",
+      "question": "What drugs have pathway scores above 0.6 for glaucoma?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "threshold",
+        "input_type": "disease",
+        "operator": "sort",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Glaucoma",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pw_en_012",
+      "question": "What association type does omeprazole have with obesity via the pathways method?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "association_type",
+        "task_type": "pair_lookup",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Obesity",
+          "drug": "OMEPRAZOLE"
+        }
+      }
+    }
+  ]
+}

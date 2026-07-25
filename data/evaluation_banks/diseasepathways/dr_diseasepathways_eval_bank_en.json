@@ -1,0 +1,345 @@
+{
+  "dataset_name": "dr_diseasepathways_retriever_eval_bank_en",
+  "version": "1.0",
+  "description": "English evaluation bank for the retriever on the dr_diseasepathways table (disease similarity via biological pathways).",
+  "notes": [
+    "Questions reference disease pathway similarity and drug transfer between diseases."
+  ],
+  "cases": [
+    {
+      "id": "dp_en_001",
+      "question": "What diseases are similar to asthma according to shared biological pathways?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Asthma",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "dp_en_002",
+      "question": "Which drugs could be repurposed for epilepsy based on disease pathway similarity?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Epilepsy",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "dp_en_003",
+      "question": "How many diseases share pathways with diabetes Mellitus?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "count",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Diabetes Mellitus",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "dp_en_004",
+      "question": "Are there candidate drugs for osteomalacia from diseases with shared biological mechanisms?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Osteomalacia",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "dp_en_005",
+      "question": "Which disease shares more pathways with asthma: rheumatoid Arthritis or psoriasis?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Asthma / Rheumatoid Arthritis / Psoriasis",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "dp_en_006",
+      "question": "Between kidney Failure, Chronic and anemia, Sickle Cell, which has more similar diseases by pathways?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Kidney Failure, Chronic / Anemia, Sickle Cell",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "dp_en_007",
+      "question": "Does epilepsy or multiple Sclerosis have more candidate drugs via disease pathways?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Epilepsy / Multiple Sclerosis",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "dp_en_008",
+      "question": "For which disease are more drugs proposed via disease pathways: alcoholic Intoxication, Chronic or osteomalacia?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Alcoholic Intoxication, Chronic / Osteomalacia",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "dp_en_009",
+      "question": "What pathways are shared between obesity and diabetes Mellitus?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "pathways"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "pathway"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Obesity / Diabetes Mellitus",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "dp_en_010",
+      "question": "List diseases that could share treatments with schizophrenia based on pathway overlap",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Schizophrenia",
+          "drug": null
+        }
+      }
+    }
+  ]
+}

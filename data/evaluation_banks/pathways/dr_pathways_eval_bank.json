@@ -1,0 +1,1779 @@
+{
+  "dataset_name": "dr_pathways_retriever_eval_bank",
+  "version": "1.0",
+  "description": "Banco de preguntas para evaluar el retriever sobre la tabla dr_pathways. Esta tabla almacena scores de reposicionamiento por approach, pathway y gen. Columnas: disease_id, drug_id, approach, pathway_id, gene_id, score.",
+  "notes": [
+    "Las preguntas están orientadas al método de pathways con scores por approach.",
+    "El campo approach indica la variante metodológica dentro del modelo de pathways.",
+    "El gold evalúa retrieval semántico, no SQL.",
+    "Las tablas requeridas incluyen dr_pathways más disease, drug, gene y pathway como tablas de soporte relacional."
+  ],
+  "cases": [
+    {
+      "id": "pw_001",
+      "question": "¿Qué fármaco tiene mayor score en el método de pathways para abdominal Pain?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Abdominal Pain",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_002",
+      "question": "¿Cuáles son los 5 fármacos con mayor puntuación en pathways para alzheimer Disease?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Alzheimer Disease",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_003",
+      "question": "¿Qué genes participan en los pathways entre breast Neoplasms y tamoxifen?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [
+          "genes"
+        ],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug",
+          "gene"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Breast Neoplasms",
+          "drug": "TAMOXIFEN",
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_004",
+      "question": "¿Qué approaches están disponibles en dr_pathways para diabetes Mellitus?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "approach",
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Diabetes Mellitus",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_005",
+      "question": "Ordena los fármacos por score en el método de pathways para hypertension.",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "sort",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Hypertension",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_006",
+      "question": "¿Cuántos pathways distintos están asociados a lung Neoplasms en dr_pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "pathway_id",
+        "task_type": "count",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "pathways"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "pathway"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Lung Neoplasms",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_007",
+      "question": "¿Qué genes tienen mayor score en pathways para melanoma y cisplatin?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "ranking",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "genes"
+        ],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug",
+          "gene"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Melanoma",
+          "drug": "CISPLATIN",
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_008",
+      "question": "¿Cuántos genes participan en los pathways de leukemia según dr_pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": null,
+        "task_type": "count",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "genes"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "gene"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Leukemia",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_009",
+      "question": "¿Qué fármacos tienen score superior a 0.5 en pathways para parkinson Disease?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "threshold",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Parkinson Disease",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_010",
+      "question": "¿Para qué enfermedades tiene metformin los mejores scores en el método de pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "METFORMIN",
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_011",
+      "question": "¿Qué pathways están involucrados en la relación entre schizophrenia y algún fármaco en dr_pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "pathways"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "pathway"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Schizophrenia",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_012",
+      "question": "¿Cuáles son los 3 genes con mayor score para epilepsy en el método de pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "genes"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "gene"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Epilepsy",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_013",
+      "question": "Según el método de pathways, ¿qué fármacos y genes están asociados a rheumatoid Arthritis?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs",
+          "genes"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug",
+          "gene"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Rheumatoid Arthritis",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_014",
+      "question": "¿Cuántos approaches distintos se usan en dr_pathways para colorectal Neoplasms?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "approach",
+        "task_type": "count",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Colorectal Neoplasms",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_016",
+      "question": "¿Cuántos registros hay en dr_pathways para obesity?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": null,
+        "task_type": "count",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Obesity",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_017",
+      "question": "¿Qué pathways y genes están relacionados con doxorubicin en el método de pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "drug",
+        "operator": null,
+        "result_types_requested": [
+          "pathways",
+          "genes"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "drug",
+          "gene",
+          "pathway"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "DOXORUBICIN",
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_018",
+      "question": "¿Cuál es el score más alto en pathways entre multiple Sclerosis y algún fármaco?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Multiple Sclerosis",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_019",
+      "question": "Ordena los genes por score en pathways para myocardial Infarction.",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "sort",
+        "result_types_requested": [
+          "genes"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "gene"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Myocardial Infarction",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_020",
+      "question": "¿Cuántos fármacos distintos tienen entries en dr_pathways para glioblastoma?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": null,
+        "task_type": "count",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Glioblastoma",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_021",
+      "question": "¿Qué genes están vinculados a hepatitis B en pathways con score mayor a 0.3?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "threshold",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "genes"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "gene"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Hepatitis B",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_023",
+      "question": "¿Cuántos pathways comparten chronic Kidney Disease y methotrexate en dr_pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "pathway_id",
+        "task_type": "count",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [
+          "pathways"
+        ],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug",
+          "pathway"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Chronic Kidney Disease",
+          "drug": "METHOTREXATE",
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_024",
+      "question": "¿Qué approach tiene los mejores scores para depression en pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "comparison",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Depression",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_025",
+      "question": "¿Cuáles son los 10 genes con mayor score global en dr_pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "ranking",
+        "input_type": null,
+        "operator": "max",
+        "result_types_requested": [
+          "genes"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_pathways",
+          "gene"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_026",
+      "question": "¿Qué fármacos comparten pathways con psoriasis según dr_pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Psoriasis",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_027",
+      "question": "Compara los scores por approach para liver Cirrhosis en el método de pathways.",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "comparison",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Liver Cirrhosis",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_028",
+      "question": "¿Cuántos registros totales hay en la tabla dr_pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": null,
+        "task_type": "count",
+        "input_type": null,
+        "operator": "count",
+        "result_types_requested": [],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_pathways"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_029",
+      "question": "¿Qué genes y pathways están asociados a ibuprofen en dr_pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "drug",
+        "operator": null,
+        "result_types_requested": [
+          "genes",
+          "pathways"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "drug",
+          "gene",
+          "pathway"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "IBUPROFEN",
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_030",
+      "question": "¿Cuáles son los fármacos con menor score promedio en pathways para adenocarcinoma?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "min",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Adenocarcinoma",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_031",
+      "question": "¿Para cuántas enfermedades tiene paclitaxel scores en pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "count",
+        "input_type": "drug",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "PACLITAXEL",
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_032",
+      "question": "¿Qué enfermedades tienen más de 100 registros en dr_pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": null,
+        "task_type": "threshold",
+        "input_type": null,
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_pathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_033",
+      "question": "¿Qué genes participan en pathways con gastric Cancer y fluorouracil?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [
+          "genes"
+        ],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug",
+          "gene"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Gastric Cancer",
+          "drug": "FLUOROURACIL",
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_034",
+      "question": "¿Cuántos genes distintos aparecen en dr_pathways para fibromyalgia?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": null,
+        "task_type": "count",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "genes"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "gene"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Fibromyalgia",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_036",
+      "question": "¿Qué fármacos tienen score en pathways para hepatocellular Carcinoma?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Hepatocellular Carcinoma",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_037",
+      "question": "¿Cuáles son los pathways con mayor número de fármacos asociados en dr_pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": null,
+        "task_type": "ranking",
+        "input_type": null,
+        "operator": "max",
+        "result_types_requested": [
+          "pathways"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_pathways",
+          "drug",
+          "pathway"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_038",
+      "question": "¿Qué approach genera los scores más altos para ovarian Neoplasms en pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "comparison",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Ovarian Neoplasms",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_039",
+      "question": "¿Existe algún registro en dr_pathways entre pancreatic Neoplasms y gemcitabine?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": null,
+        "task_type": "existence",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Pancreatic Neoplasms",
+          "drug": "GEMCITABINE",
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_040",
+      "question": "¿Qué genes participan en el pathway con mayor score para prostate Cancer?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "genes"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "gene",
+          "pathway"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Prostate Cancer",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_041",
+      "question": "Lista los approaches disponibles en la tabla dr_pathways.",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "approach",
+        "task_type": "listing",
+        "input_type": null,
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_pathways"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_042",
+      "question": "¿Cuántos fármacos tienen pathways con score superior a 0.8 en dr_pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "threshold",
+        "input_type": null,
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_pathways",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_044",
+      "question": "¿Cuántos pathways distintos hay en total en la tabla dr_pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "pathway_id",
+        "task_type": "count",
+        "input_type": null,
+        "operator": "count",
+        "result_types_requested": [
+          "pathways"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_pathways",
+          "pathway"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_046",
+      "question": "¿Qué genes y fármacos tienen score en pathways para chronic Obstructive Pulmonary Disease?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "genes",
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug",
+          "gene"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Chronic Obstructive Pulmonary Disease",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_047",
+      "question": "¿Cuál es el score máximo entre acne Vulgaris y algún fármaco en pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Acne Vulgaris",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_048",
+      "question": "¿Para qué enfermedades tiene cetirizine scores en el método de pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "listing",
+        "input_type": "drug",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "CETIRIZINE",
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_049",
+      "question": "¿Cuáles son los 5 fármacos con mayor score promedio en toda la tabla dr_pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "ranking",
+        "input_type": null,
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_pathways",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_050",
+      "question": "¿Qué pathways y genes conectan addison Disease con algún fármaco en dr_pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "pathways",
+          "genes"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "gene",
+          "pathway"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Addison Disease",
+          "drug": null,
+          "gene": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "pw_comp_001",
+      "question": "¿aspirin o ibuprofen tienen mayor score en pathways para rheumatoid Arthritis?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Rheumatoid Arthritis",
+          "drug": "ASPIRIN / IBUPROFEN"
+        }
+      }
+    },
+    {
+      "id": "pw_comp_002",
+      "question": "Entre asthma y kidney Failure, Chronic, ¿para cuál tiene mayor score metformin según pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Asthma / Kidney Failure, Chronic",
+          "drug": "METFORMIN"
+        }
+      }
+    },
+    {
+      "id": "pw_comp_003",
+      "question": "Compara el score de pathways entre cetirizine, omeprazole y diazepam para epilepsy",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "sort",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Epilepsy",
+          "drug": "CETIRIZINE / OMEPRAZOLE / DIAZEPAM"
+        }
+      }
+    },
+    {
+      "id": "pw_comp_004",
+      "question": "¿Para doxorubicin, qué enfermedad tiene mayor score en pathways: anemia, Sickle Cell o psoriasis?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Anemia, Sickle Cell / Psoriasis",
+          "drug": "DOXORUBICIN"
+        }
+      }
+    },
+    {
+      "id": "pw_comp_005",
+      "question": "¿tamoxifen o cisplatin tienen mejor score en el modelo pathways para multiple Sclerosis?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "score",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Multiple Sclerosis",
+          "drug": "TAMOXIFEN / CISPLATIN"
+        }
+      }
+    }
+  ]
+}

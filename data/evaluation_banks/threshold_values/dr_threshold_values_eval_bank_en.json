@@ -1,0 +1,421 @@
+{
+  "dataset_name": "dr_threshold_values_retriever_eval_bank_en",
+  "version": "1.0",
+  "description": "English evaluation bank for the retriever on the dr_threshold_values table.",
+  "notes": [
+    "Questions include threshold/umbral references explicitly."
+  ],
+  "cases": [
+    {
+      "id": "tv_en_001",
+      "question": "Which drug has the highest threshold value score for abdominal Cramps?",
+      "gold": {
+        "intent": "threshold_values",
+        "metric": "score",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_threshold_values",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Abdominal Cramps",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "tv_en_002",
+      "question": "What is the threshold score between aspirin and rheumatoid Arthritis?",
+      "gold": {
+        "intent": "threshold_values",
+        "metric": "score",
+        "task_type": "pair_lookup",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_threshold_values",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Rheumatoid Arthritis",
+          "drug": "ASPIRIN"
+        }
+      }
+    },
+    {
+      "id": "tv_en_003",
+      "question": "Which gene supports the top threshold hypothesis for epilepsy?",
+      "gold": {
+        "intent": "threshold_values",
+        "metric": "score",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "genes"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_threshold_values",
+          "disease",
+          "gene"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Epilepsy",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "tv_en_004",
+      "question": "For which disease does cetirizine have the best threshold value?",
+      "gold": {
+        "intent": "threshold_values",
+        "metric": "score",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_threshold_values",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "CETIRIZINE"
+        }
+      }
+    },
+    {
+      "id": "tv_en_005",
+      "question": "What action type does methotrexate have for psoriasis in threshold values?",
+      "gold": {
+        "intent": "threshold_values",
+        "metric": "action_type",
+        "task_type": "pair_lookup",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_threshold_values",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Psoriasis",
+          "drug": "METHOTREXATE"
+        }
+      }
+    },
+    {
+      "id": "tv_en_006",
+      "question": "Which drug has the higher threshold score for alcoholic Intoxication, Chronic: aspirin or cetirizine?",
+      "gold": {
+        "intent": "threshold_values",
+        "metric": "score",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_threshold_values",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Alcoholic Intoxication, Chronic",
+          "drug": "ASPIRIN / CETIRIZINE"
+        }
+      }
+    },
+    {
+      "id": "tv_en_007",
+      "question": "Between asthma and rheumatoid Arthritis, for which does methotrexate have a higher threshold value?",
+      "gold": {
+        "intent": "threshold_values",
+        "metric": "score",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_threshold_values",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Asthma / Rheumatoid Arthritis",
+          "drug": "METHOTREXATE"
+        }
+      }
+    },
+    {
+      "id": "tv_en_008",
+      "question": "Compare threshold values of simvastatin, atorvastatin, and fluoxetine for epilepsy",
+      "gold": {
+        "intent": "threshold_values",
+        "metric": "score",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "sort",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_threshold_values",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Epilepsy",
+          "drug": "SIMVASTATIN / ATORVASTATIN / FLUOXETINE"
+        }
+      }
+    },
+    {
+      "id": "tv_en_009",
+      "question": "Does doxorubicin or tamoxifen have a better threshold score for kidney Failure, Chronic?",
+      "gold": {
+        "intent": "threshold_values",
+        "metric": "score",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_threshold_values",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Kidney Failure, Chronic",
+          "drug": "DOXORUBICIN / TAMOXIFEN"
+        }
+      }
+    },
+    {
+      "id": "tv_en_010",
+      "question": "For warfarin, which disease has the highest threshold: obesity, glaucoma, or anemia, Sickle Cell?",
+      "gold": {
+        "intent": "threshold_values",
+        "metric": "score",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_threshold_values",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Obesity / Glaucoma / Anemia, Sickle Cell",
+          "drug": "WARFARIN"
+        }
+      }
+    },
+    {
+      "id": "tv_en_011",
+      "question": "List the top 5 drugs by threshold value for multiple Sclerosis",
+      "gold": {
+        "intent": "threshold_values",
+        "metric": "score",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "sort",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_threshold_values",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Multiple Sclerosis",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "tv_en_012",
+      "question": "What drugs exceed a threshold score of 0.8 for diabetes Mellitus?",
+      "gold": {
+        "intent": "threshold_values",
+        "metric": "score",
+        "task_type": "threshold",
+        "input_type": "disease",
+        "operator": "sort",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_threshold_values",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_diseasepathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Diabetes Mellitus",
+          "drug": null
+        }
+      }
+    }
+  ]
+}

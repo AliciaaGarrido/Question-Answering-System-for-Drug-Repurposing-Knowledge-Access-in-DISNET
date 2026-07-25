@@ -1,0 +1,409 @@
+{
+  "dataset_name": "dr_pathways_count_retriever_eval_bank_en",
+  "version": "1.0",
+  "description": "English evaluation bank for the retriever on the dr_pathways_count table (aggregated pathway counts).",
+  "notes": [
+    "Questions reference total pathway counts per disease-drug pair."
+  ],
+  "cases": [
+    {
+      "id": "pc_en_001",
+      "question": "How many pathways connect cetirizine to abdominal Cramps?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "pair_lookup",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Abdominal Cramps",
+          "drug": "CETIRIZINE"
+        }
+      }
+    },
+    {
+      "id": "pc_en_002",
+      "question": "Which drug has the highest pathway count for asthma?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Asthma",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_en_003",
+      "question": "Rank diseases by pathway count for simvastatin",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": "sort",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "SIMVASTATIN"
+        }
+      }
+    },
+    {
+      "id": "pc_en_004",
+      "question": "What drugs have more than 10 pathways for diabetes Mellitus?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "threshold",
+        "input_type": "disease",
+        "operator": "sort",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Diabetes Mellitus",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_en_005",
+      "question": "For which disease does methotrexate have the most pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "METHOTREXATE"
+        }
+      }
+    },
+    {
+      "id": "pc_en_006",
+      "question": "Does aspirin or metformin have more pathways for asthma?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Asthma",
+          "drug": "ASPIRIN / METFORMIN"
+        }
+      }
+    },
+    {
+      "id": "pc_en_007",
+      "question": "Compare total pathway counts for ibuprofen between rheumatoid Arthritis and kidney Failure, Chronic",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "sort",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Rheumatoid Arthritis / Kidney Failure, Chronic",
+          "drug": "IBUPROFEN"
+        }
+      }
+    },
+    {
+      "id": "pc_en_008",
+      "question": "Among cetirizine, fluoxetine, and warfarin, which has the highest pathway count for diabetes Mellitus?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Diabetes Mellitus",
+          "drug": "CETIRIZINE / FLUOXETINE / WARFARIN"
+        }
+      }
+    },
+    {
+      "id": "pc_en_009",
+      "question": "For omeprazole, between alcoholic Intoxication, Chronic and obesity, which has more pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Alcoholic Intoxication, Chronic / Obesity",
+          "drug": "OMEPRAZOLE"
+        }
+      }
+    },
+    {
+      "id": "pc_en_010",
+      "question": "Does simvastatin or atorvastatin have more pathways for anemia, Sickle Cell?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Anemia, Sickle Cell",
+          "drug": "SIMVASTATIN / ATORVASTATIN"
+        }
+      }
+    },
+    {
+      "id": "pc_en_011",
+      "question": "What is the total pathway count between fluoxetine and schizophrenia?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "pair_lookup",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Schizophrenia",
+          "drug": "FLUOXETINE"
+        }
+      }
+    },
+    {
+      "id": "pc_en_012",
+      "question": "List the top 10 drugs by pathway count for multiple Sclerosis",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "sort",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Multiple Sclerosis",
+          "drug": null
+        }
+      }
+    }
+  ]
+}

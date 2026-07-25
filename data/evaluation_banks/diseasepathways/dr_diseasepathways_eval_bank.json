@@ -1,0 +1,1590 @@
+{
+  "dataset_name": "dr_diseasepathways_retriever_eval_bank",
+  "version": "2.0",
+  "description": "Banco de preguntas para evaluar el retriever sobre la tabla dr_diseasepathways. Esta tabla almacena hipótesis de reposicionamiento basadas en similitud entre enfermedades: si dos enfermedades comparten pathways biológicos, los tratamientos de una pueden transferirse a la otra. Columnas: disease_id_original, disease_id_new, pathway_id, drug_id.",
+  "notes": [
+    "Las preguntas reflejan el concepto de transferencia de tratamientos entre enfermedades similares.",
+    "disease_id_original es la enfermedad conocida (fuente); disease_id_new es la enfermedad candidata.",
+    "El modelo NO genera scores directos. Identifica relaciones de similaridad entre enfermedades.",
+    "Las preguntas usan lenguaje natural orientado a similitud de enfermedades y reutilización de fármacos."
+  ],
+  "cases": [
+    {
+      "id": "dp_001",
+      "question": "¿Qué enfermedades son similares a alzheimer Disease según los pathways biológicos compartidos?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Alzheimer Disease",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_002",
+      "question": "¿Qué fármacos usados para enfermedades similares podrían reposicionarse para diabetes Mellitus?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Diabetes Mellitus",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_003",
+      "question": "¿Qué enfermedades comparten mecanismos biológicos con breast Neoplasms?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Breast Neoplasms",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_004",
+      "question": "¿Qué tratamientos se pueden transferir desde enfermedades relacionadas con hypertension?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Hypertension",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_005",
+      "question": "¿Para qué enfermedades candidatas podría servir metformin basándose en similaridad entre enfermedades?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "drug",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "METFORMIN",
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_006",
+      "question": "¿Cuántas enfermedades similares tiene parkinson Disease según pathways compartidos?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "count",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Parkinson Disease",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_007",
+      "question": "¿Qué fármacos podrían reposicionarse para asthma a partir de enfermedades que comparten vías biológicas?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Asthma",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_008",
+      "question": "¿Qué enfermedades podrían beneficiarse del tratamiento con aspirin por compartir pathways con enfermedades ya tratadas?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "drug",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "ASPIRIN",
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_009",
+      "question": "¿Con qué enfermedades comparte melanoma vías biológicas que permitan transferir tratamientos?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Melanoma",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_010",
+      "question": "¿Cuántos fármacos se podrían reutilizar para epilepsy basándose en la similitud entre enfermedades?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "count",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Epilepsy",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_011",
+      "question": "¿Cuáles son las enfermedades candidatas para las que se podría transferir el tratamiento de lung Neoplasms?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Lung Neoplasms",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_012",
+      "question": "¿Qué fármacos de enfermedades relacionadas podrían ser nuevas indicaciones terapéuticas para schizophrenia?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Schizophrenia",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_013",
+      "question": "¿Qué enfermedades tienen mecanismos biológicos similares a rheumatoid Arthritis?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Rheumatoid Arthritis",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_014",
+      "question": "¿Existe transferencia de tratamiento entre multiple Sclerosis y alguna enfermedad similar?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "existence",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Multiple Sclerosis",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_016",
+      "question": "¿Qué fármacos se podrían transferir a obesity desde enfermedades que comparten pathways biológicos?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Obesity",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_017",
+      "question": "¿A qué nuevas enfermedades podría aplicarse doxorubicin por similaridad entre enfermedades?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "drug",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "DOXORUBICIN",
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_018",
+      "question": "¿Qué enfermedades comparten pathways con hepatocellular Carcinoma y podrían compartir tratamientos?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Hepatocellular Carcinoma",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_020",
+      "question": "¿Qué medicamentos podrían reutilizarse para glioblastoma a través de enfermedades con vías biológicas similares?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Glioblastoma",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_021",
+      "question": "¿Cuántas enfermedades comparten vías biológicas con leukemia que permitan reposicionar fármacos?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "count",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Leukemia",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_023",
+      "question": "¿Qué fármacos se pueden transferir como tratamiento a depression desde enfermedades similares?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Depression",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_025",
+      "question": "¿Qué enfermedades podrían tratarse con tamoxifen por su similitud con enfermedades ya tratadas?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "drug",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "TAMOXIFEN",
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_026",
+      "question": "¿A partir de qué enfermedades se podrían obtener candidatos terapéuticos para chronic Kidney Disease?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Chronic Kidney Disease",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_027",
+      "question": "¿Cuántos fármacos podrían ser nueva indicación para pancreatic Neoplasms por similaridad de enfermedades?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "count",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Pancreatic Neoplasms",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_028",
+      "question": "¿Qué enfermedades similares a myocardial Infarction podrían compartir tratamientos?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Myocardial Infarction",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_029",
+      "question": "¿Se puede transferir el tratamiento de hepatitis B a alguna enfermedad nueva basándose en pathways comunes?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "existence",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Hepatitis B",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_030",
+      "question": "¿Qué fármacos se podrían reposicionar para ovarian Neoplasms gracias a enfermedades con pathways similares?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Ovarian Neoplasms",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_031",
+      "question": "¿Con cuántas enfermedades comparte fibromyalgia mecanismos biológicos según el modelo de disease pathways?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "count",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Fibromyalgia",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_032",
+      "question": "¿Qué enfermedades son candidatas a recibir cisplatin por su relación con enfermedades ya tratadas?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "drug",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "CISPLATIN",
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_034",
+      "question": "¿Cuáles son los fármacos que más enfermedades candidatas tienen basándose en similaridad de pathways?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "ranking",
+        "input_type": null,
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_035",
+      "question": "¿Qué medicamentos se podrían reutilizar para enfermedades similares a chronic Obstructive Pulmonary Disease?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Chronic Obstructive Pulmonary Disease",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_036",
+      "question": "¿Para cuántas enfermedades nuevas se podría reposicionar imatinib según la similaridad entre enfermedades?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "count",
+        "input_type": "drug",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "IMATINIB",
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_037",
+      "question": "¿Qué enfermedades podrían compartir tratamientos con gastric Cancer por tener pathways en común?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Gastric Cancer",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_038",
+      "question": "¿Se puede transferir interferon beta a alguna nueva enfermedad según los pathways compartidos?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "existence",
+        "input_type": "drug",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "INTERFERON BETA",
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_042",
+      "question": "¿Qué enfermedades comparten vías biológicas con liver Cirrhosis que permitan reusar sus tratamientos?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Liver Cirrhosis",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_043",
+      "question": "¿Cuántas nuevas indicaciones terapéuticas se derivan de la similitud entre enfermedades para paclitaxel?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "count",
+        "input_type": "drug",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "PACLITAXEL",
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_044",
+      "question": "¿Qué fármacos se podrían reusar para abdominal Pain a partir de enfermedades con mecanismos biológicos compartidos?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Abdominal Pain",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_046",
+      "question": "¿A qué enfermedades candidatas podría extenderse cyclosporine basándose en pathways de enfermedad compartidos?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "drug",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "CYCLOSPORINE",
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_047",
+      "question": "¿Qué enfermedades similares a diabetes Mellitus podrían beneficiarse de sus mismos fármacos?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Diabetes Mellitus",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_048",
+      "question": "¿Cuántos fármacos se podrían transferir a alzheimer Disease desde enfermedades con pathways compartidos?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "count",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Alzheimer Disease",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_049",
+      "question": "¿Qué enfermedades tienen relación de similaridad con schizophrenia según sus vías biológicas?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Schizophrenia",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_050",
+      "question": "¿Qué fármacos se podrían reposicionar para hypertension basándose en enfermedades que comparten mecanismos?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Hypertension",
+          "drug": null,
+          "pathway": null
+        }
+      }
+    },
+    {
+      "id": "dp_comp_001",
+      "question": "¿Qué enfermedad comparte más pathways con asthma: rheumatoid Arthritis o psoriasis?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Asthma / Rheumatoid Arthritis / Psoriasis",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "dp_comp_002",
+      "question": "Entre kidney Failure, Chronic y anemia, Sickle Cell, ¿cuál tiene más enfermedades similares según disease pathways?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Kidney Failure, Chronic / Anemia, Sickle Cell",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "dp_comp_003",
+      "question": "¿epilepsy o multiple Sclerosis comparten más fármacos candidatos según disease pathways?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Epilepsy / Multiple Sclerosis",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "dp_comp_004",
+      "question": "Compara el número de pathways compartidos entre diabetes Mellitus y obesity versus diabetes Mellitus y glaucoma",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Diabetes Mellitus / Obesity / Glaucoma",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "dp_comp_005",
+      "question": "¿Para qué enfermedad se proponen más fármacos por disease pathways: alcoholic Intoxication, Chronic o osteomalacia?",
+      "gold": {
+        "intent": "disease_pathways",
+        "metric": null,
+        "task_type": "comparison",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_diseasepathways",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_pathways",
+          "dr_pathways_count"
+        ],
+        "entities": {
+          "disease": "Alcoholic Intoxication, Chronic / Osteomalacia",
+          "drug": null
+        }
+      }
+    }
+  ]
+}

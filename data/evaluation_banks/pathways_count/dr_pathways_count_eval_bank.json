@@ -1,0 +1,1494 @@
+{
+  "dataset_name": "dr_pathways_count_retriever_eval_bank",
+  "version": "1.0",
+  "description": "Banco de preguntas para evaluar el retriever sobre la tabla dr_pathways_count. Esta tabla NO es un modelo predictivo; contiene conteos agregados de asociaciones disease-drug derivados de la tabla dr_pathways. Columnas: disease_id, drug_id, approach, association_type, count.",
+  "notes": [
+    "dr_pathways_count es una tabla auxiliar de agregación sobre dr_pathways.",
+    "Las preguntas se centran en conteos de pathways, tipos de asociación y rankings por cantidad.",
+    "Muchas preguntas pueden requerir también dr_pathways como tabla complementaria.",
+    "El gold evalúa retrieval semántico, no SQL."
+  ],
+  "cases": [
+    {
+      "id": "pc_001",
+      "question": "¿Cuántos pathways tiene abdominal Pain según el conteo de pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "count",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Abdominal Pain",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_002",
+      "question": "¿Qué fármacos tienen el mayor conteo de pathways para alzheimer Disease?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Alzheimer Disease",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_003",
+      "question": "¿Cuáles son los 5 fármacos con mayor número de asociaciones por pathways para breast Neoplasms?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Breast Neoplasms",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_004",
+      "question": "¿Qué tipos de asociación existen en dr_pathways_count para diabetes Mellitus?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "association_type",
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Diabetes Mellitus",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_005",
+      "question": "Ordena los fármacos por count en el conteo de pathways para hypertension.",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "sort",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Hypertension",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_006",
+      "question": "¿Cuál es el conteo de pathways entre lung Neoplasms y cisplatin?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "count",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Lung Neoplasms",
+          "drug": "CISPLATIN"
+        }
+      }
+    },
+    {
+      "id": "pc_007",
+      "question": "¿Qué fármacos tienen más de 10 pathways contados para melanoma?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "threshold",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Melanoma",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_008",
+      "question": "¿Cuántos approaches distintos hay en dr_pathways_count para leukemia?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "approach",
+        "task_type": "count",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Leukemia",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_009",
+      "question": "¿Para qué enfermedades tiene metformin el mayor conteo de pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "ranking",
+        "input_type": "drug",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "METFORMIN"
+        }
+      }
+    },
+    {
+      "id": "pc_010",
+      "question": "¿Cuántos registros hay en total en la tabla dr_pathways_count?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "count",
+        "input_type": null,
+        "operator": "count",
+        "result_types_requested": [],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_pathways_count"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_012",
+      "question": "¿Cuántos fármacos distintos aparecen en dr_pathways_count para schizophrenia?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": null,
+        "task_type": "count",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Schizophrenia",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_013",
+      "question": "¿Qué approach genera el mayor conteo para epilepsy en dr_pathways_count?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "comparison",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Epilepsy",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_014",
+      "question": "Lista los tipos de asociación que existen en la tabla dr_pathways_count.",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "association_type",
+        "task_type": "listing",
+        "input_type": null,
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_pathways_count"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_015",
+      "question": "¿Cuál es el conteo total de pathways de aspirin para todas las enfermedades?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "count",
+        "input_type": "drug",
+        "operator": "count",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "ASPIRIN"
+        }
+      }
+    },
+    {
+      "id": "pc_016",
+      "question": "¿Cuáles son las 10 enfermedades con mayor count en dr_pathways_count?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "ranking",
+        "input_type": null,
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_017",
+      "question": "¿Qué fármacos tienen el menor conteo de pathways para rheumatoid Arthritis?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "min",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Rheumatoid Arthritis",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_018",
+      "question": "¿Cuántos tipos de asociación distintos hay entre colorectal Neoplasms y fluorouracil en dr_pathways_count?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "association_type",
+        "task_type": "count",
+        "input_type": "pair",
+        "operator": "count",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Colorectal Neoplasms",
+          "drug": "FLUOROURACIL"
+        }
+      }
+    },
+    {
+      "id": "pc_019",
+      "question": "¿Qué enfermedades tienen más de 50 asociaciones contadas en dr_pathways_count?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "threshold",
+        "input_type": null,
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_021",
+      "question": "¿Para cuántas enfermedades tiene doxorubicin conteo de pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "count",
+        "input_type": "drug",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "DOXORUBICIN"
+        }
+      }
+    },
+    {
+      "id": "pc_022",
+      "question": "¿Cuáles son los approaches disponibles en dr_pathways_count?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "approach",
+        "task_type": "listing",
+        "input_type": null,
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_pathways_count"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_023",
+      "question": "¿Qué fármacos tienen conteo de pathways para multiple Sclerosis?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Multiple Sclerosis",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_024",
+      "question": "¿Cuál es el conteo máximo de pathways para algún par disease-drug en toda la tabla?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "ranking",
+        "input_type": null,
+        "operator": "max",
+        "result_types_requested": [],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_pathways_count"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_025",
+      "question": "¿Qué enfermedades tienen conteo de pathways con tamoxifen en dr_pathways_count?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "listing",
+        "input_type": "drug",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "TAMOXIFEN"
+        }
+      }
+    },
+    {
+      "id": "pc_026",
+      "question": "Ordena las enfermedades por conteo total de pathways en dr_pathways_count.",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "ranking",
+        "input_type": null,
+        "operator": "sort",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_027",
+      "question": "¿Cuántos pares disease-drug únicos hay en dr_pathways_count?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": null,
+        "task_type": "count",
+        "input_type": null,
+        "operator": "count",
+        "result_types_requested": [],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_pathways_count"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_028",
+      "question": "¿Qué fármacos tienen conteo de pathways superior a 20 para obesity en dr_pathways_count?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "threshold",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Obesity",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_029",
+      "question": "¿Cuáles son los 3 fármacos con mayor count para myocardial Infarction en el conteo de pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Myocardial Infarction",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_031",
+      "question": "¿Existe algún conteo de pathways entre hepatocellular Carcinoma y sorafenib?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "existence",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Hepatocellular Carcinoma",
+          "drug": "SORAFENIB"
+        }
+      }
+    },
+    {
+      "id": "pc_032",
+      "question": "¿Cuáles son los 10 fármacos con mayor conteo total en toda la tabla dr_pathways_count?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "ranking",
+        "input_type": null,
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_pathways_count",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_033",
+      "question": "¿Qué tipos de asociación tiene paclitaxel en dr_pathways_count?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "association_type",
+        "task_type": "listing",
+        "input_type": "drug",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "PACLITAXEL"
+        }
+      }
+    },
+    {
+      "id": "pc_034",
+      "question": "¿Cuántas enfermedades tienen conteo de pathways con simvastatin?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "count",
+        "input_type": "drug",
+        "operator": "count",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "SIMVASTATIN"
+        }
+      }
+    },
+    {
+      "id": "pc_035",
+      "question": "¿Qué fármaco tiene el menor conteo de pathways para glioblastoma?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "min",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Glioblastoma",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_037",
+      "question": "¿Cuántos approaches distintos se utilizan en toda la tabla dr_pathways_count?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "approach",
+        "task_type": "count",
+        "input_type": null,
+        "operator": "count",
+        "result_types_requested": [],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_pathways_count"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_038",
+      "question": "¿Qué fármacos participan en conteos de pathways para chronic Obstructive Pulmonary Disease?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Chronic Obstructive Pulmonary Disease",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_039",
+      "question": "¿Qué enfermedad tiene más fármacos asociados en dr_pathways_count?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": null,
+        "task_type": "ranking",
+        "input_type": null,
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_041",
+      "question": "¿Qué enfermedades aparecen con cetirizine en el conteo de pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "listing",
+        "input_type": "drug",
+        "operator": null,
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "CETIRIZINE"
+        }
+      }
+    },
+    {
+      "id": "pc_042",
+      "question": "Ordena los fármacos de mayor a menor conteo para prostate Cancer en dr_pathways_count.",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "ranking",
+        "input_type": "disease",
+        "operator": "sort",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Prostate Cancer",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_043",
+      "question": "¿Hay conteos de pathways para fibromyalgia y fluoxetine en dr_pathways_count?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "existence",
+        "input_type": "pair",
+        "operator": null,
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "diseases",
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Fibromyalgia",
+          "drug": "FLUOXETINE"
+        }
+      }
+    },
+    {
+      "id": "pc_044",
+      "question": "¿Cuántos fármacos tiene gastric Cancer en el conteo de pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": null,
+        "task_type": "count",
+        "input_type": "disease",
+        "operator": "count",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Gastric Cancer",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_046",
+      "question": "¿Qué fármacos aparecen con chronic Kidney Disease en dr_pathways_count y cuántos pathways tienen?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Chronic Kidney Disease",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_049",
+      "question": "¿Cuántos registros tiene omeprazole en dr_pathways_count?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": null,
+        "task_type": "count",
+        "input_type": "drug",
+        "operator": "count",
+        "result_types_requested": [],
+        "predicted_entity_types": [
+          "drugs"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": null,
+          "drug": "OMEPRAZOLE"
+        }
+      }
+    },
+    {
+      "id": "pc_050",
+      "question": "¿Qué fármacos tienen conteos de pathways para ovarian Neoplasms y cuáles son sus approaches?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "listing",
+        "input_type": "disease",
+        "operator": null,
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_information_paths",
+          "dr_threshold_values",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Ovarian Neoplasms",
+          "drug": null
+        }
+      }
+    },
+    {
+      "id": "pc_comp_001",
+      "question": "¿aspirin o metformin tienen más pathways contados para asthma?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Asthma",
+          "drug": "ASPIRIN / METFORMIN"
+        }
+      }
+    },
+    {
+      "id": "pc_comp_002",
+      "question": "Compara el conteo total de pathways de ibuprofen para rheumatoid Arthritis versus kidney Failure, Chronic",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "sort",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Rheumatoid Arthritis / Kidney Failure, Chronic",
+          "drug": "IBUPROFEN"
+        }
+      }
+    },
+    {
+      "id": "pc_comp_003",
+      "question": "Entre cetirizine, fluoxetine y warfarin, ¿cuál tiene mayor conteo de pathways para diabetes Mellitus?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Diabetes Mellitus",
+          "drug": "CETIRIZINE / FLUOXETINE / WARFARIN"
+        }
+      }
+    },
+    {
+      "id": "pc_comp_004",
+      "question": "¿Para omeprazole, entre alcoholic Intoxication, Chronic y obesity, cuál tiene más pathways?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "diseases"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Alcoholic Intoxication, Chronic / Obesity",
+          "drug": "OMEPRAZOLE"
+        }
+      }
+    },
+    {
+      "id": "pc_comp_005",
+      "question": "¿simvastatin o atorvastatin tienen mayor número de pathways para anemia, Sickle Cell?",
+      "gold": {
+        "intent": "pathways_method",
+        "metric": "count",
+        "task_type": "comparison",
+        "input_type": "pair",
+        "operator": "max",
+        "result_types_requested": [
+          "drugs"
+        ],
+        "predicted_entity_types": [
+          "drugs",
+          "diseases"
+        ],
+        "required_tables": [
+          "dr_pathways_count",
+          "disease",
+          "drug"
+        ],
+        "forbidden_tables": [
+          "dr_gnns",
+          "dr_network_proximity",
+          "dr_threshold_values",
+          "dr_information_paths",
+          "dr_diseasepathways"
+        ],
+        "entities": {
+          "disease": "Anemia, Sickle Cell",
+          "drug": "SIMVASTATIN / ATORVASTATIN"
+        }
+      }
+    }
+  ]
+}
